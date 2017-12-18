@@ -37,7 +37,7 @@ AStanarisCharacter::AStanarisCharacter()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	//CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->SetupAttachment(GetMesh(), GetMesh()->GetSocketBoneName(FName(TEXT("head"))));
+	CameraBoom->SetupAttachment(GetMesh(), GetMesh()->GetSocketBoneName(FName(TEXT("head")))); // Possible error, i don't know
 	
 	//GetMesh()->GetSocketBoneName(FName(TEXT("head")))
 	//CameraBoom->AttachTo(GetMesh(), FName("head"));
