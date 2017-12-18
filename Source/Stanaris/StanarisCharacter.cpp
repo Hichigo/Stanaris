@@ -1,6 +1,7 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 #include "StanarisCharacter.h"
+#include "Runtime/Engine/Classes/Components/SkeletalMeshComponent.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -11,6 +12,7 @@
 
 //////////////////////////////////////////////////////////////////////////
 // AStanarisCharacter
+
 
 AStanarisCharacter::AStanarisCharacter()
 {
@@ -35,7 +37,14 @@ AStanarisCharacter::AStanarisCharacter()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	//CameraBoom->AttachTo(GetMesh(), FName("head"));
+	//FName HeadSocketName = TEXT("head");
+	//CameraBoom->SetupAttachment(GetMesh(), USpringArmComponent::SocketName);
+	//CameraBoom->AttachTo(GetMesh(), HeadSocketName, EAttachLocation::SnapToTarget, true); //GetMesh(), EAttachLocation::SnapToTarget, HeadSocketName);
+	//CameraBoom->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, HeadSocketName);
+	//CameraBoom->SetupAttachment(GetMesh(), HeadSocketName);
+
+	CameraBoom->TargetArmLength = 0.0f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
