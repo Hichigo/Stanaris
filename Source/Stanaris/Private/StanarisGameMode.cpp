@@ -2,6 +2,10 @@
 
 #include "StanarisGameMode.h"
 
+AStanarisGameMode::AStanarisGameMode(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
 
+}
 
 

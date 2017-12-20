@@ -83,7 +83,11 @@ class STANARIS_API AStanarisGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	AStanarisGameMode(const FObjectInitializer& ObjectInitializer);
 	
-	
+	/* Data Equipment items */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Items")
+	TArray<FEquipment> DataEquipment;
 	
 };
