@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameModeBase.h"
-#include "StanarisGameMode.generated.h"
+#include "Engine/GameInstance.h"
+
+#include "Runtime/Engine/Classes/Engine/Texture2D.h"
+
+#include "StanarisGameInstance.generated.h"
 
 /**
  * 
  */
-
 UENUM(BlueprintType)
 enum class ETypeItem : uint8
 {
@@ -47,7 +49,7 @@ struct FIconSize {
 
 /* Data equipment items*/
 USTRUCT(BlueprintType)
-struct FEquipment {
+struct FDataItems {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -130,15 +132,16 @@ struct FQuest {
 };
 
 UCLASS(Blueprintable, BlueprintType)
-class STANARIS_API AStanarisGameMode : public AGameModeBase
+class STANARIS_API UStanarisGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 	
 public:
-	AStanarisGameMode(const FObjectInitializer& ObjectInitializer);
+	UStanarisGameInstance(const FObjectInitializer& ObjectInitializer);
 	
 	/* Data Equipment items */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Items")
-	TArray<FEquipment> DataEquipment;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|DataItems")
+	TArray<FDataItems> DataEquipment;
+
 	
 };
