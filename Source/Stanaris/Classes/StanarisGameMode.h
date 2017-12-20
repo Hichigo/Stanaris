@@ -39,10 +39,43 @@ struct FIconSize {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Column;
+	int32 Column;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Row;
+	int32 Row;
+};
+
+/* Data equipment items*/
+USTRUCT(BlueprintType)
+struct FEquipment {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeEquipment Type;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *Icon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Defence;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Damage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
 };
 
 UCLASS()
