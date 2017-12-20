@@ -11,7 +11,7 @@
  */
 
 UENUM(BlueprintType)
-enum class ETypeItems : uint8
+enum class ETypeItem : uint8
 {
 	Equip,
 	Used,
@@ -54,7 +54,10 @@ struct FEquipment {
 	int32 id;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETypeEquipment Type;
+	ETypeItem TypeItem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeEquipment TypeEquip;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Name;
@@ -78,7 +81,7 @@ struct FEquipment {
 	FIconSize IconSize;
 };
 
-/* Data used items*/
+/* Data used items */
 USTRUCT(BlueprintType)
 struct FUsed {
 	GENERATED_USTRUCT_BODY()
@@ -102,7 +105,7 @@ struct FUsed {
 	FIconSize IconSize;
 };
 
-/* Data quest items*/
+/* Data quest items */
 USTRUCT(BlueprintType)
 struct FQuest {
 	GENERATED_USTRUCT_BODY()
