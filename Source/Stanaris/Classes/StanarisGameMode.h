@@ -78,7 +78,7 @@ struct FEquipment {
 	FIconSize IconSize;
 };
 
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class STANARIS_API AStanarisGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
