@@ -45,6 +45,12 @@ struct FIconSize {
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Row;
+
+	FIconSize()
+	{
+		Column = 1;
+		Row = 1;
+	}
 };
 
 /* Data equipment items*/
@@ -81,6 +87,21 @@ struct FDataItems {
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FIconSize IconSize;
+
+	FDataItems()
+	{
+		id = -1;
+
+		TypeItem = ETypeItem::Equip;
+		TypeEquip = ETypeEquipment::FastSlot;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		Defense = -1;
+		Damage = -1;
+	}
+
 };
 
 /* Data used items */
