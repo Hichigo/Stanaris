@@ -84,52 +84,52 @@ struct FDataItems {
 };
 
 /* Data used items */
-USTRUCT(BlueprintType)
-struct FUsed {
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Description;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *Icon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh *StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-};
-
-/* Data quest items */
-USTRUCT(BlueprintType)
-struct FQuest {
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Description;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *Icon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh *StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-};
+//USTRUCT(BlueprintType)
+//struct FUsed {
+//	GENERATED_USTRUCT_BODY()
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	int32 id;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FText Name;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FText Description;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	UTexture2D *Icon;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	UStaticMesh *StaticMesh;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FIconSize IconSize;
+//};
+//
+///* Data quest items */
+//USTRUCT(BlueprintType)
+//struct FQuest {
+//	GENERATED_USTRUCT_BODY()
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	int32 id;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FText Name;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FText Description;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	UTexture2D *Icon;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	UStaticMesh *StaticMesh;
+//
+//	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+//	FIconSize IconSize;
+//};
 
 UCLASS(Blueprintable, BlueprintType)
 class STANARIS_API UStanarisGameInstance : public UGameInstance
