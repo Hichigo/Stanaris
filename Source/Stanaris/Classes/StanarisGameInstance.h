@@ -88,6 +88,9 @@ struct FDataItems {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FIconSize IconSize;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
 	FDataItems()
 	{
 		id = -1;
@@ -100,6 +103,7 @@ struct FDataItems {
 		StaticMesh = nullptr;
 		Defense = -1;
 		Damage = -1;
+		TemplateIndexes.Add(0);
 	}
 
 };
