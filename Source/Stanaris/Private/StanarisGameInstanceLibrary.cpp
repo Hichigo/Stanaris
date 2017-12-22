@@ -46,3 +46,22 @@ TArray<FDataItems> UStanarisGameInstanceLibrary::GetDataItems(UObject * WorldCon
 
 	return TArray<FDataItems>();
 }
+
+FDataItems UStanarisGameInstanceLibrary::GetDataItemById(int32 FindId, UObject * WorldContextObject, bool & IsValid)
+{
+	TArray<FDataItems> Items = GetDataItems(WorldContextObject, IsValid);
+
+	if (IsValid)
+	{
+		for (FDataItems Item : Items)
+		{
+			if (Item.id == FindId)
+			{
+				return Item;
+			}
+		}
+	}
+
+	IsValid = false;
+	return FDataItems();
+}
