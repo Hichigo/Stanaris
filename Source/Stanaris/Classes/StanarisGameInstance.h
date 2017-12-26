@@ -74,6 +74,15 @@ struct FDataItems {
 	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsStackable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOnStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOnStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D *Icon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -99,6 +108,8 @@ struct FDataItems {
 		TypeEquip = ETypeEquipment::FastSlot;
 		Name = FText::FromString(TEXT("none"));
 		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOnStack = 1;
 		Icon = nullptr;
 		StaticMesh = nullptr;
 		Defense = -1;
