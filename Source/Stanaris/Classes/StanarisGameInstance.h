@@ -110,6 +110,7 @@ struct FDataItems {
 		Description = FText::FromString(TEXT("none"));
 		IsStackable = false;
 		NumberOnStack = 1;
+		MaxNumberOnStack = 1;
 		Icon = nullptr;
 		StaticMesh = nullptr;
 		Defense = -1;
