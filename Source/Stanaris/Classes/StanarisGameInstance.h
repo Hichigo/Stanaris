@@ -17,12 +17,14 @@ enum class ETypeItem : uint8
 {
 	Equip,
 	Used,
+	Craft,
 	Quest
 };
 
 UENUM(BlueprintType)
 enum class ETypeEquipment : uint8
 {
+	Other,
 	FastSlot,
 	Weapon,
 	Weapon2H,
