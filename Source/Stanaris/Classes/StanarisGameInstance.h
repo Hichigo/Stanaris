@@ -6,6 +6,7 @@
 #include "Engine/GameInstance.h"
 
 #include "Runtime/Engine/Classes/Engine/Texture2D.h"
+#include "Engine/DataTable.h"
 
 #include "StanarisGameInstance.generated.h"
 
@@ -144,6 +145,58 @@ struct FInventoryItem {
 	}
 
 
+};
+
+USTRUCT(BlueprintType)
+struct FCraftData : public FTableRowBase {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeItem TypeItem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsStackable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *Icon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
+	FCraftData()
+	{
+		id = -1;	
+		TypeItem = ETypeItem::Craft;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOfStack = 1;
+		MaxNumberOfStack = 1;
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		TemplateIndexes.Add(0);
+	}
 };
 /* Data used items */
 //USTRUCT(BlueprintType)
