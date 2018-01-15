@@ -148,7 +148,71 @@ struct FInventoryItem {
 };
 
 USTRUCT(BlueprintType)
-struct FCraftData : public FTableRowBase {
+struct FEquipItemData : public FTableRowBase {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeItem TypeItem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeEquipment TypeEquip;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsStackable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *Icon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Defence;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Damage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
+	FEquipItemData()
+	{
+		id = -1;
+		TypeItem = ETypeItem::Craft;
+		TypeEquip = ETypeEquipment::Other;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOfStack = 1;
+		MaxNumberOfStack = 1;
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		Defence = 0;
+		Damage = 0;
+		TemplateIndexes.Add(0);
+	}
+};
+
+USTRUCT(BlueprintType)
+struct FCraftItemData : public FTableRowBase {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -184,9 +248,117 @@ struct FCraftData : public FTableRowBase {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<int32> TemplateIndexes;
 
-	FCraftData()
+	FCraftItemData()
 	{
 		id = -1;	
+		TypeItem = ETypeItem::Craft;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOfStack = 1;
+		MaxNumberOfStack = 1;
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		TemplateIndexes.Add(0);
+	}
+};
+
+USTRUCT(BlueprintType)
+struct FUsedItemData : public FTableRowBase {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeItem TypeItem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeEquipment TypeEquip;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsStackable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *Icon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
+	FUsedItemData()
+	{
+		id = -1;
+		TypeItem = ETypeItem::Craft;
+		TypeEquip = ETypeEquipment::FastSlot;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOfStack = 1;
+		MaxNumberOfStack = 1;
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		TemplateIndexes.Add(0);
+	}
+};
+
+USTRUCT(BlueprintType)
+struct FQuestItemData : public FTableRowBase {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeItem TypeItem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Name;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Description;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsStackable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxNumberOfStack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UTexture2D *Icon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
+	FQuestItemData()
+	{
+		id = -1;
 		TypeItem = ETypeItem::Craft;
 		Name = FText::FromString(TEXT("none"));
 		Description = FText::FromString(TEXT("none"));
