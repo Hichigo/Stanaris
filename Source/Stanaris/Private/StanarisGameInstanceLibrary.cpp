@@ -65,7 +65,31 @@ FDataItems UStanarisGameInstanceLibrary::GetDataItemById(int32 FindId, UObject *
 	return FDataItems();
 }
 
-ETypeItem UStanarisGameInstanceLibrary::DetectTypeById(int32 IdItem)
+ETypeItem UStanarisGameInstanceLibrary::DetectTypeItemById(int32 IdItem)
 {
+	// 0 - 999 -> equip
+	// 1000 - 1999 -> used
+	// 2000 - 2999 -> quest
+	// 3000 - 3999 -> craft
+	if (IdItem >= 0 && IdItem < 1000)
+	{
+		return ETypeItem::Equip;
+	}
+
+	if (IdItem >= 1000 && IdItem < 2000)
+	{
+		return ETypeItem::Used;
+	}
+
+	if (IdItem >= 2000 && IdItem < 3000)
+	{
+		return ETypeItem::Quest;
+	}
+
+	if (IdItem >= 3000 && IdItem < 4000)
+	{
+		return ETypeItem::Craft;
+	}
+
 	return ETypeItem();
 }
