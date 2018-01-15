@@ -32,4 +32,7 @@ public:
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
 	static FDataItems GetDataItemById(int32 FindId, UObject * WorldContextObject, bool& IsValid);
 
+	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
+	static ETypeItem DetectTypeById(int32 IdItem);
+
 };

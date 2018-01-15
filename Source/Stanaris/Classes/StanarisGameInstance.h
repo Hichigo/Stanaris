@@ -431,4 +431,5 @@ public:
 	TArray<FDataItems> DataEquipment;
 
 	
+	
 };

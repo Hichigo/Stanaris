@@ -64,3 +64,8 @@ FDataItems UStanarisGameInstanceLibrary::GetDataItemById(int32 FindId, UObject *
 	IsValid = false;
 	return FDataItems();
 }
+
+ETypeItem UStanarisGameInstanceLibrary::DetectTypeById(int32 IdItem)
+{
+	return ETypeItem();
+}
