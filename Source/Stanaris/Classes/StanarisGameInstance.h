@@ -122,6 +122,29 @@ struct FDataItems {
 
 };
 
+
+USTRUCT(BlueprintType)
+struct FInventoryItem {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 id;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 NumberOfItems;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeItem TypeItem;
+
+	FInventoryItem()
+	{
+		id = -1;
+		NumberOfItems = 1;
+		TypeItem = ETypeItem::Used;
+	}
+
+
+};
 /* Data used items */
 //USTRUCT(BlueprintType)
 //struct FUsed {
