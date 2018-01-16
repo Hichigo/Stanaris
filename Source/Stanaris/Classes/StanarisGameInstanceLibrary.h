@@ -35,4 +35,14 @@ public:
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
 	static ETypeItem DetectTypeItemById(int32 IdItem);
 
+	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
+	static void GetItemFromTableById(int32 IdItem, TArray<UDataTable*> Tables, ETypeItem &TypeItem, FEquipItemData &EquipItemData, FCraftItemData &CraftItemData, FUsedItemData &UsedItemData, FQuestItemData &QuestItemData);
+
+
+private:
+	static FEquipItemData FindEquipItemById(UDataTable* EquipTable, int32 IdItem);
+	static FCraftItemData FindCraftItemById(UDataTable* CraftTable, int32 IdItem);
+	static FUsedItemData FindUsedItemById(UDataTable* UsedTable, int32 IdItem);
+	static FQuestItemData FindQuestItemById(UDataTable* QuestTable, int32 IdItem);
+
 };

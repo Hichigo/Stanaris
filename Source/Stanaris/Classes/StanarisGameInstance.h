@@ -148,7 +148,7 @@ struct FInventoryItem {
 };
 
 USTRUCT(BlueprintType)
-struct FEquipItemData : public FTableRowBase {
+struct FMasterItemData : public FTableRowBase {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -156,9 +156,6 @@ struct FEquipItemData : public FTableRowBase {
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ETypeItem TypeItem;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETypeEquipment TypeEquip;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Name;
@@ -180,6 +177,35 @@ struct FEquipItemData : public FTableRowBase {
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UStaticMesh *StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FIconSize IconSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<int32> TemplateIndexes;
+
+	FMasterItemData()
+	{
+		id = -1;
+		TypeItem = ETypeItem::Craft;
+		Name = FText::FromString(TEXT("none"));
+		Description = FText::FromString(TEXT("none"));
+		IsStackable = false;
+		NumberOfStack = 1;
+		MaxNumberOfStack = 1;
+		Icon = nullptr;
+		StaticMesh = nullptr;
+		TemplateIndexes.Add(0);
+	}
+};
+
+
+USTRUCT(BlueprintType)
+struct FEquipItemData : public FMasterItemData {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ETypeEquipment TypeEquip;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Defence;
@@ -187,189 +213,49 @@ struct FEquipItemData : public FTableRowBase {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Damage;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<int32> TemplateIndexes;
-
 	FEquipItemData()
 	{
-		id = -1;
-		TypeItem = ETypeItem::Craft;
 		TypeEquip = ETypeEquipment::Other;
-		Name = FText::FromString(TEXT("none"));
-		Description = FText::FromString(TEXT("none"));
-		IsStackable = false;
-		NumberOfStack = 1;
-		MaxNumberOfStack = 1;
-		Icon = nullptr;
-		StaticMesh = nullptr;
 		Defence = 0;
 		Damage = 0;
-		TemplateIndexes.Add(0);
 	}
 };
 
 USTRUCT(BlueprintType)
-struct FCraftItemData : public FTableRowBase {
+struct FCraftItemData : public FMasterItemData {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETypeItem TypeItem;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Description;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool IsStackable;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 NumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxNumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *Icon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh *StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<int32> TemplateIndexes;
 
 	FCraftItemData()
 	{
-		id = -1;	
-		TypeItem = ETypeItem::Craft;
-		Name = FText::FromString(TEXT("none"));
-		Description = FText::FromString(TEXT("none"));
-		IsStackable = false;
-		NumberOfStack = 1;
-		MaxNumberOfStack = 1;
-		Icon = nullptr;
-		StaticMesh = nullptr;
-		TemplateIndexes.Add(0);
+
 	}
 };
 
 USTRUCT(BlueprintType)
-struct FUsedItemData : public FTableRowBase {
+struct FUsedItemData : public FMasterItemData {
 	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETypeItem TypeItem;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ETypeEquipment TypeEquip;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Description;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool IsStackable;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 NumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxNumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *Icon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh *StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<int32> TemplateIndexes;
-
 	FUsedItemData()
 	{
-		id = -1;
-		TypeItem = ETypeItem::Craft;
 		TypeEquip = ETypeEquipment::FastSlot;
-		Name = FText::FromString(TEXT("none"));
-		Description = FText::FromString(TEXT("none"));
-		IsStackable = false;
-		NumberOfStack = 1;
-		MaxNumberOfStack = 1;
-		Icon = nullptr;
-		StaticMesh = nullptr;
-		TemplateIndexes.Add(0);
 	}
 };
 
 USTRUCT(BlueprintType)
-struct FQuestItemData : public FTableRowBase {
+struct FQuestItemData : public FMasterItemData {
 	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETypeItem TypeItem;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Name;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FText Description;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool IsStackable;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 NumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxNumberOfStack;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UTexture2D *Icon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UStaticMesh *StaticMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FIconSize IconSize;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<int32> TemplateIndexes;
 
 	FQuestItemData()
 	{
-		id = -1;
-		TypeItem = ETypeItem::Craft;
-		Name = FText::FromString(TEXT("none"));
-		Description = FText::FromString(TEXT("none"));
-		IsStackable = false;
-		NumberOfStack = 1;
-		MaxNumberOfStack = 1;
-		Icon = nullptr;
-		StaticMesh = nullptr;
-		TemplateIndexes.Add(0);
+
 	}
 };
+
+
 /* Data used items */
 //USTRUCT(BlueprintType)
 //struct FUsed {
@@ -430,6 +316,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|DataItems")
 	TArray<FDataItems> DataEquipment;
 
-	
 	
 };

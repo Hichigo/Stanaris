@@ -93,3 +93,131 @@ ETypeItem UStanarisGameInstanceLibrary::DetectTypeItemById(int32 IdItem)
 
 	return ETypeItem();
 }
+
+void UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem,
+	TArray<UDataTable*> Tables, ETypeItem &TypeItem,
+	FEquipItemData &EquipItemData, FCraftItemData &CraftItemData,
+	FUsedItemData &UsedItemData, FQuestItemData &QuestItemData)
+{
+	EquipItemData = FEquipItemData();
+	CraftItemData = FCraftItemData();
+	UsedItemData = FUsedItemData();
+	QuestItemData = FQuestItemData();
+
+	TypeItem = DetectTypeItemById(IdItem);
+
+	
+	switch (TypeItem)
+	{
+	case ETypeItem::Equip:
+		EquipItemData = FindEquipItemById(Tables[0], IdItem); // equip table
+		return;
+	case ETypeItem::Used:
+		UsedItemData = FindUsedItemById(Tables[1], IdItem); // used table
+		return;
+	case ETypeItem::Quest:
+		QuestItemData = FindQuestItemById(Tables[2], IdItem); // quest table
+		return;
+	case ETypeItem::Craft:
+		CraftItemData = FindCraftItemById(Tables[3], IdItem); // craft table
+		return;
+	default:
+		UE_LOG(LogTemp, Error, TEXT("GetItemFromTableById wrong id item!"));
+		return;
+	}
+
+}
+
+FEquipItemData UStanarisGameInstanceLibrary::FindEquipItemById(UDataTable* EquipTable, int32 IdItem)
+{
+	FString ContextString; //error or warning
+	
+	TArray<FName> RowNames;
+	RowNames = EquipTable->GetRowNames();
+
+	for (auto& name : RowNames)
+	{
+		FEquipItemData *row = EquipTable->FindRow<FEquipItemData>(name, ContextString);
+
+		if (row)
+		{
+			if (row->id == IdItem)
+			{
+				return (*row);
+			}
+		}
+	}
+
+	return FEquipItemData();
+}
+
+FCraftItemData UStanarisGameInstanceLibrary::FindCraftItemById(UDataTable * CraftTable, int32 IdItem)
+{
+
+	FString ContextString; //error or warning
+
+	TArray<FName> RowNames;
+	RowNames = CraftTable->GetRowNames();
+
+	for (auto& name : RowNames)
+	{
+		FCraftItemData *row = CraftTable->FindRow<FCraftItemData>(name, ContextString);
+
+		if (row)
+		{
+			if (row->id == IdItem)
+			{
+				return (*row);
+			}
+		}
+	}
+
+	return FCraftItemData();
+}
+
+FUsedItemData UStanarisGameInstanceLibrary::FindUsedItemById(UDataTable * UsedTable, int32 IdItem)
+{
+	FString ContextString; //error or warning
+
+	TArray<FName> RowNames;
+	RowNames = UsedTable->GetRowNames();
+
+	for (auto& name : RowNames)
+	{
+		FUsedItemData *row = UsedTable->FindRow<FUsedItemData>(name, ContextString);
+
+		if (row)
+		{
+			if (row->id == IdItem)
+			{
+				return (*row);
+			}
+		}
+	}
+
+	return FUsedItemData();
+}
+
+FQuestItemData UStanarisGameInstanceLibrary::FindQuestItemById(UDataTable * QuestTable, int32 IdItem)
+{
+
+	FString ContextString; //error or warning
+
+	TArray<FName> RowNames;
+	RowNames = QuestTable->GetRowNames();
+
+	for (auto& name : RowNames)
+	{
+		FQuestItemData *row = QuestTable->FindRow<FQuestItemData>(name, ContextString);
+
+		if (row)
+		{
+			if (row->id == IdItem)
+			{
+				return (*row);
+			}
+		}
+	}
+
+	return FQuestItemData();
+}
