@@ -18,8 +18,8 @@ enum class ETypeItem : uint8
 {
 	Equip,
 	Used,
-	Craft,
-	Quest
+	Quest,
+	Craft
 };
 
 UENUM(BlueprintType)

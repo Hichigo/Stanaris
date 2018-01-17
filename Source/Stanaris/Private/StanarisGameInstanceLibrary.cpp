@@ -95,9 +95,12 @@ ETypeItem UStanarisGameInstanceLibrary::DetectTypeItemById(int32 IdItem)
 }
 
 void UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem,
-	TArray<UDataTable*> Tables, ETypeItem &TypeItem,
-	FEquipItemData &EquipItemData, FCraftItemData &CraftItemData,
-	FUsedItemData &UsedItemData, FQuestItemData &QuestItemData)
+	TArray<UDataTable*> Tables,
+	ETypeItem &TypeItem,
+	FEquipItemData &EquipItemData,
+	FUsedItemData &UsedItemData,
+	FQuestItemData &QuestItemData,
+	FCraftItemData &CraftItemData)
 {
 	EquipItemData = FEquipItemData();
 	CraftItemData = FCraftItemData();
