@@ -141,7 +141,7 @@ struct FInventoryItem {
 	{
 		id = -1;
 		NumberOfItems = 1;
-		TypeItem = ETypeItem::Used;
+		TypeItem = ETypeItem::Equip;
 	}
 
 
