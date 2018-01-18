@@ -7,6 +7,7 @@
 
 #include "Runtime/Engine/Classes/Engine/Texture2D.h"
 #include "Engine/DataTable.h"
+#include "Engine/SkeletalMesh.h"
 
 #include "StanarisGameInstance.generated.h"
 
@@ -208,6 +209,9 @@ struct FEquipItemData : public FMasterItemData {
 	ETypeEquipment TypeEquip;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USkeletalMesh* SkeletalMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Defence;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -216,6 +220,7 @@ struct FEquipItemData : public FMasterItemData {
 	FEquipItemData()
 	{
 		TypeEquip = ETypeEquipment::Other;
+		SkeletalMesh = nullptr;
 		Defence = 0;
 		Damage = 0;
 	}
