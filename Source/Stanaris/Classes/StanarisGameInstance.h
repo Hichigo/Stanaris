@@ -23,6 +23,16 @@ enum class ETypeItem : uint8
 	Craft
 };
 
+
+UENUM(BlueprintType)
+enum class EWhereItemSlot : uint8
+{
+	Inventory,
+	Equip,
+	FastSlot
+};
+
+
 UENUM(BlueprintType)
 enum class ETypeEquipment : uint8
 {
