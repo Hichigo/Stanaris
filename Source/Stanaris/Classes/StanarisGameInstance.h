@@ -47,7 +47,9 @@ enum class ETypeEquipment : uint8
 	Boots,
 	Gloves,
 	Neck,
-	Ring
+	Ring,
+	LeftRing,
+	RightRing
 };
 
 USTRUCT(BlueprintType)
