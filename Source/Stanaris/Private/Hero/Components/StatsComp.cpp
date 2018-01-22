@@ -33,3 +33,43 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	// ...
 }
 
+int32 UStatsComp::GetLevel()
+{
+	return Stats.Level;
+}
+
+FBar UStatsComp::GexExp()
+{
+	return Stats.Experience;
+}
+
+FBar UStatsComp::GexHealth()
+{
+	return Stats.Health;
+}
+
+FBar UStatsComp::GexEndurance()
+{
+	return Stats.Endurance;
+}
+
+int32 UStatsComp::GetRegenHealt()
+{
+	return Stats.RegenHealthPerSec;
+}
+
+int32 UStatsComp::GetRegenEndurance()
+{
+	return Stats.RegenEndurancePerSec;
+}
+
+int32 UStatsComp::GetDamage()
+{
+	return Stats.Damage;
+}
+
+int32 UStatsComp::GetDefence()
+{
+	return Stats.Defence;
+}
+

@@ -41,16 +41,16 @@ struct FHeroStats {
 	FBar Endurance;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Defence;
+	int32 RegenHealthPerSec;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RegenEndurancePerSec;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenHealthPerSec;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenEndurancePerSec;
+	int32 Defence;
 
 	FHeroStats()
 	{
@@ -82,5 +82,31 @@ public:
 		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|Stats")
 	FHeroStats Stats;
+
+
+	/* GETTERS */
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetLevel();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FBar GexExp();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FBar GexHealth();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FBar GexEndurance();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetRegenHealt();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetRegenEndurance();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetDamage();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetDefence();
 
 };
