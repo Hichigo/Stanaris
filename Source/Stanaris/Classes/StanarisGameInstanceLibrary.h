@@ -6,6 +6,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 
 #include "StanarisGameInstance.h"
+#include "Engine/DataTable.h"
+#include "Structures/Inventory/InventoryStructures.h"
 
 #include "StanarisGameInstanceLibrary.generated.h"
 
@@ -26,11 +28,11 @@ public:
 	UFUNCTION(/*BlueprintCallable, Category = "StanarisLibrary", */meta = (WorldContext = WorldContextObject))
 	static UWorld * GetRealWorld(UObject * WorldContextObject);
 	
-	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
-	static TArray<FDataItems> GetDataItems(UObject * WorldContextObject, bool& IsValid);
+	/*UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
+	static TArray<FDataItems> GetDataItems(UObject * WorldContextObject, bool& IsValid);*/
 	
-	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
-	static FDataItems GetDataItemById(int32 FindId, UObject * WorldContextObject, bool& IsValid);
+	/*UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
+	static FDataItems GetDataItemById(int32 FindId, UObject * WorldContextObject, bool& IsValid);*/
 
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
 	static ETypeItem DetectTypeItemById(int32 IdItem);

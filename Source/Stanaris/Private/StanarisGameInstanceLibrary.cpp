@@ -32,38 +32,38 @@ UWorld * UStanarisGameInstanceLibrary::GetRealWorld(UObject * WorldContextObject
 	return GEngine->GetWorldFromContextObjectChecked(WorldContextObject);
 }
 
-TArray<FDataItems> UStanarisGameInstanceLibrary::GetDataItems(UObject * WorldContextObject, bool & IsValid)
-{
-	IsValid = false;
-	
-	UStanarisGameInstance * GameInstance = GetGameInstance(WorldContextObject, IsValid);
+//TArray<FDataItems> UStanarisGameInstanceLibrary::GetDataItems(UObject * WorldContextObject, bool & IsValid)
+//{
+//	IsValid = false;
+//	
+//	UStanarisGameInstance * GameInstance = GetGameInstance(WorldContextObject, IsValid);
+//
+//
+//	if (IsValid)
+//	{
+//		return GameInstance->DataEquipment;
+//	}
+//
+//	return TArray<FDataItems>();
+//}
 
-
-	if (IsValid)
-	{
-		return GameInstance->DataEquipment;
-	}
-
-	return TArray<FDataItems>();
-}
-
-FDataItems UStanarisGameInstanceLibrary::GetDataItemById(int32 FindId, UObject * WorldContextObject, bool & IsValid)
-{
-	TArray<FDataItems> Items = GetDataItems(WorldContextObject, IsValid);
-	if (IsValid)
-	{
-		for (FDataItems Item : Items)
-		{
-			if (Item.id == FindId)
-			{
-				return Item;
-			}
-		}
-	}
-
-	IsValid = false;
-	return FDataItems();
-}
+//FDataItems UStanarisGameInstanceLibrary::GetDataItemById(int32 FindId, UObject * WorldContextObject, bool & IsValid)
+//{
+//	TArray<FDataItems> Items = GetDataItems(WorldContextObject, IsValid);
+//	if (IsValid)
+//	{
+//		for (FDataItems Item : Items)
+//		{
+//			if (Item.id == FindId)
+//			{
+//				return Item;
+//			}
+//		}
+//	}
+//
+//	IsValid = false;
+//	return FDataItems();
+//}
 
 ETypeItem UStanarisGameInstanceLibrary::DetectTypeItemById(int32 IdItem)
 {
