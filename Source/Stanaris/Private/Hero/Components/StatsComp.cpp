@@ -53,7 +53,7 @@ FBar UStatsComp::GexEndurance()
 	return Stats.Endurance;
 }
 
-int32 UStatsComp::GetRegenHealt()
+int32 UStatsComp::GetRegenHealth()
 {
 	return Stats.RegenHealthPerSec;
 }

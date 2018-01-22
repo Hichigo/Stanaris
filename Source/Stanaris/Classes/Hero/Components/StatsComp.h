@@ -98,7 +98,7 @@ public:
 	FBar GexEndurance();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	int32 GetRegenHealt();
+	int32 GetRegenHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetRegenEndurance();
