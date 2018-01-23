@@ -30,7 +30,8 @@ enum class EWhereItemSlot : uint8
 {
 	Inventory,
 	Equip,
-	FastSlot
+	FastSlot,
+	DontKnow
 };
 
 
