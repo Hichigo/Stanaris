@@ -38,17 +38,17 @@ int32 UStatsComp::GetLevel()
 	return Stats.Level;
 }
 
-FBar UStatsComp::GexExp()
+FBar UStatsComp::GetExp()
 {
 	return Stats.Experience;
 }
 
-FBar UStatsComp::GexHealth()
+FBar UStatsComp::GetHealth()
 {
 	return Stats.Health;
 }
 
-FBar UStatsComp::GexEndurance()
+FBar UStatsComp::GetEndurance()
 {
 	return Stats.Endurance;
 }
@@ -71,5 +71,9 @@ int32 UStatsComp::GetDamage()
 int32 UStatsComp::GetDefence()
 {
 	return Stats.Defence;
+}
+
+void UStatsComp::AddStats(FEquipItemData AddStats)
+{
 }
 

@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Structures/Inventory/InventoryStructures.h"
+
 #include "StatsComp.generated.h"
 
 
@@ -89,13 +91,13 @@ public:
 	int32 GetLevel();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	FBar GexExp();
+	FBar GetExp();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	FBar GexHealth();
+	FBar GetHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	FBar GexEndurance();
+	FBar GetEndurance();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetRegenHealth();
@@ -108,5 +110,8 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetDefence();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
+	void AddStats(FEquipItemData AddStats);
 
 };

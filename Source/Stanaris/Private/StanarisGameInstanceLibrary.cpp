@@ -156,7 +156,6 @@ FEquipItemData UStanarisGameInstanceLibrary::FindEquipItemById(UDataTable* Equip
 
 FCraftItemData UStanarisGameInstanceLibrary::FindCraftItemById(UDataTable * CraftTable, int32 IdItem)
 {
-
 	FString ContextString; //error or warning
 
 	TArray<FName> RowNames;
@@ -203,7 +202,6 @@ FUsedItemData UStanarisGameInstanceLibrary::FindUsedItemById(UDataTable * UsedTa
 
 FQuestItemData UStanarisGameInstanceLibrary::FindQuestItemById(UDataTable * QuestTable, int32 IdItem)
 {
-
 	FString ContextString; //error or warning
 
 	TArray<FName> RowNames;
