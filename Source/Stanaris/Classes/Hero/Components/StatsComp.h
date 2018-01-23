@@ -62,6 +62,62 @@ struct FHeroStats {
 		RegenHealthPerSec = 0;
 		RegenEndurancePerSec = 15;
 	}
+
+	FHeroStats& operator+(const FEquipItemData AddStats)
+	{
+		Damage += AddStats.Damage;
+		Defence += AddStats.Defence;
+		
+		Health.Max += 0;
+		Endurance.Max += 0;
+
+		RegenHealthPerSec += 0;
+		RegenEndurancePerSec += 0;
+
+		return *this;
+	}
+
+	FHeroStats& operator+=(const FEquipItemData AddStats)
+	{
+		Damage += AddStats.Damage;
+		Defence += AddStats.Defence;
+
+		Health.Max += 0;
+		Endurance.Max += 0;
+
+		RegenHealthPerSec += 0;
+		RegenEndurancePerSec += 0;
+
+		return *this;
+	}
+
+	FHeroStats& operator-(const FEquipItemData AddStats)
+	{
+		Damage -= AddStats.Damage;
+		Defence -= AddStats.Defence;
+
+		Health.Max -= 0;
+		Endurance.Max -= 0;
+
+		RegenHealthPerSec -= 0;
+		RegenEndurancePerSec -= 0;
+
+		return *this;
+	}
+
+	FHeroStats& operator-=(const FEquipItemData AddStats)
+	{
+		Damage -= AddStats.Damage;
+		Defence -= AddStats.Defence;
+
+		Health.Max -= 0;
+		Endurance.Max -= 0;
+
+		RegenHealthPerSec -= 0;
+		RegenEndurancePerSec -= 0;
+
+		return *this;
+	}
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -113,5 +169,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
 	void AddStats(FEquipItemData AddStats);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
+	void SubtractStats(FEquipItemData SubtractStats);
 
 };

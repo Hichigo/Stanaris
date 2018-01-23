@@ -75,5 +75,11 @@ int32 UStatsComp::GetDefence()
 
 void UStatsComp::AddStats(FEquipItemData AddStats)
 {
+	Stats += AddStats;
+}
+
+void UStatsComp::SubtractStats(FEquipItemData SubtractStats)
+{
+	Stats -= SubtractStats;
 }
 
