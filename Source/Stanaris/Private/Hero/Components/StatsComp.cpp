@@ -3,7 +3,7 @@
 #include "Hero/Components/StatsComp.h"
 
 
-
+#define LOCTEXT_NAMESPACE "HUD" 
 // Sets default values for this component's properties
 UStatsComp::UStatsComp()
 {
@@ -73,6 +73,46 @@ int32 UStatsComp::GetDefence()
 	return Stats.Defence;
 }
 
+FText UStatsComp::GetExpText()
+{
+	FFormatNamedArguments Arguments;
+
+	Arguments.Add(TEXT("CurrentExp"), FText::AsNumber(Stats.Experience.Current));
+	Arguments.Add(TEXT("MaxExp"), FText::AsNumber(Stats.Experience.Max));
+
+	return FText::Format(LOCTEXT("HUDExpText", "{CurrentExp} / {MaxExp}"), Arguments);
+}
+
+FText UStatsComp::GetHealthText()
+{
+	FFormatNamedArguments Arguments;
+
+	Arguments.Add(TEXT("CurrentHealth"), FText::AsNumber(Stats.Health.Current));
+	Arguments.Add(TEXT("MaxHealth"), FText::AsNumber(Stats.Health.Max));
+
+	return FText::Format(LOCTEXT("HUDHealhtText", "{CurrentHealth} / {MaxHealth}"), Arguments);
+}
+
+FText UStatsComp::GetEnduranceText()
+{
+	FFormatNamedArguments Arguments;
+
+	Arguments.Add(TEXT("CurrentEndurance"), FText::AsNumber(Stats.Endurance.Current));
+	Arguments.Add(TEXT("MaxEndurance"), FText::AsNumber(Stats.Endurance.Max));
+
+	return FText::Format(LOCTEXT("HUDEnduranceText", "{CurrentEndurance} / {MaxEndurance}"), Arguments);
+}
+
+float UStatsComp::GetHealthProgress()
+{
+	return (float)Stats.Health.Current / (float)Stats.Health.Max;
+}
+
+float UStatsComp::GetEnduranceProgress()
+{
+	return (float)Stats.Endurance.Current / (float)Stats.Endurance.Max;
+}
+
 void UStatsComp::AddStats(FEquipItemData AddStats)
 {
 	Stats += AddStats;
@@ -83,3 +123,4 @@ void UStatsComp::SubtractStats(FEquipItemData SubtractStats)
 	Stats -= SubtractStats;
 }
 
+#undef LOCTEXT_NAMESPACE 

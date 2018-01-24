@@ -167,6 +167,22 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetDefence();
 
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FText GetExpText();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FText GetHealthText();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	FText GetEnduranceText();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	float GetHealthProgress();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	float GetEnduranceProgress();
+
+
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
 	void AddStats(FEquipItemData AddStats);
 
