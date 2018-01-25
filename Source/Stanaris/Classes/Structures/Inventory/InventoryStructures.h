@@ -31,6 +31,7 @@ enum class EWhereItemSlot : uint8
 	Inventory,
 	Equip,
 	FastSlot,
+	Drag,
 	DontKnow
 };
 
