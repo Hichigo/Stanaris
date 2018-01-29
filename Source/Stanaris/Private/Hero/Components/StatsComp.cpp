@@ -29,8 +29,15 @@ void UStatsComp::BeginPlay()
 void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
+	
+	if (Stats.Health.Current < Stats.Health.Max)
+	{
+		if (Stats.RegenHealthPerSec > 0)
+		{
+			float RegenPerTick = Stats.RegenHealthPerSec * DeltaTime;
+			AddHealth(RegenPerTick);
+		}
+	}
 }
 
 int32 UStatsComp::GetLevel()
@@ -77,7 +84,8 @@ FText UStatsComp::GetExpText()
 {
 	FFormatNamedArguments Arguments;
 
-	Arguments.Add(TEXT("CurrentExp"), FText::AsNumber(Stats.Experience.Current));
+	int32 Current = (int32)Stats.Experience.Current;
+	Arguments.Add(TEXT("CurrentExp"), FText::AsNumber(Current));
 	Arguments.Add(TEXT("MaxExp"), FText::AsNumber(Stats.Experience.Max));
 
 	return FText::Format(LOCTEXT("HUDExpText", "{CurrentExp} / {MaxExp}"), Arguments);
@@ -87,7 +95,8 @@ FText UStatsComp::GetHealthText()
 {
 	FFormatNamedArguments Arguments;
 
-	Arguments.Add(TEXT("CurrentHealth"), FText::AsNumber(Stats.Health.Current));
+	int32 Current = (int32)Stats.Health.Current;
+	Arguments.Add(TEXT("CurrentHealth"), FText::AsNumber(Current));
 	Arguments.Add(TEXT("MaxHealth"), FText::AsNumber(Stats.Health.Max));
 
 	return FText::Format(LOCTEXT("HUDHealhtText", "{CurrentHealth} / {MaxHealth}"), Arguments);
@@ -97,7 +106,8 @@ FText UStatsComp::GetEnduranceText()
 {
 	FFormatNamedArguments Arguments;
 
-	Arguments.Add(TEXT("CurrentEndurance"), FText::AsNumber(Stats.Endurance.Current));
+	int32 Current = (int32)Stats.Endurance.Current;
+	Arguments.Add(TEXT("CurrentEndurance"), FText::AsNumber(Current));
 	Arguments.Add(TEXT("MaxEndurance"), FText::AsNumber(Stats.Endurance.Max));
 
 	return FText::Format(LOCTEXT("HUDEnduranceText", "{CurrentEndurance} / {MaxEndurance}"), Arguments);
@@ -105,12 +115,12 @@ FText UStatsComp::GetEnduranceText()
 
 float UStatsComp::GetHealthProgress()
 {
-	return (float)Stats.Health.Current / (float)Stats.Health.Max;
+	return Stats.Health.Current / Stats.Health.Max;
 }
 
 float UStatsComp::GetEnduranceProgress()
 {
-	return (float)Stats.Endurance.Current / (float)Stats.Endurance.Max;
+	return Stats.Endurance.Current / Stats.Endurance.Max;
 }
 
 void UStatsComp::AddStats(FEquipItemData AddStats)
@@ -138,7 +148,7 @@ void UStatsComp::SetFullHealth()
 	Stats.Health.Current = Stats.Health.Max;
 }
 
-void UStatsComp::AddHealth(int32 Health)
+void UStatsComp::AddHealth(float Health)
 {
 	Stats.Health.Current += Health;
 	
@@ -146,6 +156,18 @@ void UStatsComp::AddHealth(int32 Health)
 	{
 		SetFullHealth();
 	}
+
+	OnUpdateHealth.Broadcast();
+}
+
+void UStatsComp::SubtractHealth(float Health)
+{
+	Stats.Health.Current -= Health;
+	if (Stats.Health.Current < 0)
+	{
+		Stats.Health.Current = 0;
+	}
+	OnUpdateHealth.Broadcast();
 }
 
 #undef LOCTEXT_NAMESPACE 

@@ -14,15 +14,15 @@ struct FBar {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Current;
+	float Current;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Max;
+	float Max;
 
 	FBar()
 	{
-		Current = 100;
-		Max = 100;
+		Current = 100.f;
+		Max = 100.f;
 	}
 };
 
@@ -68,8 +68,8 @@ struct FHeroStats {
 		Damage += AddStats.Damage;
 		Defence += AddStats.Defence;
 		
-		Health.Max += 0;
-		Endurance.Max += 0;
+		Health.Max += 0.f;
+		Endurance.Max += 0.f;
 
 		RegenHealthPerSec += 0;
 		RegenEndurancePerSec += 0;
@@ -82,8 +82,8 @@ struct FHeroStats {
 		Damage += AddStats.Damage;
 		Defence += AddStats.Defence;
 
-		Health.Max += 0;
-		Endurance.Max += 0;
+		Health.Max += 0.f;
+		Endurance.Max += 0.f;
 
 		RegenHealthPerSec += 0;
 		RegenEndurancePerSec += 0;
@@ -96,8 +96,8 @@ struct FHeroStats {
 		Damage -= AddStats.Damage;
 		Defence -= AddStats.Defence;
 
-		Health.Max -= 0;
-		Endurance.Max -= 0;
+		Health.Max -= 0.f;
+		Endurance.Max -= 0.f;
 
 		RegenHealthPerSec -= 0;
 		RegenEndurancePerSec -= 0;
@@ -110,8 +110,8 @@ struct FHeroStats {
 		Damage -= AddStats.Damage;
 		Defence -= AddStats.Defence;
 
-		Health.Max -= 0;
-		Endurance.Max -= 0;
+		Health.Max -= 0.f;
+		Endurance.Max -= 0.f;
 
 		RegenHealthPerSec -= 0;
 		RegenEndurancePerSec -= 0;
@@ -119,6 +119,8 @@ struct FHeroStats {
 		return *this;
 	}
 };
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHealth);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class STANARIS_API UStatsComp : public UActorComponent
@@ -137,6 +139,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	
 		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|Stats")
 	FHeroStats Stats;
@@ -201,5 +204,12 @@ public:
 	void SetFullHealth();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
-	void AddHealth(int32 Health);
+	void AddHealth(float Health);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
+	void SubtractHealth(float Health);
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
+	FHealth OnUpdateHealth;
+
 };
