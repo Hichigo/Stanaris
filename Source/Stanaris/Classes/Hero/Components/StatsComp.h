@@ -40,13 +40,13 @@ struct FHeroStats {
 	FBar Health;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FBar Endurance;
+	FBar Stamina;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 RegenHealthPerSec;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenEndurancePerSec;
+	int32 RegenStaminaPerSec;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Damage;
@@ -60,7 +60,7 @@ struct FHeroStats {
 		Defence = 0;
 		Damage = 3;
 		RegenHealthPerSec = 0;
-		RegenEndurancePerSec = 15;
+		RegenStaminaPerSec = 15;
 	}
 
 	FHeroStats& operator+(const FEquipItemData AddStats)
@@ -69,10 +69,10 @@ struct FHeroStats {
 		Defence += AddStats.Defence;
 		
 		Health.Max += 0.f;
-		Endurance.Max += 0.f;
+		Stamina.Max += 0.f;
 
 		RegenHealthPerSec += 0;
-		RegenEndurancePerSec += 0;
+		RegenStaminaPerSec += 0;
 
 		return *this;
 	}
@@ -83,10 +83,10 @@ struct FHeroStats {
 		Defence += AddStats.Defence;
 
 		Health.Max += 0.f;
-		Endurance.Max += 0.f;
+		Stamina.Max += 0.f;
 
 		RegenHealthPerSec += 0;
-		RegenEndurancePerSec += 0;
+		RegenStaminaPerSec += 0;
 
 		return *this;
 	}
@@ -97,10 +97,10 @@ struct FHeroStats {
 		Defence -= AddStats.Defence;
 
 		Health.Max -= 0.f;
-		Endurance.Max -= 0.f;
+		Stamina.Max -= 0.f;
 
 		RegenHealthPerSec -= 0;
-		RegenEndurancePerSec -= 0;
+		RegenStaminaPerSec -= 0;
 
 		return *this;
 	}
@@ -111,16 +111,16 @@ struct FHeroStats {
 		Defence -= AddStats.Defence;
 
 		Health.Max -= 0.f;
-		Endurance.Max -= 0.f;
+		Stamina.Max -= 0.f;
 
 		RegenHealthPerSec -= 0;
-		RegenEndurancePerSec -= 0;
+		RegenStaminaPerSec -= 0;
 
 		return *this;
 	}
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStatsEvents);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class STANARIS_API UStatsComp : public UActorComponent
@@ -156,13 +156,13 @@ public:
 	FBar GetHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	FBar GetEndurance();
+	FBar GetStamina();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetRegenHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	int32 GetRegenEndurance();
+	int32 GetRegenStamina();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetDamage();
@@ -177,13 +177,13 @@ public:
 	FText GetHealthText();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	FText GetEnduranceText();
+	FText GetStaminaText();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	float GetHealthProgress();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	float GetEnduranceProgress();
+	float GetStaminaProgress();
 
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
@@ -210,6 +210,24 @@ public:
 	void SubtractHealth(float Health);
 
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
-	FHealth OnUpdateHealth;
+	FStatsEvents OnUpdateHealth;
 
+	/* Stamina functions */
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	bool LessZeroStamina();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	bool OverStamina();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	void SetFullStamina();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	void AddStamina(float Stamina);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	void SubtractStamina(float Stamina);
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
+	FStatsEvents OnUpdateStamina;
 };
