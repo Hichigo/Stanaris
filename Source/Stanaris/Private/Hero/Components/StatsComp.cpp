@@ -195,6 +195,11 @@ bool UStatsComp::OverStamina()
 	return Stats.Stamina.Current > Stats.Health.Max;
 }
 
+bool UStatsComp::CheckStaminaOnAction(float Stamina)
+{
+	return Stats.Stamina.Current > Stamina;
+}
+
 void UStatsComp::SetFullStamina()
 {
 	Stats.Stamina.Current = Stats.Health.Max;

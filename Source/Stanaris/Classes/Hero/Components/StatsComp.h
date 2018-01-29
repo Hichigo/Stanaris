@@ -220,6 +220,9 @@ public:
 	bool OverStamina();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
+	bool CheckStaminaOnAction(float Stamina);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
 	void SetFullStamina();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
