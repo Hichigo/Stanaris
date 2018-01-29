@@ -133,4 +133,19 @@ bool UStatsComp::OverHealth()
 	return Stats.Health.Current > Stats.Health.Max;
 }
 
+void UStatsComp::SetFullHealth()
+{
+	Stats.Health.Current = Stats.Health.Max;
+}
+
+void UStatsComp::AddHealth(int32 Health)
+{
+	Stats.Health.Current += Health;
+	
+	if (OverHealth())
+	{
+		SetFullHealth();
+	}
+}
+
 #undef LOCTEXT_NAMESPACE 

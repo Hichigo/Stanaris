@@ -196,4 +196,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
 	bool OverHealth();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
+	void SetFullHealth();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
+	void AddHealth(int32 Health);
 };
