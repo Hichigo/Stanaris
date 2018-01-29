@@ -123,4 +123,14 @@ void UStatsComp::SubtractStats(FEquipItemData SubtractStats)
 	Stats -= SubtractStats;
 }
 
+bool UStatsComp::IsDeath()
+{
+	return Stats.Health.Current <= 0;
+}
+
+bool UStatsComp::OverHealth()
+{
+	return Stats.Health.Current > Stats.Health.Max;
+}
+
 #undef LOCTEXT_NAMESPACE 

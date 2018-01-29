@@ -189,4 +189,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
 	void SubtractStats(FEquipItemData SubtractStats);
 
+
+	/* Health functions */
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
+	bool IsDeath();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Health")
+	bool OverHealth();
 };
