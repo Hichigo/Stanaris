@@ -261,15 +261,17 @@ void UStatsComp::AddExperience(int32 Exp)
 	{
 		Stats.Experience.Current -= Stats.Experience.Max;
 		LevelUp();
+		///increase Stats.Experience.Max
+		IncreaseExpForNextLevel();
 	}
 
-	//broadcoast exp
+	OnUpdateExperience.Broadcast();
 }
 
 void UStatsComp::SubtractExperience(int32 Exp)
 {
 	Stats.Experience.Current -= Exp;
-	//broadcoast exp
+	OnUpdateExperience.Broadcast();
 }
 
 bool UStatsComp::OverExperience()
@@ -280,10 +282,10 @@ bool UStatsComp::OverExperience()
 void UStatsComp::LevelUp()
 {
 	Stats.Level += 1;
-	//broadcoast level
+	OnUpdateLevel.Broadcast();
 }
 
-void UStatsComp::UpdateExpForNextLevel()
+void UStatsComp::IncreaseExpForNextLevel()
 {
 	// get exp for next level from data table
 }

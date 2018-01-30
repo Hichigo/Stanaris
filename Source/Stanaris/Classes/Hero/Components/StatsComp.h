@@ -273,8 +273,13 @@ public:
 	void LevelUp();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
-	void UpdateExpForNextLevel();
+	void IncreaseExpForNextLevel();
 
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Experience|Dispatchers")
+	FStatsEvents OnUpdateExperience;
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Experience|Dispatchers")
+	FStatsEvents OnUpdateLevel;
 
 private:
 
