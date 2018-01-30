@@ -55,10 +55,15 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	/* regen stamina start */
 	if (Stats.Stamina.Current < Stats.Stamina.Max)
 	{
-		if (Stats.RegenStaminaPerSec > 0)
+		if (Stats.RegenStaminaPerSec > 0 && !Stats.IsSprinting)
 		{
 			float RegenPerTick = Stats.RegenStaminaPerSec * DeltaTime;
 			AddStamina(RegenPerTick);
+		}
+		else if (Stats.IsSprinting)
+		{
+			float CostPerTick = Stats.CostSprintPerSec * DeltaTime;
+			SubtractStamina(CostPerTick);
 		}
 	}
 	/* regen stamina finish */
@@ -235,6 +240,7 @@ void UStatsComp::SubtractStamina(float Stamina)
 	if (LessZeroStamina())
 	{
 		Stats.Stamina.Current = 0;
+		EndSprint();
 	}
 
 	OnUpdateStamina.Broadcast();
@@ -242,11 +248,13 @@ void UStatsComp::SubtractStamina(float Stamina)
 
 void UStatsComp::StartSprint()
 {
+	Stats.IsSprinting = true;
 	OnUpdateSpeedCharacter.Broadcast(Stats.RunSpeed);
 }
 
 void UStatsComp::EndSprint()
 {
+	Stats.IsSprinting = false;
 	OnUpdateSpeedCharacter.Broadcast(Stats.WalkSpeed);
 }
 

@@ -72,7 +72,7 @@ struct FHeroStats {
 		Level = 1;
 		Defence = 0;
 		Damage = 3;
-		RegenHealthPerSec = 0;
+		RegenHealthPerSec = 1;
 		RegenStaminaPerSec = 15;
 		IsSprinting = false;
 		CostSprintPerSec = 10.f;
