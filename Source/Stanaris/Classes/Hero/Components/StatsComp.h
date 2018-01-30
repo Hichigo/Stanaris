@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/InputComponent.h"
 #include "Structures/Inventory/InventoryStructures.h"
 
 #include "StatsComp.generated.h"
@@ -233,4 +234,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
 	FStatsEvents OnUpdateStamina;
+
+private:
+
+	UInputComponent* InputComponent;
+
 };
