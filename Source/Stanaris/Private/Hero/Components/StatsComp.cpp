@@ -60,13 +60,15 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 			float RegenPerTick = Stats.RegenStaminaPerSec * DeltaTime;
 			AddStamina(RegenPerTick);
 		}
-		else if (Stats.IsSprinting)
-		{
-			float CostPerTick = Stats.CostSprintPerSec * DeltaTime;
-			SubtractStamina(CostPerTick);
-		}
 	}
 	/* regen stamina finish */
+
+	/* Sprint cost */
+	if (Stats.IsSprinting)
+	{
+		float CostPerTick = Stats.CostSprintPerSec * DeltaTime;
+		SubtractStamina(CostPerTick);
+	}
 }
 
 int32 UStatsComp::GetLevel()
