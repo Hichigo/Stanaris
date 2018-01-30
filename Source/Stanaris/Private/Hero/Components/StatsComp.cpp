@@ -21,11 +21,15 @@ void UStatsComp::BeginPlay()
 {
 	Super::BeginPlay();
 
+	/// set character walk speed
+	OnUpdateSpeedCharacter.Broadcast(Stats.WalkSpeed);
+
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 
 	if (InputComponent)
 	{
-
+		InputComponent->BindAction("Sprint", IE_Pressed, this, &UStatsComp::StartSprint);
+		InputComponent->BindAction("Sprint", IE_Released, this, &UStatsComp::EndSprint);
 	}
 	// ...
 	
@@ -234,6 +238,16 @@ void UStatsComp::SubtractStamina(float Stamina)
 	}
 
 	OnUpdateStamina.Broadcast();
+}
+
+void UStatsComp::StartSprint()
+{
+	OnUpdateSpeedCharacter.Broadcast(Stats.RunSpeed);
+}
+
+void UStatsComp::EndSprint()
+{
+	OnUpdateSpeedCharacter.Broadcast(Stats.WalkSpeed);
 }
 
 #undef LOCTEXT_NAMESPACE 

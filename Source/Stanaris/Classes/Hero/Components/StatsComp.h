@@ -22,7 +22,7 @@ struct FBar {
 
 	FBar()
 	{
-		Current = 100.f;
+		Current = 50.f;
 		Max = 100.f;
 	}
 };
@@ -55,6 +55,12 @@ struct FHeroStats {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Defence;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool IsSprinting;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float CostSprintPerSec;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float WalkSpeed;
 
@@ -68,7 +74,9 @@ struct FHeroStats {
 		Damage = 3;
 		RegenHealthPerSec = 0;
 		RegenStaminaPerSec = 15;
-		WalkSpeed = 150.f;
+		IsSprinting = false;
+		CostSprintPerSec = 10.f;
+		WalkSpeed = 220.f;
 		RunSpeed = 600.f;
 	}
 
@@ -130,6 +138,7 @@ struct FHeroStats {
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStatsEvents);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSprintEvents, float, NewSpeed);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class STANARIS_API UStatsComp : public UActorComponent
@@ -243,8 +252,14 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
 	FStatsEvents OnUpdateStamina;
 
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
+	FSprintEvents OnUpdateSpeedCharacter;
+
 private:
 
 	UInputComponent* InputComponent;
+
+	void StartSprint();
+	void EndSprint();
 
 };
