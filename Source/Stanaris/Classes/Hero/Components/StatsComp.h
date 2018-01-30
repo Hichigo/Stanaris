@@ -55,6 +55,12 @@ struct FHeroStats {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Defence;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float WalkSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float RunSpeed;
+
 	FHeroStats()
 	{
 		Level = 1;
@@ -62,6 +68,8 @@ struct FHeroStats {
 		Damage = 3;
 		RegenHealthPerSec = 0;
 		RegenStaminaPerSec = 15;
+		WalkSpeed = 150.f;
+		RunSpeed = 600.f;
 	}
 
 	FHeroStats& operator+(const FEquipItemData AddStats)

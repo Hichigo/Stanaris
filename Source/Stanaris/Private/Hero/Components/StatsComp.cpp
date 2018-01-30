@@ -48,7 +48,7 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	}
 	/* regen healt finish */
 
-	/* regen health start */
+	/* regen stamina start */
 	if (Stats.Stamina.Current < Stats.Stamina.Max)
 	{
 		if (Stats.RegenStaminaPerSec > 0)
@@ -57,7 +57,7 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 			AddStamina(RegenPerTick);
 		}
 	}
-	/* regen healt finish */
+	/* regen stamina finish */
 }
 
 int32 UStatsComp::GetLevel()
