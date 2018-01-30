@@ -144,6 +144,11 @@ FText UStatsComp::GetStaminaText()
 	return FText::Format(LOCTEXT("HUDStaminaText", "{CurrentStamina} / {MaxStamina}"), Arguments);
 }
 
+float UStatsComp::GetExpProgress()
+{
+	return (float)Stats.Experience.Current / (float)Stats.Experience.Max;
+}
+
 float UStatsComp::GetHealthProgress()
 {
 	return Stats.Health.Current / Stats.Health.Max;
@@ -246,6 +251,41 @@ void UStatsComp::SubtractStamina(float Stamina)
 	}
 
 	OnUpdateStamina.Broadcast();
+}
+
+void UStatsComp::AddExperience(int32 Exp)
+{
+	Stats.Experience.Current += Exp;
+
+	if (OverExperience())
+	{
+		Stats.Experience.Current -= Stats.Experience.Max;
+		LevelUp();
+	}
+
+	//broadcoast exp
+}
+
+void UStatsComp::SubtractExperience(int32 Exp)
+{
+	Stats.Experience.Current -= Exp;
+	//broadcoast exp
+}
+
+bool UStatsComp::OverExperience()
+{
+	return Stats.Experience.Current >= Stats.Experience.Max;
+}
+
+void UStatsComp::LevelUp()
+{
+	Stats.Level += 1;
+	//broadcoast level
+}
+
+void UStatsComp::UpdateExpForNextLevel()
+{
+	// get exp for next level from data table
 }
 
 void UStatsComp::StartSprint()

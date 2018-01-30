@@ -198,6 +198,9 @@ public:
 	FText GetStaminaText();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	float GetExpProgress();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	float GetHealthProgress();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
@@ -249,11 +252,29 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Stamina")
 	void SubtractStamina(float Stamina);
 
-	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Stamina|Dispatchers")
 	FStatsEvents OnUpdateStamina;
 
-	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Health|Dispatchers")
+	/* Sprint functions */
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Stamina|Dispatchers")
 	FSprintEvents OnUpdateSpeedCharacter;
+
+	/* Experience functions */
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
+	void AddExperience(int32 Exp);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
+	void SubtractExperience(int32 Exp);
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
+	bool OverExperience();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
+	void LevelUp();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Experience")
+	void UpdateExpForNextLevel();
+
 
 private:
 
