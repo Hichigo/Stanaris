@@ -39,20 +39,20 @@ enum class EWhereItemSlot : uint8
 UENUM(BlueprintType)
 enum class ETypeEquipment : uint8
 {
-	Other,
-	FastSlot,
-	Weapon,
-	Weapon2H,
-	Shield,
 	Helm,
+	Neck,
+	Weapon,
+	Shield,
+	RightRing,
+	LeftRing,
 	Body,
 	Pants,
-	Boots,
 	Gloves,
-	Neck,
+	Boots,
+	Weapon2H,
 	Ring,
-	LeftRing,
-	RightRing
+	Other,
+	FastSlot
 };
 
 USTRUCT(BlueprintType)
