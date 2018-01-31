@@ -176,7 +176,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	
-		
+	/* Variable */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|Stats")
 	FHeroStats Stats;
 
@@ -226,7 +226,7 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	float GetStaminaProgress();
 
-
+	/* All stats functions */
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
 	void AddStats(FEquipItemData AddStats);
 
