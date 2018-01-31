@@ -6,9 +6,27 @@
 #include "Components/ActorComponent.h"
 #include "Components/InputComponent.h"
 #include "Structures/Inventory/InventoryStructures.h"
+#include "Engine/DataTable.h"
 
 #include "StatsComp.generated.h"
 
+
+USTRUCT(BlueprintType)
+struct FDataExp : public FTableRowBase {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Lvl;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 ExpToLvl;
+
+	FDataExp()
+	{
+		Lvl = 0;
+		ExpToLvl = 0;
+	}
+};
 
 USTRUCT(BlueprintType)
 struct FBar {
@@ -162,6 +180,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|Stats")
 	FHeroStats Stats;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stanaris|Stats")
+	UDataTable* ExpTable;
 
 	/* GETTERS */
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")

@@ -12,6 +12,7 @@ UStatsComp::UStatsComp()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	InputComponent = nullptr;
+	
 	// ...
 }
 
@@ -23,6 +24,7 @@ void UStatsComp::BeginPlay()
 
 	/// set character walk speed
 	OnUpdateSpeedCharacter.Broadcast(Stats.WalkSpeed);
+	IncreaseExpForNextLevel(); // set experience to first level
 
 	InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
 
@@ -288,6 +290,22 @@ void UStatsComp::LevelUp()
 void UStatsComp::IncreaseExpForNextLevel()
 {
 	// get exp for next level from data table
+	FString ContextString; //error or warning
+	
+	FName RowName = FName(*FString::FromInt(Stats.Level));
+
+	FDataExp *row = nullptr;
+
+	if (ExpTable)
+	{
+		row = ExpTable->FindRow<FDataExp>(RowName, ContextString);
+	}
+
+	if (row)
+	{
+		Stats.Experience.Max = row->ExpToLvl;
+		OnUpdateExperience.Broadcast();
+	}
 }
 
 void UStatsComp::StartSprint()
