@@ -94,7 +94,7 @@ ETypeItem UStanarisGameInstanceLibrary::DetectTypeItemById(int32 IdItem)
 	return ETypeItem();
 }
 
-void UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem,
+void UStanarisGameInstanceLibrary::FindItemFromTableById(int32 IdItem,
 	TArray<UDataTable*> Tables,
 	ETypeItem &TypeItem,
 	FEquipItemData &EquipItemData,
@@ -130,6 +130,32 @@ void UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem,
 	}
 
 }
+
+FDataItems UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem, UDataTable * ItemsTable, bool &Success)
+{
+	FString ContextString; //error or warning
+	Success = false;
+
+	FName RowName = FName(*FString::FromInt(IdItem));
+
+	FDataItems *row = nullptr;
+
+	if (ItemsTable)
+	{
+		row = ItemsTable->FindRow<FDataItems>(RowName, ContextString);
+		UE_LOG(LogTemp, Warning, TEXT("ROW"));
+	}
+
+	if (row)
+	{
+		Success = true;
+		return (*row);
+	}
+
+	return FDataItems();
+}
+
+
 
 FEquipItemData UStanarisGameInstanceLibrary::FindEquipItemById(UDataTable* EquipTable, int32 IdItem)
 {

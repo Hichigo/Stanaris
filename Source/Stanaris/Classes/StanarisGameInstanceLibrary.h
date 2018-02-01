@@ -38,7 +38,10 @@ public:
 	static ETypeItem DetectTypeItemById(int32 IdItem);
 
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
-	static void GetItemFromTableById(int32 IdItem, TArray<UDataTable*> Tables, ETypeItem &TypeItem, FEquipItemData &EquipItemData, FUsedItemData &UsedItemData, FQuestItemData &QuestItemData, FCraftItemData &CraftItemData);
+	static void FindItemFromTableById(int32 IdItem, TArray<UDataTable*> Tables, ETypeItem &TypeItem, FEquipItemData &EquipItemData, FUsedItemData &UsedItemData, FQuestItemData &QuestItemData, FCraftItemData &CraftItemData);
+
+	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
+	static FDataItems GetItemFromTableById(int32 IdItem, UDataTable* ItemsTable, bool &Success);
 
 
 private:

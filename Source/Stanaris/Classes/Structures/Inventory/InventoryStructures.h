@@ -74,7 +74,7 @@ struct FIconSize {
 
 /* Data equipment items*/
 USTRUCT(BlueprintType)
-struct FDataItems {
+struct FDataItems : public FTableRowBase {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -108,6 +108,9 @@ struct FDataItems {
 	UStaticMesh *StaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	USkeletalMesh* SkeletalMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Defense;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -132,6 +135,7 @@ struct FDataItems {
 		MaxNumberOnStack = 1;
 		Icon = nullptr;
 		StaticMesh = nullptr;
+		SkeletalMesh = nullptr;
 		Defense = -1;
 		Damage = -1;
 		TemplateIndexes.Add(0);

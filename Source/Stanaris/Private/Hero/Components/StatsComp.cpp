@@ -161,12 +161,12 @@ float UStatsComp::GetStaminaProgress()
 	return Stats.Stamina.Current / Stats.Stamina.Max;
 }
 
-void UStatsComp::AddStats(FEquipItemData AddStats)
+void UStatsComp::AddStats(FDataItems AddStats)
 {
 	Stats += AddStats;
 }
 
-void UStatsComp::SubtractStats(FEquipItemData SubtractStats)
+void UStatsComp::SubtractStats(FDataItems SubtractStats)
 {
 	Stats -= SubtractStats;
 }

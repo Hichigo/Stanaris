@@ -8,6 +8,7 @@
 #include "Structures/Inventory/InventoryStructures.h"
 #include "Engine/DataTable.h"
 
+
 #include "StatsComp.generated.h"
 
 
@@ -98,10 +99,10 @@ struct FHeroStats {
 		RunSpeed = 600.f;
 	}
 
-	FHeroStats& operator+(const FEquipItemData AddStats)
+	FHeroStats& operator+(const FDataItems AddStats)
 	{
 		Damage += AddStats.Damage;
-		Defence += AddStats.Defence;
+		Defence += AddStats.Defense;
 		
 		Health.Max += 0.f;
 		Stamina.Max += 0.f;
@@ -112,10 +113,10 @@ struct FHeroStats {
 		return *this;
 	}
 
-	FHeroStats& operator+=(const FEquipItemData AddStats)
+	FHeroStats& operator+=(const FDataItems AddStats)
 	{
 		Damage += AddStats.Damage;
-		Defence += AddStats.Defence;
+		Defence += AddStats.Defense;
 
 		Health.Max += 0.f;
 		Stamina.Max += 0.f;
@@ -126,10 +127,10 @@ struct FHeroStats {
 		return *this;
 	}
 
-	FHeroStats& operator-(const FEquipItemData AddStats)
+	FHeroStats& operator-(const FDataItems AddStats)
 	{
 		Damage -= AddStats.Damage;
-		Defence -= AddStats.Defence;
+		Defence -= AddStats.Defense;
 
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
@@ -140,10 +141,10 @@ struct FHeroStats {
 		return *this;
 	}
 
-	FHeroStats& operator-=(const FEquipItemData AddStats)
+	FHeroStats& operator-=(const FDataItems AddStats)
 	{
 		Damage -= AddStats.Damage;
-		Defence -= AddStats.Defence;
+		Defence -= AddStats.Defense;
 
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
@@ -228,10 +229,10 @@ public:
 
 	/* All stats functions */
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
-	void AddStats(FEquipItemData AddStats);
+	void AddStats(FDataItems AddStats);
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats")
-	void SubtractStats(FEquipItemData SubtractStats);
+	void SubtractStats(FDataItems SubtractStats);
 
 
 	/* Health functions */
