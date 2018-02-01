@@ -34,20 +34,22 @@ public:
 	/*UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems", meta = (WorldContext = WorldContextObject))
 	static FDataItems GetDataItemById(int32 FindId, UObject * WorldContextObject, bool& IsValid);*/
 
+	/*
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
 	static ETypeItem DetectTypeItemById(int32 IdItem);
 
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
 	static void FindItemFromTableById(int32 IdItem, TArray<UDataTable*> Tables, ETypeItem &TypeItem, FEquipItemData &EquipItemData, FUsedItemData &UsedItemData, FQuestItemData &QuestItemData, FCraftItemData &CraftItemData);
+	*/
 
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
 	static FDataItems GetItemFromTableById(int32 IdItem, UDataTable* ItemsTable, bool &Success);
 
 
 private:
-	static FEquipItemData FindEquipItemById(UDataTable* EquipTable, int32 IdItem);
-	static FCraftItemData FindCraftItemById(UDataTable* CraftTable, int32 IdItem);
-	static FUsedItemData FindUsedItemById(UDataTable* UsedTable, int32 IdItem);
-	static FQuestItemData FindQuestItemById(UDataTable* QuestTable, int32 IdItem);
+	//static FEquipItemData FindEquipItemById(UDataTable* EquipTable, int32 IdItem);
+	//static FCraftItemData FindCraftItemById(UDataTable* CraftTable, int32 IdItem);
+	//static FUsedItemData FindUsedItemById(UDataTable* UsedTable, int32 IdItem);
+	//static FQuestItemData FindQuestItemById(UDataTable* QuestTable, int32 IdItem);
 
 };
