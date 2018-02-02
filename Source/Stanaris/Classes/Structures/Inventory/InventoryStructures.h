@@ -31,8 +31,7 @@ enum class EWhereItemSlot : uint8
 	Inventory,
 	Equip,
 	FastSlot,
-	Drag,
-	DontKnow
+	Drag
 };
 
 
@@ -157,11 +156,15 @@ struct FInventoryItem {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ETypeItem TypeItem;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AActor *ItemRef;
+
 	FInventoryItem()
 	{
 		id = -1;
 		NumberOfItems = 1;
 		TypeItem = ETypeItem::Equip;
+		ItemRef = nullptr;
 	}
 
 
