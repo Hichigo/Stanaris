@@ -126,7 +126,7 @@ struct FHeroStats {
 	int32 Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 Defence;
+	int32 Defense;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSprinting;
@@ -148,7 +148,7 @@ struct FHeroStats {
 		Stamina.Max = Secondary.StaminaK * Attributes.StaminaPoint;
 		Stamina.Current = Stamina.Max;
 
-		Defence = 0;
+		Defense = 0;
 		Damage = 3;
 		IsSprinting = false;
 		CostSprintPerSec = 10.f;
@@ -189,7 +189,7 @@ private:
 	void AddDataItemStats(const FDataItems Stats)
 	{
 		Damage += Stats.Damage;
-		Defence += Stats.Defense;
+		Defense += Stats.Defense;
 
 		Health.Max += 0.f;
 		Stamina.Max += 0.f;
@@ -201,7 +201,7 @@ private:
 	void SubtractDataItemStats(const FDataItems Stats)
 	{
 		Damage -= Stats.Damage;
-		Defence -= Stats.Defense;
+		Defense -= Stats.Defense;
 
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
@@ -284,7 +284,7 @@ public:
 	int32 GetDamage();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	int32 GetDefence();
+	int32 GetDefense();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	FText GetExpText();

@@ -143,9 +143,9 @@ int32 UStatsComp::GetDamage()
 	return Stats.Damage;
 }
 
-int32 UStatsComp::GetDefence()
+int32 UStatsComp::GetDefense()
 {
-	return Stats.Defence;
+	return Stats.Defense;
 }
 
 FText UStatsComp::GetExpText()
