@@ -217,7 +217,7 @@ bool UStatsComp::LessZeroStamina()
 
 bool UStatsComp::OverStamina()
 {
-	return Stats.Stamina.Current > Stats.Health.Max;
+	return Stats.Stamina.Current > Stats.Stamina.Max;
 }
 
 bool UStatsComp::CheckStaminaOnAction(float Stamina)
@@ -227,7 +227,7 @@ bool UStatsComp::CheckStaminaOnAction(float Stamina)
 
 void UStatsComp::SetFullStamina()
 {
-	Stats.Stamina.Current = Stats.Health.Max;
+	Stats.Stamina.Current = Stats.Stamina.Max;
 }
 
 void UStatsComp::AddStamina(float Stamina)

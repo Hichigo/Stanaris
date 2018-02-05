@@ -93,7 +93,7 @@ struct FSecondaryStats {
 
 	FSecondaryStats()
 	{
-		HealthK = 70;
+		HealthK = 40;
 		StaminaK = 120;
 		RegenHealthPerSec = 1;
 		RegenStaminaPerSec = 15;
@@ -143,6 +143,11 @@ struct FHeroStats {
 	FHeroStats()
 	{
 		Level = 1;
+		Health.Max = Secondary.HealthK * Attributes.HealthPoint;
+		Health.Current = Health.Max;
+		Stamina.Max = Secondary.StaminaK * Attributes.StaminaPoint;
+		Stamina.Current = Stamina.Max;
+
 		Defence = 0;
 		Damage = 3;
 		IsSprinting = false;
