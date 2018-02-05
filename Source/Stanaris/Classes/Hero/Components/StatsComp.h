@@ -255,6 +255,12 @@ public:
 	FBar GetStamina();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetHealthMax();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetStaminaMax();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetRegenHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")

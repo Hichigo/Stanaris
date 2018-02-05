@@ -93,6 +93,16 @@ FBar UStatsComp::GetStamina()
 	return Stats.Stamina;
 }
 
+int32 UStatsComp::GetHealthMax()
+{
+	return Stats.Health.Max;
+}
+
+int32 UStatsComp::GetStaminaMax()
+{
+	return Stats.Stamina.Max;
+}
+
 int32 UStatsComp::GetRegenHealth()
 {
 	return Stats.Secondary.RegenHealthPerSec;
