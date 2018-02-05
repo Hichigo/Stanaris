@@ -76,6 +76,31 @@ struct FAttributes {
 };
 
 USTRUCT(BlueprintType)
+struct FSecondaryStats {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 HealthK;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 StaminaK;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RegenHealthPerSec;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RegenStaminaPerSec;
+
+	FSecondaryStats()
+	{
+		HealthK = 70;
+		StaminaK = 120;
+		RegenHealthPerSec = 1;
+		RegenStaminaPerSec = 15;
+	}
+};
+
+USTRUCT(BlueprintType)
 struct FHeroStats {
 	GENERATED_USTRUCT_BODY()
 
@@ -95,10 +120,7 @@ struct FHeroStats {
 	FAttributes Attributes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenHealthPerSec;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenStaminaPerSec;
+	FSecondaryStats Secondary;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Damage;
@@ -123,8 +145,6 @@ struct FHeroStats {
 		Level = 1;
 		Defence = 0;
 		Damage = 3;
-		RegenHealthPerSec = 1;
-		RegenStaminaPerSec = 15;
 		IsSprinting = false;
 		CostSprintPerSec = 10.f;
 		WalkSpeed = 220.f;
@@ -139,8 +159,8 @@ struct FHeroStats {
 		Health.Max += 0.f;
 		Stamina.Max += 0.f;
 
-		RegenHealthPerSec += 0;
-		RegenStaminaPerSec += 0;
+		Secondary.RegenHealthPerSec += 0;
+		Secondary.RegenStaminaPerSec += 0;
 
 		return *this;
 	}
@@ -153,8 +173,8 @@ struct FHeroStats {
 		Health.Max += 0.f;
 		Stamina.Max += 0.f;
 
-		RegenHealthPerSec += 0;
-		RegenStaminaPerSec += 0;
+		Secondary.RegenHealthPerSec += 0;
+		Secondary.RegenStaminaPerSec += 0;
 
 		return *this;
 	}
@@ -167,8 +187,8 @@ struct FHeroStats {
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
 
-		RegenHealthPerSec -= 0;
-		RegenStaminaPerSec -= 0;
+		Secondary.RegenHealthPerSec -= 0;
+		Secondary.RegenStaminaPerSec -= 0;
 
 		return *this;
 	}
@@ -181,8 +201,8 @@ struct FHeroStats {
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
 
-		RegenHealthPerSec -= 0;
-		RegenStaminaPerSec -= 0;
+		Secondary.RegenHealthPerSec -= 0;
+		Secondary.RegenStaminaPerSec -= 0;
 
 		return *this;
 	}
