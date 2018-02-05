@@ -47,6 +47,35 @@ struct FBar {
 };
 
 USTRUCT(BlueprintType)
+struct FAttributes {
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Points;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 HealthPoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 StaminaPoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 StrengthPoint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 AgilityPoint;
+
+	FAttributes()
+	{
+		Points = 0;
+		HealthPoint = 10;
+		StaminaPoint = 10;
+		StrengthPoint = 5;
+		AgilityPoint = 5;
+	}
+};
+
+USTRUCT(BlueprintType)
 struct FHeroStats {
 	GENERATED_USTRUCT_BODY()
 
@@ -61,6 +90,9 @@ struct FHeroStats {
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FBar Stamina;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FAttributes Attributes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 RegenHealthPerSec;
