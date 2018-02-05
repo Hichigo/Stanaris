@@ -375,6 +375,24 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
 	void IncreaseAgilityPoint();
 
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnEmptyAttributePoints;
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnUpdatePoints;
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnUpdateHealtsPoints;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnUpdateStaminaPoints;
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnUpdateStrengthPoints;
+
+	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
+	FStatsEvents OnUpdateAgilityPoints;
+
 private:
 
 	UInputComponent* InputComponent;

@@ -284,7 +284,9 @@ bool UStatsComp::OverExperience()
 void UStatsComp::LevelUp()
 {
 	Stats.Level += 1;
+	Stats.Attributes.Points += 3;
 	OnUpdateLevel.Broadcast();
+	OnUpdatePoints.Broadcast();
 }
 
 void UStatsComp::IncreaseExpForNextLevel()
@@ -313,6 +315,13 @@ bool UStatsComp::DecreasePoint()
 	if (Stats.Attributes.Points > 0)
 	{
 		Stats.Attributes.Points -= 1;
+
+		if (Stats.Attributes.Points == 0)
+		{
+			OnEmptyAttributePoints.Broadcast();
+		}
+
+		OnUpdatePoints.Broadcast();
 		return true;
 	}
 	return false;
@@ -324,6 +333,7 @@ void UStatsComp::IncreaseHealhPoint()
 	{
 		Stats.Attributes.HealthPoint += 1;
 		RecalculateHealth();
+		OnUpdateHealtsPoints.Broadcast();
 	}
 }
 
@@ -333,6 +343,7 @@ void UStatsComp::IncreaseStaminaPoint()
 	{
 		Stats.Attributes.StaminaPoint += 1;
 		RecalculateStamina();
+		OnUpdateStaminaPoints.Broadcast();
 	}
 }
 
@@ -341,6 +352,8 @@ void UStatsComp::IncreaseStrengthPoint()
 	if (DecreasePoint())
 	{
 		Stats.Attributes.StrengthPoint += 1;
+
+		OnUpdateStrengthPoints.Broadcast();
 	}
 }
 
@@ -349,6 +362,8 @@ void UStatsComp::IncreaseAgilityPoint()
 	if (DecreasePoint())
 	{
 		Stats.Attributes.AgilityPoint += 1;
+
+		OnUpdateAgilityPoints.Broadcast();
 	}
 }
 
