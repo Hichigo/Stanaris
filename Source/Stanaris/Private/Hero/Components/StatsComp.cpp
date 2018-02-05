@@ -108,6 +108,26 @@ int32 UStatsComp::GetAttributePoints()
 	return Stats.Attributes.Points;
 }
 
+int32 UStatsComp::GetHealthPoint()
+{
+	return Stats.Attributes.HealthPoint;
+}
+
+int32 UStatsComp::GetStaminaPoint()
+{
+	return Stats.Attributes.StaminaPoint;
+}
+
+int32 UStatsComp::GetStrengthPoint()
+{
+	return Stats.Attributes.StrengthPoint;
+}
+
+int32 UStatsComp::GetAgilityPoint()
+{
+	return Stats.Attributes.AgilityPoint;
+}
+
 int32 UStatsComp::GetDamage()
 {
 	return Stats.Damage;

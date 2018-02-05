@@ -264,6 +264,18 @@ public:
 	int32 GetAttributePoints();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetHealthPoint();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetStaminaPoint();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetStrengthPoint();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetAgilityPoint();
+
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetDamage();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
