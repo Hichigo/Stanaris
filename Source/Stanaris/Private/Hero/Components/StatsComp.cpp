@@ -103,6 +103,11 @@ int32 UStatsComp::GetRegenStamina()
 	return Stats.Secondary.RegenStaminaPerSec;
 }
 
+int32 UStatsComp::GetAttributePoints()
+{
+	return Stats.Attributes.Points;
+}
+
 int32 UStatsComp::GetDamage()
 {
 	return Stats.Damage;

@@ -259,6 +259,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetRegenStamina();
+	
+	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
+	int32 GetAttributePoints();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetDamage();
