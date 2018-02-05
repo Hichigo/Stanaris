@@ -158,59 +158,58 @@ struct FHeroStats {
 
 	FHeroStats& operator+(const FDataItems AddStats)
 	{
-		Damage += AddStats.Damage;
-		Defence += AddStats.Defense;
-		
-		Health.Max += 0.f;
-		Stamina.Max += 0.f;
-
-		Secondary.RegenHealthPerSec += 0;
-		Secondary.RegenStaminaPerSec += 0;
+		AddDataItemStats(AddStats);
 
 		return *this;
 	}
 
 	FHeroStats& operator+=(const FDataItems AddStats)
 	{
-		Damage += AddStats.Damage;
-		Defence += AddStats.Defense;
-
-		Health.Max += 0.f;
-		Stamina.Max += 0.f;
-
-		Secondary.RegenHealthPerSec += 0;
-		Secondary.RegenStaminaPerSec += 0;
+		AddDataItemStats(AddStats);
 
 		return *this;
 	}
 
 	FHeroStats& operator-(const FDataItems AddStats)
 	{
-		Damage -= AddStats.Damage;
-		Defence -= AddStats.Defense;
-
-		Health.Max -= 0.f;
-		Stamina.Max -= 0.f;
-
-		Secondary.RegenHealthPerSec -= 0;
-		Secondary.RegenStaminaPerSec -= 0;
+		SubtractDataItemStats(AddStats);
 
 		return *this;
 	}
 
 	FHeroStats& operator-=(const FDataItems AddStats)
 	{
-		Damage -= AddStats.Damage;
-		Defence -= AddStats.Defense;
+		SubtractDataItemStats(AddStats);
+
+		return *this;
+	}
+
+private:
+
+	void AddDataItemStats(const FDataItems Stats)
+	{
+		Damage += Stats.Damage;
+		Defence += Stats.Defense;
+
+		Health.Max += 0.f;
+		Stamina.Max += 0.f;
+
+		Secondary.RegenHealthPerSec += 0;
+		Secondary.RegenStaminaPerSec += 0;
+	}
+
+	void SubtractDataItemStats(const FDataItems Stats)
+	{
+		Damage -= Stats.Damage;
+		Defence -= Stats.Defense;
 
 		Health.Max -= 0.f;
 		Stamina.Max -= 0.f;
 
 		Secondary.RegenHealthPerSec -= 0;
 		Secondary.RegenStaminaPerSec -= 0;
-
-		return *this;
 	}
+
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStatsEvents);
