@@ -308,6 +308,48 @@ void UStatsComp::IncreaseExpForNextLevel()
 	}
 }
 
+bool UStatsComp::DecreasePoint()
+{
+	if (Stats.Attributes.Points > 0)
+	{
+		Stats.Attributes.Points -= 1;
+		return true;
+	}
+	return false;
+}
+
+void UStatsComp::IncreaseHealhPoint()
+{
+	if (DecreasePoint())
+	{
+		Stats.Attributes.HealthPoint += 1;
+	}
+}
+
+void UStatsComp::IncreaseStaminaPoint()
+{
+	if (DecreasePoint())
+	{
+		Stats.Attributes.StaminaPoint += 1;
+	}
+}
+
+void UStatsComp::IncreaseStrengthPoint()
+{
+	if (DecreasePoint())
+	{
+		Stats.Attributes.StrengthPoint += 1;
+	}
+}
+
+void UStatsComp::IncreaseAgilityPoint()
+{
+	if (DecreasePoint())
+	{
+		Stats.Attributes.AgilityPoint += 1;
+	}
+}
+
 void UStatsComp::StartSprint()
 {
 	Stats.IsSprinting = true;

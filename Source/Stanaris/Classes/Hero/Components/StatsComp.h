@@ -359,6 +359,22 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Experience|Dispatchers")
 	FStatsEvents OnUpdateLevel;
 
+	/* Attributes functions */
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
+	bool DecreasePoint();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
+	void IncreaseHealhPoint();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
+	void IncreaseStaminaPoint();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
+	void IncreaseStrengthPoint();
+
+	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
+	void IncreaseAgilityPoint();
+
 private:
 
 	UInputComponent* InputComponent;
