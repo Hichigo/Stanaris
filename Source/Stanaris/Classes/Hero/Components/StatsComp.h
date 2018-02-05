@@ -382,4 +382,9 @@ private:
 	void StartSprint();
 	void EndSprint();
 
+	/* PRIVATE Health functions */
+	void RecalculateHealth();
+	
+	/* PRIVATE Stamina functions */
+	void RecalculateStamina();
 };

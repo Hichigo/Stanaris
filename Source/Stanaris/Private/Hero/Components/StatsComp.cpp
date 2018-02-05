@@ -323,6 +323,7 @@ void UStatsComp::IncreaseHealhPoint()
 	if (DecreasePoint())
 	{
 		Stats.Attributes.HealthPoint += 1;
+		RecalculateHealth();
 	}
 }
 
@@ -331,6 +332,7 @@ void UStatsComp::IncreaseStaminaPoint()
 	if (DecreasePoint())
 	{
 		Stats.Attributes.StaminaPoint += 1;
+		RecalculateStamina();
 	}
 }
 
@@ -360,6 +362,18 @@ void UStatsComp::EndSprint()
 {
 	Stats.IsSprinting = false;
 	OnUpdateSpeedCharacter.Broadcast(Stats.WalkSpeed);
+}
+
+void UStatsComp::RecalculateHealth()
+{
+	Stats.Health.Max = Stats.Secondary.HealthK * Stats.Attributes.HealthPoint;
+	OnUpdateHealth.Broadcast();
+}
+
+void UStatsComp::RecalculateStamina()
+{
+	Stats.Stamina.Max = Stats.Secondary.StaminaK * Stats.Attributes.StaminaPoint;
+	OnUpdateStamina.Broadcast();
 }
 
 #undef LOCTEXT_NAMESPACE 
