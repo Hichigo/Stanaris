@@ -332,13 +332,13 @@ bool UStatsComp::DecreasePoint()
 	return false;
 }
 
-void UStatsComp::IncreaseHealhPoint()
+void UStatsComp::IncreaseHealthPoint()
 {
 	if (DecreasePoint())
 	{
 		Stats.Attributes.HealthPoint += 1;
 		RecalculateHealth();
-		OnUpdateHealtsPoints.Broadcast();
+		OnUpdateHealthPoints.Broadcast();
 	}
 }
 

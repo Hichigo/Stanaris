@@ -367,7 +367,7 @@ public:
 	bool DecreasePoint();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
-	void IncreaseHealhPoint();
+	void IncreaseHealthPoint();
 
 	UFUNCTION(BlueprintCallable, Category = "Stanaris|Stats|Attributes")
 	void IncreaseStaminaPoint();
@@ -385,7 +385,7 @@ public:
 	FStatsEvents OnUpdatePoints;
 
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
-	FStatsEvents OnUpdateHealtsPoints;
+	FStatsEvents OnUpdateHealthPoints;
 	
 	UPROPERTY(BlueprintAssignable, Category = "Stanaris|Stats|Attributes|Dispatchers")
 	FStatsEvents OnUpdateStaminaPoints;
