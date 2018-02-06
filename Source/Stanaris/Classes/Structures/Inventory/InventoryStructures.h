@@ -121,6 +121,9 @@ struct FDataItems : public FTableRowBase {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<int32> TemplateIndexes;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AActor> ItemClass;
+
 	FDataItems()
 	{
 		id = -1;
@@ -138,8 +141,8 @@ struct FDataItems : public FTableRowBase {
 		Defense = -1;
 		Damage = -1;
 		TemplateIndexes.Add(0);
+		ItemClass = nullptr;
 	}
-
 };
 
 
