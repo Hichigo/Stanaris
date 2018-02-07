@@ -54,6 +54,13 @@ enum class ETypeEquipment : uint8
 	FastSlot
 };
 
+UENUM(BlueprintType)
+enum class ETypeEffectUseItem : uint8
+{
+	Instant,
+	OverTime
+};
+
 USTRUCT(BlueprintType)
 struct FIconSize {
 	GENERATED_USTRUCT_BODY()
