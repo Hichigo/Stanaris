@@ -58,7 +58,8 @@ UENUM(BlueprintType)
 enum class ETypeEffectUseItem : uint8
 {
 	Instant,
-	OverTime
+	OverTime,
+	Temporary
 };
 
 USTRUCT(BlueprintType)
