@@ -43,7 +43,7 @@ public:
 	*/
 
 	UFUNCTION(BlueprintPure, Category = "StanarisLibrary|DataItems")
-	static FDataItems GetItemFromTableById(int32 IdItem, UDataTable* ItemsTable, bool &Success);
+	static FDataItems GetItemFromTableById(FName IdItem, UDataTable* ItemsTable, bool &Success);
 
 
 private:

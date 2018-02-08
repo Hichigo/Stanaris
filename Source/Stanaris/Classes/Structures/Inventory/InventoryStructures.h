@@ -159,7 +159,7 @@ struct FInventoryItem {
 	GENERATED_USTRUCT_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 id;
+	FName id;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 NumberOfItems;
@@ -172,7 +172,7 @@ struct FInventoryItem {
 
 	FInventoryItem()
 	{
-		id = -1;
+		id = FName(TEXT("None"));
 		NumberOfItems = 1;
 		TypeItem = ETypeItem::Equip;
 		ItemRef = nullptr;
@@ -222,8 +222,8 @@ struct FMasterItemData : public FTableRowBase {
 	{
 		id = -1;
 		TypeItem = ETypeItem::Craft;
-		Name = FText::FromString(TEXT("none"));
-		Description = FText::FromString(TEXT("none"));
+		Name = FText::FromString(TEXT("None"));
+		Description = FText::FromString(TEXT("None"));
 		IsStackable = false;
 		NumberOfStack = 1;
 		MaxNumberOfStack = 1;

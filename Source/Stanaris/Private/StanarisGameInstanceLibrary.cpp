@@ -131,12 +131,13 @@ UWorld * UStanarisGameInstanceLibrary::GetRealWorld(UObject * WorldContextObject
 //
 //}
 
-FDataItems UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem, UDataTable * ItemsTable, bool &Success)
+FDataItems UStanarisGameInstanceLibrary::GetItemFromTableById(FName IdItem, UDataTable * ItemsTable, bool &Success)
 {
 	FString ContextString; //error or warning
 	Success = false;
 
-	FName RowName = FName(*FString::FromInt(IdItem));
+	//FName RowName = FName(*FString::FromInt(IdItem));
+	FName RowName = IdItem;
 
 	FDataItems *row = nullptr;
 
