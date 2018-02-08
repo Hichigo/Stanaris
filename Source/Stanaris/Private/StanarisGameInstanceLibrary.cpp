@@ -143,7 +143,6 @@ FDataItems UStanarisGameInstanceLibrary::GetItemFromTableById(int32 IdItem, UDat
 	if (ItemsTable)
 	{
 		row = ItemsTable->FindRow<FDataItems>(RowName, ContextString);
-		UE_LOG(LogTemp, Warning, TEXT("ROW"));
 	}
 
 	if (row)
