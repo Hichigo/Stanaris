@@ -88,15 +88,15 @@ struct FSecondaryStats {
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 RegenHealthPerSec;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 RegenStaminaPerSec;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "-1.0", ClampMax = "1.0", UIMin = "-1.0", UIMax = "1.0"))
+	float RegenStaminaPercent;
 
 	FSecondaryStats()
 	{
 		HealthK = 40;
-		StaminaK = 120;
+		StaminaK = 40;
 		RegenHealthPerSec = 1;
-		RegenStaminaPerSec = 15;
+		RegenStaminaPercent = 0.1f;
 	}
 };
 
@@ -131,8 +131,8 @@ struct FHeroStats {
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsSprinting;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float CostSprintPerSec;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "-1.0", ClampMax = "1.0", UIMin = "-1.0", UIMax = "1.0"))
+	float CostSprintPercent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float WalkSpeed;
@@ -151,7 +151,7 @@ struct FHeroStats {
 		Defense = 0;
 		Damage = 3;
 		IsSprinting = false;
-		CostSprintPerSec = 10.f;
+		CostSprintPercent = 0.1f;
 		WalkSpeed = 220.f;
 		RunSpeed = 600.f;
 	}
@@ -195,7 +195,7 @@ private:
 		Stamina.Max += 0.f;
 
 		Secondary.RegenHealthPerSec += 0;
-		Secondary.RegenStaminaPerSec += 0;
+		Secondary.RegenStaminaPercent += 0.f;
 	}
 
 	void SubtractDataItemStats(const FDataItems Stats)
@@ -207,7 +207,7 @@ private:
 		Stamina.Max -= 0.f;
 
 		Secondary.RegenHealthPerSec -= 0;
-		Secondary.RegenStaminaPerSec -= 0;
+		Secondary.RegenStaminaPercent -= 0.f;
 	}
 
 };
@@ -263,7 +263,7 @@ public:
 	int32 GetRegenHealth();
 
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
-	int32 GetRegenStamina();
+	float GetRegenStamina();
 	
 	UFUNCTION(BlueprintPure, Category = "Stanaris|Stats")
 	int32 GetAttributePoints();

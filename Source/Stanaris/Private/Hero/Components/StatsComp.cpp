@@ -57,9 +57,9 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	/* regen stamina start */
 	if (Stats.Stamina.Current < Stats.Stamina.Max)
 	{
-		if (Stats.Secondary.RegenStaminaPerSec > 0 && !Stats.IsSprinting)
+		if (Stats.Secondary.RegenStaminaPercent > 0 && !Stats.IsSprinting)
 		{
-			float RegenPerTick = Stats.Secondary.RegenStaminaPerSec * DeltaTime;
+			float RegenPerTick = (Stats.Secondary.RegenStaminaPercent * Stats.Stamina.Max) * DeltaTime;
 			AddStamina(RegenPerTick);
 		}
 	}
@@ -68,7 +68,7 @@ void UStatsComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	/* Sprint cost */
 	if (Stats.IsSprinting)
 	{
-		float CostPerTick = Stats.CostSprintPerSec * DeltaTime;
+		float CostPerTick = (Stats.CostSprintPercent * Stats.Stamina.Max) * DeltaTime;
 		SubtractStamina(CostPerTick);
 	}
 }
@@ -108,9 +108,9 @@ int32 UStatsComp::GetRegenHealth()
 	return Stats.Secondary.RegenHealthPerSec;
 }
 
-int32 UStatsComp::GetRegenStamina()
+float UStatsComp::GetRegenStamina()
 {
-	return Stats.Secondary.RegenStaminaPerSec;
+	return Stats.Secondary.RegenStaminaPercent;
 }
 
 int32 UStatsComp::GetAttributePoints()
