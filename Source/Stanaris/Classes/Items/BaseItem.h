@@ -26,6 +26,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void OnConstruction(const FTransform& Transform) override;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	FDataItems Data;
 
@@ -35,5 +37,9 @@ public:
 	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")*/
 	UDataTable* ItemsTable;
 	
+
+	void InitItem();
+
+
 	virtual FName GetIdItem_Implementation() override;
 };
