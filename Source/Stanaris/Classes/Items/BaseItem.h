@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/TouchItem_Interface.h"
+#include "Structures/Inventory/InventoryStructures.h"
+#include "Engine/DataTable.h"
 #include "BaseItem.generated.h"
 
 UCLASS()
@@ -24,6 +26,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	FDataItems Data;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	FName IdItem;
+
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")*/
+	UDataTable* ItemsTable;
 	
 	virtual FName GetIdItem_Implementation() override;
 };
