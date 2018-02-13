@@ -16,7 +16,7 @@ class STANARIS_API ABaseItem : public AActor, public ITouchItem_Interface
 	
 public:	
 	// Sets default values for this actor's properties
-	ABaseItem();
+	ABaseItem(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	// Called when the game starts or when spawned
@@ -42,4 +42,7 @@ public:
 
 
 	virtual FName GetIdItem_Implementation() override;
+
+	//UPROPERTY(VisibleAnywhere, Category = "Item")
+	//	USkeletalMeshComponent* SkeletalItem;
 };
