@@ -17,6 +17,11 @@ AStaticMeshItem::AStaticMeshItem(const FObjectInitializer& ObjectInitializer)
 	RootComponent = StaticItem;
 }
 
+void AStaticMeshItem::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void AStaticMeshItem::OnConstruction(const FTransform & Transform)
 {
 	Super::OnConstruction(Transform);

@@ -19,6 +19,8 @@ class STANARIS_API ASkeletalMeshItem : public ABaseItem
 public:
 	ASkeletalMeshItem(const FObjectInitializer& ObjectInitializer);
 
+	virtual void BeginPlay() override;
+
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
 private:

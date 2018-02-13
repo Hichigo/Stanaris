@@ -19,6 +19,11 @@ ASkeletalMeshItem::ASkeletalMeshItem(const FObjectInitializer& ObjectInitializer
 
 }
 
+void ASkeletalMeshItem::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void ASkeletalMeshItem::OnConstruction(const FTransform & Transform)
 {
 	Super::OnConstruction(Transform);

@@ -18,6 +18,8 @@ class STANARIS_API AStaticMeshItem : public ABaseItem
 public:
 	AStaticMeshItem(const FObjectInitializer& ObjectInitializer);
 
+	virtual void BeginPlay() override;
+
 	virtual void OnConstruction(const FTransform& Transform) override;
 	
 private:
