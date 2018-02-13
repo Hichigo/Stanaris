@@ -12,6 +12,8 @@
 
 // Sets default values
 AHeroPawn::AHeroPawn(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer),
+	ActionDistance(200)
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -46,6 +48,32 @@ AHeroPawn::AHeroPawn(const FObjectInitializer& ObjectInitializer)
 	// Create a stats component
 	StatsComp = ObjectInitializer.CreateAbstractDefaultSubobject<UStatsComp>(this, TEXT("StatsComp"));
 
+}
+
+void AHeroPawn::TraceAction()
+{
+	FVector EyeLocation;
+	FRotator EyeRotation;
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(EyeLocation, EyeRotation);
+
+
+	FCollisionQueryParams TraceParameters(TEXT(""), false, GetOwner());
+
+	FHitResult Hit;
+
+	FVector EndLocation = EyeLocation + EyeRotation.Vector() * ActionDistance;
+	
+
+	GetWorld()->LineTraceSingleByObjectType(
+		Hit, // result
+		EyeLocation, // start trace
+		EndLocation,
+		FCollisionObjectQueryParams(ECollisionChannel::ECC_WorldDynamic),
+		TraceParameters
+	);
+
+	// actor
 }
 
 // Called when the game starts or when spawned

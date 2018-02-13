@@ -23,6 +23,10 @@ public:
 	// Sets default values for this character's properties
 	AHeroPawn(const FObjectInitializer& ObjectInitializer);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Settings character")
+	float ActionDistance;
+
+	void TraceAction();
 
 protected:
 	// Called when the game starts or when spawned
