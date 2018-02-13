@@ -13,6 +13,7 @@ ASkeletalMeshItem::ASkeletalMeshItem(const FObjectInitializer& ObjectInitializer
 	SkeletalItem->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	SkeletalItem->SetCollisionResponseToAllChannels(ECR_Block);
 	SkeletalItem->SetSimulatePhysics(true);
+	SkeletalItem->BodyInstance.bUseCCD = true;
 
 	RootComponent = SkeletalItem;
 

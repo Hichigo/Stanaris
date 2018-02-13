@@ -12,6 +12,7 @@ AStaticMeshItem::AStaticMeshItem(const FObjectInitializer& ObjectInitializer)
 	StaticItem->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	StaticItem->SetCollisionResponseToAllChannels(ECR_Block);
 	StaticItem->SetSimulatePhysics(true);
+	StaticItem->BodyInstance.bUseCCD = true;
 
 	RootComponent = StaticItem;
 }
