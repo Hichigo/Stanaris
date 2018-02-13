@@ -9,3 +9,14 @@ ABaseUsedItem::ABaseUsedItem(const FObjectInitializer& ObjectInitializer)
 {
 
 }
+
+void ABaseUsedItem::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void ABaseUsedItem::OnConstruction(const FTransform & Transform)
+{
+	Super::OnConstruction(Transform);
+
+}
