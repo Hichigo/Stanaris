@@ -43,6 +43,4 @@ public:
 
 	virtual FName GetIdItem_Implementation() override;
 
-	//UPROPERTY(VisibleAnywhere, Category = "Item")
-	//	USkeletalMeshComponent* SkeletalItem;
 };
