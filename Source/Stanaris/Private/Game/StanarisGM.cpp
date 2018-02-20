@@ -2,9 +2,11 @@
 
 #include "Game/StanarisGM.h"
 #include "Game/StanarisHUD.h"
+#include "Game/StanarisPC.h"
 
 AStanarisGM::AStanarisGM(const FObjectInitializer & ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	HUDClass = AStanarisHUD::StaticClass();
+	PlayerControllerClass = AStanarisPC::StaticClass();
 }
