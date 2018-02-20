@@ -17,15 +17,15 @@ void SEmptySlot::Construct(const FArguments& InArgs)
 	const ConstructorHelpers::FObjectFinder<UTexture> MyImage(TEXT("Texture2D'/Game/Stanaris/Hero/UI/Textures/T_EmptySlot.T_EmptySlot'"));
 
 	ChildSlot
-	[
-		// Populate the widget
-		SNew(SBox)
-		.WidthOverride(50)
-		.HeightOverride(50)
 		[
-			SNew(SBorder)
-			//.BorderImage(this, MyImage.Object)
-		]
+			// Populate the widget
+			SNew(SBox)
+			.WidthOverride(50)
+			.HeightOverride(50)
+			[
+				SNew(SBorder)
+				//.BorderImage()
+			]
 	];
 	
 }
