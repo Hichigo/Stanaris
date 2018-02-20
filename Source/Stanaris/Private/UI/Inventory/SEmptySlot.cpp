@@ -6,6 +6,7 @@
 #include "SlateOptMacros.h"
 #include "SBox.h"
 #include "SBorder.h"
+#include "UI/Style/EmptySlotWidgetStyle.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SEmptySlot::Construct(const FArguments& InArgs)
