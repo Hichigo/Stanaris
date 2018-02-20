@@ -8,6 +8,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/Controller.h"
+#include "ConstructorHelpers.h"
 
 
 // Sets default values
@@ -23,7 +24,7 @@ AHeroPawn::AHeroPawn(const FObjectInitializer& ObjectInitializer)
 
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
+	bUseControllerRotationYaw = true;
 	bUseControllerRotationRoll = false;
 
 	// Configure character movement
@@ -32,13 +33,23 @@ AHeroPawn::AHeroPawn(const FObjectInitializer& ObjectInitializer)
 	GetCharacterMovement()->JumpZVelocity = 600.f;
 	GetCharacterMovement()->AirControl = 0.2f;
 
+	// Skeletal mesh
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> MeshContainer(TEXT("SkeletalMesh'/Game/Stanaris/Hero/Character/SkeletalMesh/SK_Hero.SK_Hero'"));
+	if (MeshContainer.Succeeded())
+	{
+		USkeletalMeshComponent *PlayerMesh = GetMesh();
+		PlayerMesh->SetSkeletalMesh(MeshContainer.Object);
+	}
+
+
+
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	//CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->SetupAttachment(GetMesh(), GetMesh()->GetSocketBoneName(FName(TEXT("head")))); // Possible error, i don't know
 	CameraBoom->TargetArmLength = 0.0f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
-
+	//CameraBoom->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, FName("head"));
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
