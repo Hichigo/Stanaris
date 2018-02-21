@@ -21,8 +21,11 @@ struct STANARIS_API FEmptySlotStyle : public FSlateWidgetStyle
 
 	// FSlateWidgetStyle
 	virtual void GetResources(TArray<const FSlateBrush*>& OutBrushes) const override;
+
 	static const FName TypeName;
+
 	virtual const FName GetTypeName() const override { return TypeName; };
+
 	static const FEmptySlotStyle& GetDefault();
 
 	UPROPERTY(EditAnywhere, Category = Appearance)

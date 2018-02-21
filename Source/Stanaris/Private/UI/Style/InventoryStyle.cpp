@@ -31,7 +31,7 @@ const ISlateStyle & FInventoryStyle::Get()
 
 FName FInventoryStyle::GetStyleSetName()
 {
-	static FName StyleSetName(TEXT("MenuStyles"));
+	static FName StyleSetName(TEXT("InventoryStyles"));
 	return StyleSetName;
 }
 

@@ -7,12 +7,14 @@
 #include "SBox.h"
 #include "SBorder.h"
 #include "UI/Style/EmptySlotWidgetStyle.h"
+#include "UI/Style/InventoryStyle.h"
+
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SEmptySlot::Construct(const FArguments& InArgs)
 {
-	
-
+	HUD = InArgs._HUD;
+	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("Inventory");
 
 	const ConstructorHelpers::FObjectFinder<UTexture> MyImage(TEXT("Texture2D'/Game/Stanaris/Hero/UI/Textures/T_EmptySlot.T_EmptySlot'"));
 
@@ -24,7 +26,7 @@ void SEmptySlot::Construct(const FArguments& InArgs)
 			.HeightOverride(50)
 			[
 				SNew(SBorder)
-				//.BorderImage()
+				.BorderImage(&EmptySlotStyle->BackgroundBrush)
 			]
 	];
 	
