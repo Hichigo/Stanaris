@@ -22,4 +22,5 @@ void AStanarisHUD::PostInitializeComponents()
 				AddViewportWidgetContent(SNew(SWeakWidget)
 					.PossiblyNullContent(TestSlotWidget.ToSharedRef()));
 	}
+	
 }
