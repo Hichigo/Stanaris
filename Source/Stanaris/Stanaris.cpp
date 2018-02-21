@@ -4,7 +4,7 @@
 #include "Modules/ModuleManager.h"
 #include "UI/Style/InventoryStyle.h"
 
-class FSlateTutorialsGameModule : public FDefaultGameModuleImpl
+class FStanarisGameModule : public FDefaultGameModuleImpl
 {
 	// Called whenever the module is starting up. In here, we unregister any style sets 
 	// (which may have been added by other modules) sharing our 
@@ -24,5 +24,5 @@ class FSlateTutorialsGameModule : public FDefaultGameModuleImpl
 
 };
 
-IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, Stanaris, "Stanaris" );
+IMPLEMENT_PRIMARY_GAME_MODULE( FStanarisGameModule, Stanaris, "Stanaris" );
  
