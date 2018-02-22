@@ -30,6 +30,6 @@ public:
 
 	const struct FEmptySlotStyle* EmptySlotStyle;
 
-private:
+protected:
 	TAttribute<int32> IndexSlot;
 };
