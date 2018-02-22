@@ -6,7 +6,7 @@
 #include "UI/STitleBar.h"
 #include "UI/Equip/SEquipSlot.h"
 #include "SBoxPanel.h"
-#include "SGridPanel.h"
+//#include "SGridPanel.h"
 #include "SScaleBox.h"
 #include "SBorder.h"
 #include "SBox.h"
@@ -18,25 +18,40 @@ void SEquip::Construct(const FArguments& InArgs)
 {
 	
 
-	TSharedPtr<SGridPanel> GridInventoryContainer = SNew(SGridPanel);
+	TSharedPtr<SGridPanel> EquipContainer = SNew(SGridPanel);
 
-	GridInventoryContainer->SetRowFill(0, 1.f);
-	GridInventoryContainer->SetRowFill(1, 1.f);
-	GridInventoryContainer->SetRowFill(2, 1.f);
-	GridInventoryContainer->SetRowFill(3, 1.f);
-	GridInventoryContainer->SetRowFill(4, 1.f);
-	GridInventoryContainer->SetRowFill(5, 1.f);
+	EquipContainer->SetRowFill(0, 1.f);
+	EquipContainer->SetRowFill(1, 1.f);
+	EquipContainer->SetRowFill(2, 1.f);
+	EquipContainer->SetRowFill(3, 1.f);
+	EquipContainer->SetRowFill(4, 1.f);
+	EquipContainer->SetRowFill(5, 1.f);
 
-	GridInventoryContainer->SetColumnFill(0, 1.f);
-	GridInventoryContainer->SetColumnFill(1, 1.f);
-	GridInventoryContainer->SetColumnFill(2, 1.f);
-	GridInventoryContainer->SetColumnFill(3, 1.f);
-	GridInventoryContainer->SetColumnFill(4, 1.f);
-	GridInventoryContainer->SetColumnFill(5, 1.f);
-	GridInventoryContainer->SetColumnFill(6, 1.f);
-	GridInventoryContainer->SetColumnFill(7, 1.f);
-	GridInventoryContainer->SetColumnFill(8, 1.f);
-	GridInventoryContainer->SetColumnFill(9, 1.f);
+	EquipContainer->SetColumnFill(0, 1.f);
+	EquipContainer->SetColumnFill(1, 1.f);
+	EquipContainer->SetColumnFill(2, 1.f);
+	EquipContainer->SetColumnFill(3, 1.f);
+	EquipContainer->SetColumnFill(4, 1.f);
+	EquipContainer->SetColumnFill(5, 1.f);
+	EquipContainer->SetColumnFill(6, 1.f);
+	EquipContainer->SetColumnFill(7, 1.f);
+	EquipContainer->SetColumnFill(8, 1.f);
+	EquipContainer->SetColumnFill(9, 1.f);
+
+	//helm
+	//InitEquipSlot(EquipContainer, 4, 1, 2, 2, 0);
+	EquipContainer->AddSlot(4, 1)
+	.RowSpan(2)
+	.ColumnSpan(2)
+	[
+		SNew(SEquipSlot)
+		.IndexSlot(0)
+	];
+
+
+
+
+
 
 	ChildSlot
 	[
@@ -64,7 +79,7 @@ void SEquip::Construct(const FArguments& InArgs)
 						+SVerticalBox::Slot()
 						.AutoHeight()
 						[
-							GridInventoryContainer.ToSharedRef()
+							EquipContainer.ToSharedRef()
 						]
 					]
 				]
@@ -72,5 +87,16 @@ void SEquip::Construct(const FArguments& InArgs)
 		]
 	];
 	
+}
+
+void SEquip::InitEquipSlot(class TSharedPtr<SGridPanel> EquipContainer, int32 Column, int32 Row, int32 ColumnSpan, int32 RowSpan, int32 Index)
+{
+	EquipContainer->AddSlot(Column, Row)
+	.RowSpan(ColumnSpan)
+	.ColumnSpan(RowSpan)
+	[
+		SNew(SEquipSlot)
+		.IndexSlot(Index)
+	];
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
