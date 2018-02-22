@@ -11,8 +11,6 @@ void SInventory::Construct(const FArguments& InArgs)
 	TitleInventory = InArgs._TitleInventory;
 
 
-	TSharedPtr<STitleBar> TitleInventory = SNew(STitleBar).TitleName(FText().FromString("Inventory"));
-	TSharedPtr<SGridInventory> GridInventory = SNew(SGridInventory);
 	
 	ChildSlot
 	[
@@ -23,12 +21,13 @@ void SInventory::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		.MaxHeight(50)
 		[
-			TitleInventory.ToSharedRef()
+			SNew(STitleBar)
+			.TitleName(FText().FromString("Inventory"))
 		]
 		+ SVerticalBox::Slot()
 		.AutoHeight()
 		[
-			GridInventory.ToSharedRef()
+			SNew(SGridInventory)
 		]
 	];
 	
