@@ -5,7 +5,7 @@
 
 #include "SGridPanel.h"
 #include "SBox.h"
-#include "SOverlay.h"
+
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SGridInventory::Construct(const FArguments& InArgs)
@@ -37,18 +37,14 @@ void SGridInventory::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SOverlay)
-		+ SOverlay::Slot()
-		.HAlign(HAlign_Center)
-		.VAlign(VAlign_Top)
+		
+		SNew(SBox)
+		.WidthOverride(400)
+		.HeightOverride(300)
 		[
-			SNew(SBox)
-			.WidthOverride(400)
-			.HeightOverride(300)
-			[
-				GridInventoryContainer.ToSharedRef()
-			]
+			GridInventoryContainer.ToSharedRef()
 		]
+
 	];
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
