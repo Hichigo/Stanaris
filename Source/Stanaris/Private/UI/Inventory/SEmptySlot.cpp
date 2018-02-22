@@ -13,6 +13,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SEmptySlot::Construct(const FArguments& InArgs)
 {
 	HUD = InArgs._HUD;
+	IndexSlot = InArgs._IndexSlot;
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	ChildSlot

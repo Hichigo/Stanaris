@@ -18,6 +18,8 @@ public:
 
 	SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
 
+	SLATE_ATTRIBUTE(int32, IndexSlot)
+
 	SLATE_END_ARGS()
 
 
@@ -27,4 +29,7 @@ public:
 	TWeakObjectPtr<class AStanarisHUD> HUD;
 
 	const struct FEmptySlotStyle* EmptySlotStyle;
+
+private:
+	TAttribute<int32> IndexSlot;
 };
