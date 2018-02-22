@@ -16,7 +16,7 @@ public:
 	SLATE_BEGIN_ARGS(SEmptySlot)
 	{}
 
-	SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
+	//SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
 
 	SLATE_ATTRIBUTE(int32, IndexSlot)
 
@@ -26,7 +26,7 @@ public:
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
 
-	TWeakObjectPtr<class AStanarisHUD> HUD;
+	//TWeakObjectPtr<class AStanarisHUD> HUD;
 
 	const struct FEmptySlotStyle* EmptySlotStyle;
 
