@@ -6,6 +6,8 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SEquipSlot::Construct(const FArguments& InArgs)
 {
+	IndexSlot = InArgs._IndexSlot;
+
 	/*
 	ChildSlot
 	[

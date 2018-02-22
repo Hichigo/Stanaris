@@ -7,11 +7,16 @@
 /**
  * 
  */
+class SEmptySlot;
+
 class STANARIS_API SEquipSlot : public SEmptySlot
 {
 public:
 	SLATE_BEGIN_ARGS(SEquipSlot)
 	{}
+	
+	SLATE_ATTRIBUTE(int32, IndexSlot)
+
 	SLATE_END_ARGS()
 
 	/** Constructs this widget with InArgs */
