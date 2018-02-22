@@ -16,57 +16,24 @@ void SEmptySlot::Construct(const FArguments& InArgs)
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	ChildSlot
-		[
-			// Populate the widget
-			SNew(SOverlay)
-			+ SOverlay::Slot()
-			.HAlign(HAlign_Center)
-			.VAlign(VAlign_Top)
-			[
-				SNew(SBox)
-				.WidthOverride(100)
-				.HeightOverride(100)
-				[
-					SNew(SBorder)
-					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)
-					.BorderImage(&EmptySlotStyle->BackgroundBrush)
-				]
-			]
-	];
-	
-	/*
-	ChildSlot
 	[
+		// Populate the widget
 		SNew(SOverlay)
 		+ SOverlay::Slot()
 		.HAlign(HAlign_Center)
 		.VAlign(VAlign_Top)
 		[
-			SNew(STextBlock)
-			.ColorAndOpacity(FLinearColor::White)
-			.ShadowColorAndOpacity(FLinearColor::Black)
-			.ShadowOffset(FIntPoint(-1, 1))
-			.Font(FSlateFontInfo("Arial", 26))
-			.Text(FText::FromString("Main Menu"))
-			]
-			+ SOverlay::Slot()
-			.HAlign(HAlign_Right)
-			.VAlign(VAlign_Bottom)
+			SNew(SBox)
+			.WidthOverride(100)
+			.HeightOverride(100)
 			[
-				SNew(SVerticalBox)
-				+ SVerticalBox::Slot()
-			[
-				SNew(SButton)
-				.Text(FText::FromString("Play Game!"))
-			]
-			+ SVerticalBox::Slot()
-			[
-				SNew(SButton)
-				.Text(FText::FromString("Quit Game"))
+				SNew(SBorder)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				.BorderImage(&EmptySlotStyle->BackgroundBrush)
 			]
 		]
 	];
-	*/
+	
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
