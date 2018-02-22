@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "UI/Inventory/SEmptySlot.h"
+#include "UI/Inventory/SGridInventory.h"
 #include "StanarisHUD.generated.h"
 
 /**
@@ -21,5 +21,5 @@ class STANARIS_API AStanarisHUD : public AHUD
 
 	virtual void PostInitializeComponents() override;
 
-	TSharedPtr<class SEmptySlot> TestSlotWidget;
+	TSharedPtr<class SGridInventory> TestSlotWidget;
 };
