@@ -15,15 +15,20 @@ void STitleBar::Construct(const FArguments& InArgs)
 	TitleName = InArgs._TitleName;
 	
 	ChildSlot
+	.HAlign(HAlign_Fill)
+	.VAlign(VAlign_Fill)
 	[
 		// Populate the widget
 		SNew(SScaleBox)
 		//.Stretch(EStretch::ScaleToFit)
 		[
 			SNew(SBorder)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
 			//.BorderImage()
 			[
 				SNew(STextBlock)
+				.Font(FSlateFontInfo("Arial", 26))
 				.Text(TitleName)
 			]
 		]
