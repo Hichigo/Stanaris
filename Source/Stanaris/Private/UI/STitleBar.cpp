@@ -34,7 +34,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 			//.BorderImage()
 			[
 				SNew(STextBlock)
-				.Font(FSlateFontInfo("Arial", 26))
+				.Font(FSlateFontInfo("Roboto", 26))
 				.Text(TitleName)
 			]
 		]
