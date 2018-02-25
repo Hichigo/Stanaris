@@ -9,6 +9,7 @@
 #include "SBorder.h"
 #include "SBoxPanel.h"
 #include "SScrollBox.h"
+#include "UI/Stats/SStatsTextWidget.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
@@ -34,6 +35,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 					SNew(SBox)
 					.WidthOverride(400)
 					.HeightOverride(550)
+					.MinDesiredWidth(400)
 					[
 						SNew(SVerticalBox)
 						+ SVerticalBox::Slot()
@@ -49,22 +51,82 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 							+SScrollBox::Slot() // main stats
 							[
 								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								[
+									SNew(STitleBar)
+									.TitleName(FText().FromString("Main"))
+								]
+								+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Level"))
+								]
+								/*+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Experience"))
+								]
+								+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Health"))
+								]
+								+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Stamina"))
+								]*/
 							]
 							+ SScrollBox::Slot() // attribute
 							[
 								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								[
+									SNew(STitleBar)
+									.TitleName(FText().FromString("Attribute"))
+								]
+								+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Attribute points"))
+								]
 							]
 							+ SScrollBox::Slot() // second stats
 							[
 								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								[
+									SNew(STitleBar)
+									.TitleName(FText().FromString("Second"))
+								]
+								/*+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Health regeneration/sec"))
+								]*/
 							]
 							+ SScrollBox::Slot() // attack stats
 							[
 								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								[
+									SNew(STitleBar)
+									.TitleName(FText().FromString("Attack"))
+								]
+								/*+ SVerticalBox::Slot()
+								[
+									SNew(SStatsTextWidget)
+									.StatName(FText().FromString("Damage"))
+								]*/
 							]
 							+ SScrollBox::Slot() // defense stats
 							[
 								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								[
+									SNew(STitleBar)
+									.TitleName(FText().FromString("Defense"))
+								]
 							]
 						]
 					]
