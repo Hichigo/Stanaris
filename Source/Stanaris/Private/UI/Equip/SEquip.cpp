@@ -10,7 +10,7 @@
 #include "SScaleBox.h"
 #include "SBorder.h"
 #include "SBox.h"
-#include "SOverlay.h"
+
 
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
@@ -83,40 +83,33 @@ void SEquip::Construct(const FArguments& InArgs)
 
 	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
 
-
+	
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SOverlay)
-		+ SOverlay::Slot()
-		.HAlign(HAlign_Center)
-		.VAlign(VAlign_Top)
+		SNew(SScaleBox)
 		[
-			SNew(SScaleBox)
+			SNew(SBorder)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			.BorderImage(&BackgroundColor)
 			[
-				SNew(SBorder)
-				//.BorderBackgroundColor(FSlateColor(FLinearColor(1., 0., 0., 1.)))
-				.BorderImage(&BackgroundColor)
+				SNew(SBox)
+				.WidthOverride(500)
+				.HeightOverride(900)
 				[
-					SNew(SBox)
-					.WidthOverride(500)
-					.HeightOverride(900)
+					SNew(SVerticalBox)
+					+SVerticalBox::Slot()
+					.MaxHeight(50)
+					.AutoHeight()
 					[
-						SNew(SVerticalBox)
-						+SVerticalBox::Slot()
-						.MaxHeight(50)
-						.AutoHeight()
-						[
-							SNew(STitleBar)
-							.TitleName(FText().FromString("Equipment"))
-						]
-						+SVerticalBox::Slot()
-						//.FillHeight(10.0)
-						//.MaxHeight(850)
-						.VAlign(VAlign_Fill)
-						[
-							EquipContainer.ToSharedRef()
-						]
+						SNew(STitleBar)
+						.TitleName(FText().FromString("Equipment"))
+					]
+					+SVerticalBox::Slot()
+					.VAlign(VAlign_Fill)
+					[
+						EquipContainer.ToSharedRef()
 					]
 				]
 			]
@@ -135,4 +128,5 @@ void SEquip::InitEquipSlot(class TSharedPtr<SGridPanel> EquipContainer, int32 Co
 		.IndexSlot(Index)
 	];
 }
+
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

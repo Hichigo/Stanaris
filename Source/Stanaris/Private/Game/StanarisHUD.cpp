@@ -16,11 +16,11 @@ void AStanarisHUD::PostInitializeComponents()
 	if (GEngine && GEngine->GameViewport) // make sure our screen is ready for the widget
 	{
 		//GridInventoryWidget->SetTest(1);
-		SAssignNew(TestSlotWidget, SEquip); // (this set variable) add the widget and assign it to the var
+		SAssignNew(TestWidget, SStatsWidget); // (this set variable) add the widget and assign it to the var
 		GEngine->
 			GameViewport->
 				AddViewportWidgetContent(SNew(SWeakWidget)
-					.PossiblyNullContent(TestSlotWidget.ToSharedRef()));
+					.PossiblyNullContent(TestWidget.ToSharedRef()));
 	}
 	
 }

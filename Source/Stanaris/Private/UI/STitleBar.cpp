@@ -16,7 +16,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 
 	TitleName = InArgs._TitleName;
 	
-	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Gray);
+	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
 
 	ChildSlot
 	.HAlign(HAlign_Fill)
@@ -36,6 +36,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 				SNew(STextBlock)
 				.Font(FSlateFontInfo("Roboto", 26))
 				.Text(TitleName)
+				.ColorAndOpacity(FLinearColor(1., 0., 0., 1.))
 			]
 		]
 	];
