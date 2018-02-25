@@ -6,6 +6,8 @@
 #include "Widgets/SCompoundWidget.h"
 #include "SThrobber.h"
 
+#include "SlateColorBrush.h"
+
 /**
  * 
  */
@@ -24,4 +26,6 @@ public:
 
 private:
 	TAttribute<FText> TitleName;
+
+	FSlateColorBrush* BackgroundColor;
 };

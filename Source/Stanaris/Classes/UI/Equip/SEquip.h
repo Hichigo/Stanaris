@@ -8,6 +8,8 @@
 #include "SGridPanel.h"
 #include "SThrobber.h"
 
+#include "UI/STitleBar.h"
+
 /**
  * 
  */
@@ -21,6 +23,10 @@ public:
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
 
+
+
 private:
 	void InitEquipSlot(class TSharedPtr<SGridPanel> EquipContainer, int32 Column, int32 Row, int32 ColumnSpan, int32 RowSpan, int32 Index);
+
+	FSlateColorBrush* BackgroundColor;
 };

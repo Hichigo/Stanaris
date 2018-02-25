@@ -21,4 +21,6 @@ public:
 
 	/** Constructs this widget with InArgs */
 	void Construct(const FArguments& InArgs);
+
+	const struct FEmptySlotStyle* EmptySlotStyle;
 };

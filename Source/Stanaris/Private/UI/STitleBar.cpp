@@ -8,7 +8,7 @@
 #include "SBox.h"
 #include "STextBlock.h"
 
-#include "SlateColorBrush.h"
+
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void STitleBar::Construct(const FArguments& InArgs)
@@ -16,7 +16,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 
 	TitleName = InArgs._TitleName;
 	
-	FSlateColorBrush brushClr = FSlateColorBrush(FLinearColor::White);
+	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Gray);
 
 	ChildSlot
 	.HAlign(HAlign_Fill)
@@ -29,8 +29,8 @@ void STitleBar::Construct(const FArguments& InArgs)
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
-			.ColorAndOpacity(FLinearColor(1.f, 0.f, 0.f, 1.f))
-			//.BorderImage(&brushClr)
+			//.ColorAndOpacity(FLinearColor(1.f, 0.f, 0.f, 1.f))
+			.BorderImage(&BackgroundColor)
 			//.BorderImage()
 			[
 				SNew(STextBlock)

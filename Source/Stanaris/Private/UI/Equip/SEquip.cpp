@@ -3,7 +3,7 @@
 #include "UI/Equip/SEquip.h"
 #include "SlateOptMacros.h"
 
-#include "UI/STitleBar.h"
+
 #include "UI/Equip/SEquipSlot.h"
 #include "SBoxPanel.h"
 //#include "SGridPanel.h"
@@ -26,6 +26,17 @@ void SEquip::Construct(const FArguments& InArgs)
 	EquipContainer->SetRowFill(3, 1.f);
 	EquipContainer->SetRowFill(4, 1.f);
 	EquipContainer->SetRowFill(5, 1.f);
+	EquipContainer->SetRowFill(6, 1.f);
+	EquipContainer->SetRowFill(7, 1.f);
+	EquipContainer->SetRowFill(8, 1.f);
+	EquipContainer->SetRowFill(9, 1.f);
+	EquipContainer->SetRowFill(10, 1.f);
+	EquipContainer->SetRowFill(11, 1.f);
+	EquipContainer->SetRowFill(12, 1.f);
+	EquipContainer->SetRowFill(13, 1.f);
+	EquipContainer->SetRowFill(14, 1.f);
+	EquipContainer->SetRowFill(15, 1.f);
+	EquipContainer->SetRowFill(16, 1.f);
 
 	EquipContainer->SetColumnFill(0, 1.f);
 	EquipContainer->SetColumnFill(1, 1.f);
@@ -39,18 +50,38 @@ void SEquip::Construct(const FArguments& InArgs)
 	EquipContainer->SetColumnFill(9, 1.f);
 
 	//helm
-	//InitEquipSlot(EquipContainer, 4, 1, 2, 2, 0);
-	EquipContainer->AddSlot(4, 1)
-	.RowSpan(2)
-	.ColumnSpan(2)
+	InitEquipSlot(EquipContainer, 4, 1, 2, 2, 0);
+	//neck
+	InitEquipSlot(EquipContainer, 7, 2, 1, 1, 1);
+	//right hand
+	InitEquipSlot(EquipContainer, 1, 4, 3, 2, 2);
+	//left hand
+	InitEquipSlot(EquipContainer, 7, 4, 3, 2, 3);
+	//right ring
+	InitEquipSlot(EquipContainer, 1, 8, 1, 1, 4);
+	//left ring
+	InitEquipSlot(EquipContainer, 8, 8, 1, 1, 5);
+	//body
+	InitEquipSlot(EquipContainer, 1, 10, 3, 2, 6);
+	//pants
+	InitEquipSlot(EquipContainer, 7, 10, 3, 2, 7);
+	//gloves
+	InitEquipSlot(EquipContainer, 1, 14, 2, 2, 8);
+	//boots
+	InitEquipSlot(EquipContainer, 7, 14, 2, 2, 9);
+
+
+	//unuse
+	EquipContainer->AddSlot(0, 16)
+	.RowSpan(0)
+	.ColumnSpan(10)
 	[
-		SNew(SEquipSlot)
-		.IndexSlot(0)
+		SNew(SBorder)
 	];
 
 
 
-
+	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
 
 
 	ChildSlot
@@ -64,6 +95,8 @@ void SEquip::Construct(const FArguments& InArgs)
 			SNew(SScaleBox)
 			[
 				SNew(SBorder)
+				//.BorderBackgroundColor(FSlateColor(FLinearColor(1., 0., 0., 1.)))
+				.BorderImage(&BackgroundColor)
 				[
 					SNew(SBox)
 					.WidthOverride(500)
@@ -72,12 +105,15 @@ void SEquip::Construct(const FArguments& InArgs)
 						SNew(SVerticalBox)
 						+SVerticalBox::Slot()
 						.MaxHeight(50)
+						.AutoHeight()
 						[
 							SNew(STitleBar)
 							.TitleName(FText().FromString("Equipment"))
 						]
 						+SVerticalBox::Slot()
-						.AutoHeight()
+						//.FillHeight(10.0)
+						//.MaxHeight(850)
+						.VAlign(VAlign_Fill)
 						[
 							EquipContainer.ToSharedRef()
 						]
