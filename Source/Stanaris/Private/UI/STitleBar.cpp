@@ -8,6 +8,9 @@
 #include "SBox.h"
 #include "STextBlock.h"
 
+#include "UI/Style/EmptySlotWidgetStyle.h"
+#include "UI/Style/InventoryStyle.h"
+
 
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
@@ -16,6 +19,8 @@ void STitleBar::Construct(const FArguments& InArgs)
 
 	TitleName = InArgs._TitleName;
 	
+	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
+
 	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
 
 	ChildSlot
@@ -34,7 +39,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 			//.BorderImage()
 			[
 				SNew(STextBlock)
-				.Font(FSlateFontInfo("Roboto", 26))
+				.Font(FSlateFontInfo(EmptySlotStyle->TextEntryStyle.Font))
 				.Text(TitleName)
 				.ColorAndOpacity(FLinearColor(1., 0., 0., 1.))
 			]

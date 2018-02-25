@@ -14,7 +14,7 @@ void SEmptySlot::Construct(const FArguments& InArgs)
 {
 	IndexSlot = InArgs._IndexSlot;
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
-
+	
 	ChildSlot
 	[
 		// Populate the widget

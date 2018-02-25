@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Styling/SlateWidgetStyle.h"
 #include "SlateWidgetStyleContainerBase.h"
+#include "SlateTypes.h"
 
 #include "EmptySlotWidgetStyle.generated.h"
 
@@ -31,6 +32,10 @@ struct STANARIS_API FEmptySlotStyle : public FSlateWidgetStyle
 	UPROPERTY(EditAnywhere, Category = Appearance)
 	FSlateBrush BackgroundBrush;
 	FEmptySlotStyle& SetBackgroundBrush(const FSlateBrush& InBackgroundBrush) { BackgroundBrush = InBackgroundBrush; return *this; }
+
+	UPROPERTY(EditAnywhere, Category = Appearance)
+	FEditableTextBoxStyle TextEntryStyle;
+	FEmptySlotStyle& SetTextEntryStyle(const FEditableTextBoxStyle& InTextEntryStyle) { TextEntryStyle = InTextEntryStyle; return *this; }
 };
 
 /**

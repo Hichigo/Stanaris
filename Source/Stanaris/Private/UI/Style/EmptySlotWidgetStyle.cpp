@@ -21,8 +21,11 @@ const FEmptySlotStyle& FEmptySlotStyle::GetDefault()
 
 void FEmptySlotStyle::GetResources(TArray<const FSlateBrush*>& OutBrushes) const
 {
+	TextEntryStyle.GetResources(OutBrushes);
+
 	// Add any brush resources here so that Slate can correctly atlas and reference them
 	OutBrushes.Add(&BackgroundBrush);
+
 }
 
 UEmptySlotWidgetStyle::UEmptySlotWidgetStyle(const FObjectInitializer& ObjectInitializer)
