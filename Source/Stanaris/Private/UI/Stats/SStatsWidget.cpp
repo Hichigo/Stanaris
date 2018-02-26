@@ -149,7 +149,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 				SNew(SBox)
 				.WidthOverride(400)
 				.HeightOverride(550)
-				.MinDesiredWidth(400)
+				//.MinDesiredWidth(400)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				[

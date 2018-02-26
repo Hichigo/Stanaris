@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "UI/Stats/SStatsWidget.h"
+#include "UI/SMainLayout.h"
 #include "StanarisHUD.generated.h"
 
 /**
@@ -21,5 +21,5 @@ class STANARIS_API AStanarisHUD : public AHUD
 
 	virtual void PostInitializeComponents() override;
 
-	TSharedPtr<class SStatsWidget> TestWidget;
+	TSharedPtr<class SMainLayout> Layout;
 };

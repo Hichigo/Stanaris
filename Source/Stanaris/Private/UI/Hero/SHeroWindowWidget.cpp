@@ -22,46 +22,73 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 	[
 		// Populate the widget
 		SNew(SScaleBox)
+		.HAlign(HAlign_Fill)
+		.VAlign(VAlign_Fill)
 		[
 			SNew(SBox)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
 			.HeightOverride(950)
 			.WidthOverride(900)
-			[
+		[
 				SNew(SBorder)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
 				[
 					SNew(SVerticalBox)
 					+ SVerticalBox::Slot()
+					.AutoHeight()
+					.MaxHeight(50)
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
 					[
 						SNew(SHorizontalBox)
 						+ SHorizontalBox::Slot()
+						.AutoWidth()
+						.FillWidth(10.0)
+						.VAlign(VAlign_Fill)
+						.HAlign(HAlign_Fill)
 						[
 							SNew(STitleBar)
 							.TitleName(FText().FromString("Character"))
 						]
 						+ SHorizontalBox::Slot()
+						.AutoWidth()
+						.VAlign(VAlign_Fill)
+						.HAlign(HAlign_Fill)
 						[
 							SNew(SButton)
 							.Text(FText().FromString("X"))
 						]
 					]
 					+ SVerticalBox::Slot()
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)	
 					[
 						SNew(SHorizontalBox)
 						+ SHorizontalBox::Slot()
+						.HAlign(HAlign_Fill)
+						.VAlign(VAlign_Fill)
 						[
 							SNew(SEquip)
 						]
 						+ SHorizontalBox::Slot()
+						.HAlign(HAlign_Fill)
+						.VAlign(VAlign_Fill)
 						[
 							SNew(SVerticalBox)
 							+ SVerticalBox::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Fill)
 							[
 								SNew(SStatsWidget)
 							]
-							+ SVerticalBox::Slot()
+							/*+ SVerticalBox::Slot()
+							.HAlign(HAlign_Fill)
+							.VAlign(VAlign_Fill)
 							[
 								SNew(SInventory)
-							]
+							]*/
 						]
 					]
 				]

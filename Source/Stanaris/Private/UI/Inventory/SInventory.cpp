@@ -4,6 +4,8 @@
 #include "SlateOptMacros.h"
 
 #include "SBoxPanel.h"
+#include "SScaleBox.h"
+#include "SBorder.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SInventory::Construct(const FArguments& InArgs)
@@ -15,19 +17,28 @@ void SInventory::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SVerticalBox)
-		+ SVerticalBox::Slot()
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
-		.MaxHeight(50)
+		SNew(SScaleBox)
 		[
-			SNew(STitleBar)
-			.TitleName(FText().FromString("Inventory"))
-		]
-		+ SVerticalBox::Slot()
-		.AutoHeight()
-		[
-			SNew(SGridInventory)
+			SNew(SBorder)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			//.BorderImage(&BackgroundColor)
+			[
+				SNew(SVerticalBox)
+				+ SVerticalBox::Slot()
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				.MaxHeight(50)
+				[
+					SNew(STitleBar)
+					.TitleName(FText().FromString("Inventory"))
+				]
+				+ SVerticalBox::Slot()
+				.AutoHeight()
+				[
+					SNew(SGridInventory)
+				]
+			]
 		]
 	];
 	
