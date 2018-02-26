@@ -139,67 +139,61 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SOverlay)
-		+ SOverlay::Slot()
-		.HAlign(HAlign_Center)
-		.VAlign(VAlign_Top)
+		SNew(SScaleBox)
 		[
-			SNew(SScaleBox)
+			SNew(SBorder)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			.BorderImage(&EmptySlotStyle->BackgroundBrush)
 			[
-				SNew(SBorder)
+				SNew(SBox)
+				.WidthOverride(400)
+				.HeightOverride(550)
+				.MinDesiredWidth(400)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
-				.BorderImage(&EmptySlotStyle->BackgroundBrush)
 				[
-					SNew(SBox)
-					.WidthOverride(400)
-					.HeightOverride(550)
-					.MinDesiredWidth(400)
-					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)
+					SNew(SVerticalBox)
+					+ SVerticalBox::Slot()
+					.AutoHeight()
+					.MaxHeight(50)
 					[
-						SNew(SVerticalBox)
-						+ SVerticalBox::Slot()
-						.AutoHeight()
-						.MaxHeight(50)
+						SAssignNew(TitleText, STitleBar)
+						.TitleName(FText().FromString("Stats"))
+					]
+					+ SVerticalBox::Slot()
+					.HAlign(HAlign_Fill)
+					[
+						SNew(SBox)
+						.WidthOverride(400)
+						.HeightOverride(500)
 						[
-							SAssignNew(TitleText, STitleBar)
-							.TitleName(FText().FromString("Stats"))
-						]
-						+ SVerticalBox::Slot()
-						.HAlign(HAlign_Fill)
-						[
-							SNew(SBox)
-							.WidthOverride(400)
-							.HeightOverride(500)
+							SNew(SScrollBox)
+							.ScrollBarVisibility(EVisibility::Visible)
+							+ SScrollBox::Slot() // main stats
+							.HAlign(HAlign_Fill)
 							[
-								SNew(SScrollBox)
-								.ScrollBarVisibility(EVisibility::Visible)
-								+ SScrollBox::Slot() // main stats
-								.HAlign(HAlign_Fill)
-								[
-									MainStats.ToSharedRef()
-								]
-								+ SScrollBox::Slot() // attribute
-								.HAlign(HAlign_Fill)
-								[
-									Attributes.ToSharedRef()
-								]
-								+ SScrollBox::Slot() // second stats
-								.HAlign(HAlign_Fill)
-								[
-									SecondStats.ToSharedRef()
-								]
-								+ SScrollBox::Slot() // attack stats
-								.HAlign(HAlign_Fill)
-								[
-									AttackStats.ToSharedRef()
-								]
-								+ SScrollBox::Slot() // defense stats
-								.HAlign(HAlign_Fill)
-								[
-									ArmorStats.ToSharedRef()
-								]
+								MainStats.ToSharedRef()
+							]
+							+ SScrollBox::Slot() // attribute
+							.HAlign(HAlign_Fill)
+							[
+								Attributes.ToSharedRef()
+							]
+							+ SScrollBox::Slot() // second stats
+							.HAlign(HAlign_Fill)
+							[
+								SecondStats.ToSharedRef()
+							]
+							+ SScrollBox::Slot() // attack stats
+							.HAlign(HAlign_Fill)
+							[
+								AttackStats.ToSharedRef()
+							]
+							+ SScrollBox::Slot() // defense stats
+							.HAlign(HAlign_Fill)
+							[
+								ArmorStats.ToSharedRef()
 							]
 						]
 					]

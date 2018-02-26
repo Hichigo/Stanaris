@@ -41,6 +41,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 				SNew(STextBlock)
 				.Font(FSlateFontInfo(EmptySlotStyle->TextEntryStyle.Font))
 				.Text(TitleName)
+				.Justification(ETextJustify::Center)
 				.ColorAndOpacity(FLinearColor(1., 0., 0., 1.))
 			]
 		]
