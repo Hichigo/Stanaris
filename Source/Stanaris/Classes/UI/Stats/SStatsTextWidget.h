@@ -24,7 +24,10 @@ public:
 	void Construct(const FArguments& InArgs);
 
 	const struct FEmptySlotStyle* EmptySlotStyle;
+	
+
+	TAttribute<FText> StatName;
 
 private:
-	TAttribute<FText> StatName;
+	
 };

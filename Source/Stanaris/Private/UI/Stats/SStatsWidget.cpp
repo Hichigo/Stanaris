@@ -11,11 +11,130 @@
 #include "SScrollBox.h"
 #include "UI/Stats/SStatsTextWidget.h"
 
+#include "UI/Style/EmptySlotWidgetStyle.h"
+#include "UI/Style/InventoryStyle.h"
+
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
 	
 	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Gray);
+
+	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
+
+	TSharedPtr<STitleBar> TitleText = SNew(STitleBar);
+
+	TSharedPtr<SStatsTextWidget> StatText = SNew(SStatsTextWidget);
+
+	TSharedPtr<SVerticalBox> MainStats = SNew(SVerticalBox);
+
+	MainStats->AddSlot()
+	[
+		SAssignNew(TitleText, STitleBar)
+		.TitleName(FText().FromString("Main"))
+	];
+	MainStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Level"))
+	];
+	MainStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Experience"))
+	];
+	MainStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Health"))
+	];
+	MainStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Stamina"))
+	];
+
+
+
+	TSharedPtr<SVerticalBox> Attributes = SNew(SVerticalBox);
+
+	Attributes->AddSlot()
+	[
+		SAssignNew(TitleText, STitleBar)
+		.TitleName(FText().FromString("Attributes"))
+	];
+	Attributes->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Attribute points"))
+	];
+	Attributes->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Health point"))
+	];
+	Attributes->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Stamina point"))
+	];
+	Attributes->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Strength point"))
+	];
+	Attributes->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Agility point"))
+	];
+
+
+	TSharedPtr<SVerticalBox> SecondStats = SNew(SVerticalBox);
+
+	SecondStats->AddSlot()
+	[
+		SAssignNew(TitleText, STitleBar)
+		.TitleName(FText().FromString("Second"))
+	];
+	SecondStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Health regeneration/sec"))
+	];
+	SecondStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Stamina regeneration %"))
+	];
+
+
+	TSharedPtr<SVerticalBox> AttackStats = SNew(SVerticalBox);
+
+	SecondStats->AddSlot()
+	[
+		SAssignNew(TitleText, STitleBar)
+		.TitleName(FText().FromString("Attack"))
+	];
+	SecondStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Damage"))
+	];
+
+
+	TSharedPtr<SVerticalBox> ArmorStats = SNew(SVerticalBox);
+
+	SecondStats->AddSlot()
+	[
+		SAssignNew(TitleText, STitleBar)
+		.TitleName(FText().FromString("Armor"))
+	];
+	SecondStats->AddSlot()
+	[
+		SAssignNew(StatText, SStatsTextWidget)
+		.StatName(FText().FromString("Defense"))
+	];
 
 	ChildSlot
 	[
@@ -30,102 +149,56 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 				SNew(SBorder)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
-				.BorderImage(&BackgroundColor)
+				.BorderImage(&EmptySlotStyle->BackgroundBrush)
 				[
 					SNew(SBox)
 					.WidthOverride(400)
 					.HeightOverride(550)
 					.MinDesiredWidth(400)
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
 					[
 						SNew(SVerticalBox)
 						+ SVerticalBox::Slot()
 						.AutoHeight()
 						.MaxHeight(50)
 						[
-							SNew(STitleBar)
+							SAssignNew(TitleText, STitleBar)
 							.TitleName(FText().FromString("Stats"))
 						]
 						+ SVerticalBox::Slot()
+						.HAlign(HAlign_Fill)
 						[
-							SNew(SScrollBox)
-							+SScrollBox::Slot() // main stats
+							SNew(SBox)
+							.WidthOverride(400)
+							.HeightOverride(500)
 							[
-								SNew(SVerticalBox)
-								+ SVerticalBox::Slot()
+								SNew(SScrollBox)
+								.ScrollBarVisibility(EVisibility::Visible)
+								+ SScrollBox::Slot() // main stats
+								.HAlign(HAlign_Fill)
 								[
-									SNew(STitleBar)
-									.TitleName(FText().FromString("Main"))
+									MainStats.ToSharedRef()
 								]
-								+ SVerticalBox::Slot()
+								+ SScrollBox::Slot() // attribute
+								.HAlign(HAlign_Fill)
 								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Level"))
+									Attributes.ToSharedRef()
 								]
-								/*+ SVerticalBox::Slot()
+								+ SScrollBox::Slot() // second stats
+								.HAlign(HAlign_Fill)
 								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Experience"))
+									SecondStats.ToSharedRef()
 								]
-								+ SVerticalBox::Slot()
+								+ SScrollBox::Slot() // attack stats
+								.HAlign(HAlign_Fill)
 								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Health"))
+									AttackStats.ToSharedRef()
 								]
-								+ SVerticalBox::Slot()
+								+ SScrollBox::Slot() // defense stats
+								.HAlign(HAlign_Fill)
 								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Stamina"))
-								]*/
-							]
-							+ SScrollBox::Slot() // attribute
-							[
-								SNew(SVerticalBox)
-								+ SVerticalBox::Slot()
-								[
-									SNew(STitleBar)
-									.TitleName(FText().FromString("Attribute"))
-								]
-								+ SVerticalBox::Slot()
-								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Attribute points"))
-								]
-							]
-							+ SScrollBox::Slot() // second stats
-							[
-								SNew(SVerticalBox)
-								+ SVerticalBox::Slot()
-								[
-									SNew(STitleBar)
-									.TitleName(FText().FromString("Second"))
-								]
-								/*+ SVerticalBox::Slot()
-								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Health regeneration/sec"))
-								]*/
-							]
-							+ SScrollBox::Slot() // attack stats
-							[
-								SNew(SVerticalBox)
-								+ SVerticalBox::Slot()
-								[
-									SNew(STitleBar)
-									.TitleName(FText().FromString("Attack"))
-								]
-								/*+ SVerticalBox::Slot()
-								[
-									SNew(SStatsTextWidget)
-									.StatName(FText().FromString("Damage"))
-								]*/
-							]
-							+ SScrollBox::Slot() // defense stats
-							[
-								SNew(SVerticalBox)
-								+ SVerticalBox::Slot()
-								[
-									SNew(STitleBar)
-									.TitleName(FText().FromString("Defense"))
+									ArmorStats.ToSharedRef()
 								]
 							]
 						]
