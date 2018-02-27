@@ -88,6 +88,8 @@ void SEquip::Construct(const FArguments& InArgs)
 	[
 		// Populate the widget
 		SNew(SScaleBox)
+		.HAlign(HAlign_Fill)
+		.VAlign(VAlign_Fill)
 		[
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)

@@ -27,7 +27,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	TSharedPtr<SStatsTextWidget> StatText = SNew(SStatsTextWidget);
 
 	TSharedPtr<SVerticalBox> MainStats = SNew(SVerticalBox);
-
 	MainStats->AddSlot()
 	[
 		SAssignNew(TitleText, STitleBar)
@@ -57,7 +56,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 
 	TSharedPtr<SVerticalBox> Attributes = SNew(SVerticalBox);
-
 	Attributes->AddSlot()
 	[
 		SAssignNew(TitleText, STitleBar)
@@ -91,7 +89,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 
 	TSharedPtr<SVerticalBox> SecondStats = SNew(SVerticalBox);
-
 	SecondStats->AddSlot()
 	[
 		SAssignNew(TitleText, STitleBar)
@@ -110,7 +107,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 
 	TSharedPtr<SVerticalBox> AttackStats = SNew(SVerticalBox);
-
 	SecondStats->AddSlot()
 	[
 		SAssignNew(TitleText, STitleBar)
@@ -124,7 +120,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 
 	TSharedPtr<SVerticalBox> ArmorStats = SNew(SVerticalBox);
-
 	SecondStats->AddSlot()
 	[
 		SAssignNew(TitleText, STitleBar)
@@ -142,16 +137,12 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		SNew(SScaleBox)
 		[
 			SNew(SBorder)
-			.HAlign(HAlign_Fill)
-			.VAlign(VAlign_Fill)
 			.BorderImage(&EmptySlotStyle->BackgroundBrush)
 			[
 				SNew(SBox)
 				.WidthOverride(400)
 				.HeightOverride(550)
 				//.MinDesiredWidth(400)
-				.HAlign(HAlign_Fill)
-				.VAlign(VAlign_Fill)
 				[
 					SNew(SVerticalBox)
 					+ SVerticalBox::Slot()

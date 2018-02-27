@@ -17,7 +17,7 @@ public:
 	SLATE_BEGIN_ARGS(SInventory)
 	{}
 
-	SLATE_ATTRIBUTE(FText, TitleInventory)
+	//SLATE_ATTRIBUTE(FText, TitleInventory)
 
 
 	SLATE_END_ARGS()
@@ -26,5 +26,5 @@ public:
 	void Construct(const FArguments& InArgs);
 
 private:
-	TAttribute<FText> TitleInventory;
+	//TAttribute<FText> TitleInventory;
 };

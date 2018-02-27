@@ -24,12 +24,12 @@ void STitleBar::Construct(const FArguments& InArgs)
 	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
 
 	ChildSlot
-	.HAlign(HAlign_Fill)
-	.VAlign(VAlign_Fill)
 	[
 		// Populate the widget
 		SNew(SScaleBox)
 		//.Stretch(EStretch::ScaleToFit)
+		.HAlign(HAlign_Fill)
+		.VAlign(VAlign_Fill)
 		[
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)
@@ -38,11 +38,17 @@ void STitleBar::Construct(const FArguments& InArgs)
 			.BorderImage(&BackgroundColor)
 			//.BorderImage()
 			[
-				SNew(STextBlock)
-				.Font(FSlateFontInfo(EmptySlotStyle->TextEntryStyle.Font))
-				.Text(TitleName)
-				.Justification(ETextJustify::Center)
-				.ColorAndOpacity(FLinearColor(1., 0., 0., 1.))
+				SNew(SBox)
+				.HeightOverride(50)
+				//.HAlign(HAlign_Fill)
+				//.VAlign(VAlign_Fill)
+				[
+					SNew(STextBlock)
+					.Font(FSlateFontInfo(EmptySlotStyle->TextEntryStyle.Font))
+					.Text(TitleName)
+					.Justification(ETextJustify::Center)
+					.ColorAndOpacity(FLinearColor(1., 0., 0., 1.))
+				]
 			]
 		]
 	];

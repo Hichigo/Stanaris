@@ -6,11 +6,12 @@
 #include "SBoxPanel.h"
 #include "SScaleBox.h"
 #include "SBorder.h"
+#include "SBox.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SInventory::Construct(const FArguments& InArgs)
 {
-	TitleInventory = InArgs._TitleInventory;
+	//TitleInventory = InArgs._TitleInventory;
 
 
 	
@@ -18,25 +19,35 @@ void SInventory::Construct(const FArguments& InArgs)
 	[
 		// Populate the widget
 		SNew(SScaleBox)
+		//.HAlign(HAlign_Fill)
+		//.VAlign(VAlign_Fill)
 		[
 			SNew(SBorder)
-			.HAlign(HAlign_Fill)
-			.VAlign(VAlign_Fill)
-			//.BorderImage(&BackgroundColor)
+			//.HAlign(HAlign_Fill)
+			//.VAlign(VAlign_Fill)
 			[
-				SNew(SVerticalBox)
-				+ SVerticalBox::Slot()
-				.HAlign(HAlign_Fill)
-				.VAlign(VAlign_Fill)
-				.MaxHeight(50)
+				SNew(SBox)
+				.WidthOverride(400)
+				.HeightOverride(350)
+				//.HAlign(HAlign_Fill)
+				//.VAlign(VAlign_Fill)
 				[
-					SNew(STitleBar)
-					.TitleName(FText().FromString("Inventory"))
-				]
-				+ SVerticalBox::Slot()
-				.AutoHeight()
-				[
-					SNew(SGridInventory)
+					SNew(SVerticalBox)
+					+ SVerticalBox::Slot()
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
+					.MaxHeight(50)
+					.AutoHeight()
+					[
+						SNew(STitleBar)
+						.TitleName(FText().FromString("Inventory"))
+					]
+					+ SVerticalBox::Slot()
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
+					[
+						SNew(SGridInventory)
+					]
 				]
 			]
 		]

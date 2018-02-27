@@ -15,7 +15,7 @@ void SMainLayout::Construct(const FArguments& InArgs)
 		// Populate the widget
 		SNew(SOverlay)
 		+ SOverlay::Slot()
-		.HAlign(HAlign_Right)
+		.HAlign(HAlign_Center)
 		.VAlign(VAlign_Center)
 		[
 			SNew(SHeroWindowWidget)

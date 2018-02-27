@@ -17,6 +17,8 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SHeroWindowWidget::Construct(const FArguments& InArgs)
 {
+
+	//TSharedPtr<SInventory> Inventory = SNew(SInventory);
 	
 	ChildSlot
 	[
@@ -28,9 +30,9 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 			SNew(SBox)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
-			.HeightOverride(950)
+			.HeightOverride(950) //950
 			.WidthOverride(900)
-		[
+			[
 				SNew(SBorder)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
@@ -77,18 +79,19 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 						.VAlign(VAlign_Fill)
 						[
 							SNew(SVerticalBox)
-							+ SVerticalBox::Slot()
-							.HAlign(HAlign_Fill)
-							.VAlign(VAlign_Fill)
-							[
-								SNew(SStatsWidget)
-							]
 							/*+ SVerticalBox::Slot()
 							.HAlign(HAlign_Fill)
-							.VAlign(VAlign_Fill)
+							.VAlign(VAlign_Top)
 							[
-								SNew(SInventory)
+								SNew(SStatsWidget)
 							]*/
+							+ SVerticalBox::Slot()
+							.HAlign(HAlign_Fill)
+							//.VAlign(VAlign_Fill)
+							[
+								//Inventory.ToSharedRef()
+								SNew(SInventory)
+							]
 						]
 					]
 				]
