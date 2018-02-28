@@ -25,6 +25,7 @@ void FEmptySlotStyle::GetResources(TArray<const FSlateBrush*>& OutBrushes) const
 
 	// Add any brush resources here so that Slate can correctly atlas and reference them
 	OutBrushes.Add(&BackgroundBrush);
+	OutBrushes.Add(&BackingBrush);
 
 }
 

@@ -17,8 +17,6 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
-	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Gray);
-
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	TSharedPtr<STitleBar> TitleText = SNew(STitleBar);
@@ -133,7 +131,8 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.HeightOverride(550)
 		[
 			SNew(SBorder)
-			.BorderImage(&EmptySlotStyle->BackgroundBrush)
+			.BorderImage(&EmptySlotStyle->BackingBrush)
+			.BorderBackgroundColor(EmptySlotStyle->EquipBackgroundColor.GetSpecifiedColor())
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			.Padding(0)

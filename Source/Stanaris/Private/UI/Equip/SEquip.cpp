@@ -11,12 +11,16 @@
 #include "SBorder.h"
 #include "SBox.h"
 
+#include "UI/Style/EmptySlotWidgetStyle.h"
+#include "UI/Style/InventoryStyle.h"
+
 
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SEquip::Construct(const FArguments& InArgs)
 {
 	
+	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	TSharedPtr<SGridPanel> EquipContainer = SNew(SGridPanel);
 	
@@ -81,9 +85,6 @@ void SEquip::Construct(const FArguments& InArgs)
 	];
 
 
-
-	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
-
 	
 	ChildSlot
 	[
@@ -93,10 +94,11 @@ void SEquip::Construct(const FArguments& InArgs)
 		.HeightOverride(900)
 		[
 			SNew(SBorder)
+			//.BorderImage(&EmptySlotStyle->BackingBrush)
+			.BorderBackgroundColor(EmptySlotStyle->EquipBackgroundColor.GetSpecifiedColor())
+			.Padding(0)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
-			.BorderImage(&BackgroundColor)
-			.Padding(0)
 			[
 				
 				SNew(SVerticalBox)
@@ -113,7 +115,6 @@ void SEquip::Construct(const FArguments& InArgs)
 				.HAlign(HAlign_Fill)
 				[
 					EquipContainer.ToSharedRef()
-					//SAssignNew(EquipContainer, SEquip)
 				]
 			]
 		]

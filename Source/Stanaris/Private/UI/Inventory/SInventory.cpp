@@ -8,11 +8,14 @@
 #include "SBorder.h"
 #include "SBox.h"
 
+#include "UI/Style/EmptySlotWidgetStyle.h"
+#include "UI/Style/InventoryStyle.h"
+
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SInventory::Construct(const FArguments& InArgs)
 {
 	//TitleInventory = InArgs._TitleInventory;
-
+	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	
 	ChildSlot
@@ -20,9 +23,11 @@ void SInventory::Construct(const FArguments& InArgs)
 		// Populate the widget
 		SNew(SBox)
 		//.WidthOverride(400)
-		//.HeightOverride(350)
+		.HeightOverride(350)
 		[
 			SNew(SBorder)
+			.BorderImage(&EmptySlotStyle->BackingBrush)
+			.BorderBackgroundColor(EmptySlotStyle->EquipBackgroundColor.GetSpecifiedColor())
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			.Padding(0)
