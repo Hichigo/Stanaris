@@ -18,36 +18,33 @@ void SInventory::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SScaleBox)
-		//.HAlign(HAlign_Fill)
-		//.VAlign(VAlign_Fill)
+		SNew(SBox)
+		//.WidthOverride(400)
+		//.HeightOverride(350)
 		[
 			SNew(SBorder)
-			//.HAlign(HAlign_Fill)
-			//.VAlign(VAlign_Fill)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			.Padding(0)
 			[
-				SNew(SBox)
-				.WidthOverride(400)
-				.HeightOverride(350)
-				//.HAlign(HAlign_Fill)
-				//.VAlign(VAlign_Fill)
+				
+				SNew(SVerticalBox)
+				+ SVerticalBox::Slot()
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				.MaxHeight(50)
+				.AutoHeight()
+				.Padding(0)
 				[
-					SNew(SVerticalBox)
-					+ SVerticalBox::Slot()
-					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)
-					.MaxHeight(50)
-					.AutoHeight()
-					[
-						SNew(STitleBar)
-						.TitleName(FText().FromString("Inventory"))
-					]
-					+ SVerticalBox::Slot()
-					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)
-					[
-						SNew(SGridInventory)
-					]
+					SNew(STitleBar)
+					.TitleName(FText().FromString("Inventory"))
+				]
+				+ SVerticalBox::Slot()
+				.Padding(0)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				[
+					SNew(SGridInventory)
 				]
 			]
 		]

@@ -17,7 +17,6 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
-	
 	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Gray);
 
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
@@ -53,8 +52,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.StatName(FText().FromString("Stamina"))
 	];
 
-
-
 	TSharedPtr<SVerticalBox> Attributes = SNew(SVerticalBox);
 	Attributes->AddSlot()
 	[
@@ -87,7 +84,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.StatName(FText().FromString("Agility point"))
 	];
 
-
 	TSharedPtr<SVerticalBox> SecondStats = SNew(SVerticalBox);
 	SecondStats->AddSlot()
 	[
@@ -105,7 +101,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.StatName(FText().FromString("Stamina regeneration %"))
 	];
 
-
 	TSharedPtr<SVerticalBox> AttackStats = SNew(SVerticalBox);
 	SecondStats->AddSlot()
 	[
@@ -117,7 +112,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Damage"))
 	];
-
 
 	TSharedPtr<SVerticalBox> ArmorStats = SNew(SVerticalBox);
 	SecondStats->AddSlot()
@@ -134,59 +128,55 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SScaleBox)
+		SNew(SBox)
+		//.WidthOverride(400)
+		.HeightOverride(550)
 		[
 			SNew(SBorder)
 			.BorderImage(&EmptySlotStyle->BackgroundBrush)
+			.HAlign(HAlign_Fill)
+			.VAlign(VAlign_Fill)
+			.Padding(0)
 			[
-				SNew(SBox)
-				.WidthOverride(400)
-				.HeightOverride(550)
-				//.MinDesiredWidth(400)
+				SNew(SVerticalBox)
+				+ SVerticalBox::Slot()
+				.AutoHeight()
+				.MaxHeight(50)
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
 				[
-					SNew(SVerticalBox)
-					+ SVerticalBox::Slot()
-					.AutoHeight()
-					.MaxHeight(50)
-					[
-						SAssignNew(TitleText, STitleBar)
-						.TitleName(FText().FromString("Stats"))
-					]
-					+ SVerticalBox::Slot()
+					SAssignNew(TitleText, STitleBar)
+					.TitleName(FText().FromString("Stats"))
+				]
+				+ SVerticalBox::Slot()
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)
+				[
+					SNew(SScrollBox)
+					+ SScrollBox::Slot() // main stats
 					.HAlign(HAlign_Fill)
 					[
-						SNew(SBox)
-						.WidthOverride(400)
-						.HeightOverride(500)
-						[
-							SNew(SScrollBox)
-							.ScrollBarVisibility(EVisibility::Visible)
-							+ SScrollBox::Slot() // main stats
-							.HAlign(HAlign_Fill)
-							[
-								MainStats.ToSharedRef()
-							]
-							+ SScrollBox::Slot() // attribute
-							.HAlign(HAlign_Fill)
-							[
-								Attributes.ToSharedRef()
-							]
-							+ SScrollBox::Slot() // second stats
-							.HAlign(HAlign_Fill)
-							[
-								SecondStats.ToSharedRef()
-							]
-							+ SScrollBox::Slot() // attack stats
-							.HAlign(HAlign_Fill)
-							[
-								AttackStats.ToSharedRef()
-							]
-							+ SScrollBox::Slot() // defense stats
-							.HAlign(HAlign_Fill)
-							[
-								ArmorStats.ToSharedRef()
-							]
-						]
+						MainStats.ToSharedRef()
+					]
+					+ SScrollBox::Slot() // attribute
+					.HAlign(HAlign_Fill)
+					[
+						Attributes.ToSharedRef()
+					]
+					+ SScrollBox::Slot() // second stats
+					.HAlign(HAlign_Fill)
+					[
+						SecondStats.ToSharedRef()
+					]
+					+ SScrollBox::Slot() // attack stats
+					.HAlign(HAlign_Fill)
+					[
+						AttackStats.ToSharedRef()
+					]
+					+ SScrollBox::Slot() // defense stats
+					.HAlign(HAlign_Fill)
+					[
+						ArmorStats.ToSharedRef()
 					]
 				]
 			]

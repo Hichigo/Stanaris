@@ -19,7 +19,7 @@ void SEquip::Construct(const FArguments& InArgs)
 	
 
 	TSharedPtr<SGridPanel> EquipContainer = SNew(SGridPanel);
-
+	
 	EquipContainer->SetRowFill(0, 1.f);
 	EquipContainer->SetRowFill(1, 1.f);
 	EquipContainer->SetRowFill(2, 1.f);
@@ -77,6 +77,7 @@ void SEquip::Construct(const FArguments& InArgs)
 	.ColumnSpan(10)
 	[
 		SNew(SBorder)
+		.Padding(0)
 	];
 
 
@@ -87,32 +88,32 @@ void SEquip::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SScaleBox)
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
+		SNew(SBox)
+		.WidthOverride(500)
+		.HeightOverride(900)
 		[
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			.BorderImage(&BackgroundColor)
+			.Padding(0)
 			[
-				SNew(SBox)
-				.WidthOverride(500)
-				.HeightOverride(900)
+				
+				SNew(SVerticalBox)
+				+ SVerticalBox::Slot()
+				.MaxHeight(50)
+				.AutoHeight()
+				.HAlign(HAlign_Fill)
 				[
-					SNew(SVerticalBox)
-					+SVerticalBox::Slot()
-					.MaxHeight(50)
-					.AutoHeight()
-					[
-						SNew(STitleBar)
-						.TitleName(FText().FromString("Equipment"))
-					]
-					+SVerticalBox::Slot()
-					.VAlign(VAlign_Fill)
-					[
-						EquipContainer.ToSharedRef()
-					]
+					SNew(STitleBar)
+					.TitleName(FText().FromString("Equipment"))
+				]
+				+ SVerticalBox::Slot()
+				.VAlign(VAlign_Fill)
+				.HAlign(HAlign_Fill)
+				[
+					EquipContainer.ToSharedRef()
+					//SAssignNew(EquipContainer, SEquip)
 				]
 			]
 		]

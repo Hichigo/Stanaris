@@ -23,75 +23,84 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 	ChildSlot
 	[
 		// Populate the widget
-		SNew(SScaleBox)
-		.HAlign(HAlign_Fill)
-		.VAlign(VAlign_Fill)
+		SNew(SBox)
+		//.HeightOverride(950) //950
+		//.WidthOverride(900)
 		[
-			SNew(SBox)
+			SNew(SBorder)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
-			.HeightOverride(950) //950
-			.WidthOverride(900)
+			.Padding(0)
 			[
-				SNew(SBorder)
+				SNew(SVerticalBox)
+				+ SVerticalBox::Slot()
+				.AutoHeight()
+				.MaxHeight(50)
 				.HAlign(HAlign_Fill)
 				.VAlign(VAlign_Fill)
 				[
-					SNew(SVerticalBox)
-					+ SVerticalBox::Slot()
-					.AutoHeight()
-					.MaxHeight(50)
-					.HAlign(HAlign_Fill)
+					SNew(SHorizontalBox)
+					+ SHorizontalBox::Slot()
+					//.AutoWidth()
 					.VAlign(VAlign_Fill)
+					.HAlign(HAlign_Fill)
 					[
-						SNew(SHorizontalBox)
-						+ SHorizontalBox::Slot()
-						.AutoWidth()
-						.FillWidth(10.0)
-						.VAlign(VAlign_Fill)
-						.HAlign(HAlign_Fill)
-						[
-							SNew(STitleBar)
-							.TitleName(FText().FromString("Character"))
-						]
-						+ SHorizontalBox::Slot()
-						.AutoWidth()
-						.VAlign(VAlign_Fill)
-						.HAlign(HAlign_Fill)
+						SNew(STitleBar)
+						.TitleName(FText().FromString("Character"))
+					]
+					+ SHorizontalBox::Slot()
+					.AutoWidth()
+					.MaxWidth(50)
+					.VAlign(VAlign_Fill)
+					.HAlign(HAlign_Right)
+					[
+						SNew(SBox)
+						.WidthOverride(50)
+						.HeightOverride(50)
 						[
 							SNew(SButton)
 							.Text(FText().FromString("X"))
+							.HAlign(HAlign_Center)
+							.VAlign(VAlign_Center)
 						]
 					]
-					+ SVerticalBox::Slot()
+				]
+				+ SVerticalBox::Slot()
+				.AutoHeight()
+				.HAlign(HAlign_Fill)
+				.VAlign(VAlign_Fill)	
+				[
+					SNew(SHorizontalBox)
+					+ SHorizontalBox::Slot()
+					.AutoWidth()
 					.HAlign(HAlign_Fill)
-					.VAlign(VAlign_Fill)	
+					.VAlign(VAlign_Fill)
 					[
-						SNew(SHorizontalBox)
-						+ SHorizontalBox::Slot()
+						SNew(SEquip)
+					]
+					+ SHorizontalBox::Slot()
+					.HAlign(HAlign_Fill)
+					.VAlign(VAlign_Fill)
+					.AutoWidth()
+					.MaxWidth(400)
+					[
+						SNew(SVerticalBox)
+						+ SVerticalBox::Slot()
+						.Padding(0)
 						.HAlign(HAlign_Fill)
-						.VAlign(VAlign_Fill)
+						.VAlign(VAlign_Top)
+						.AutoHeight()
 						[
-							SNew(SEquip)
+							SNew(SStatsWidget)
 						]
-						+ SHorizontalBox::Slot()
+						+ SVerticalBox::Slot()
 						.HAlign(HAlign_Fill)
-						.VAlign(VAlign_Fill)
+						//.VAlign(VAlign_Fill)
+						.AutoHeight()
+						.MaxHeight(350)
 						[
-							SNew(SVerticalBox)
-							/*+ SVerticalBox::Slot()
-							.HAlign(HAlign_Fill)
-							.VAlign(VAlign_Top)
-							[
-								SNew(SStatsWidget)
-							]*/
-							+ SVerticalBox::Slot()
-							.HAlign(HAlign_Fill)
-							//.VAlign(VAlign_Fill)
-							[
-								//Inventory.ToSharedRef()
-								SNew(SInventory)
-							]
+							//Inventory.ToSharedRef()
+							SNew(SInventory)
 						]
 					]
 				]

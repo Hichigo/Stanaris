@@ -26,6 +26,7 @@ void SEquipSlot::Construct(const FArguments& InArgs)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			.BorderImage(&EmptySlotStyle->BackgroundBrush)
+			.Padding(0)
 		]
 	];
 }
