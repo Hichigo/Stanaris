@@ -33,7 +33,7 @@ void STitleBar::Construct(const FArguments& InArgs)
 		[
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)
-			.VAlign(VAlign_Fill)
+			.VAlign(VAlign_Center)
 			.BorderImage(&BackgroundColor)
 			.Padding(0)
 			[
