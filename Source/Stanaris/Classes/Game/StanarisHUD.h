@@ -15,11 +15,23 @@ class STANARIS_API AStanarisHUD : public AHUD
 {
 	GENERATED_BODY()
 
-
+public:
 	AStanarisHUD(const FObjectInitializer &ObjectInitializer);
 	
 
 	virtual void PostInitializeComponents() override;
 
+	virtual void BeginPlay() override;
+
 	TSharedPtr<class SMainLayout> Layout; //main layout
+
+
+	void ShowInventory();
+	void HideInventory();
+
+protected:
+	UInputComponent* InputComponent = nullptr;
+
+	void ToggleInventory();
+	
 };

@@ -10,16 +10,18 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SMainLayout::Construct(const FArguments& InArgs)
 {
+
+	HUD = InArgs._HUD;
 		
 	ChildSlot
 	[
 		// Populate the widget
 		SNew(SOverlay)
 		+ SOverlay::Slot()
-		.HAlign(HAlign_Center)
+		.HAlign(HAlign_Right)
 		.VAlign(VAlign_Center)
 		[
-			SNew(SHeroWindowWidget)
+			SNew(SHeroWindowWidget).HUD(HUD.Get())
 		]
 	];
 	

@@ -17,7 +17,8 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SHeroWindowWidget::Construct(const FArguments& InArgs)
 {
-
+	HUD = InArgs._HUD;
+	OnClicked = InArgs._OnClicked;
 	//TSharedPtr<SInventory> Inventory = SNew(SInventory);
 	
 	ChildSlot
@@ -59,9 +60,10 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 						.HeightOverride(50)
 						[
 							SNew(SButton)
-							.Text(FText().FromString("X"))
 							.HAlign(HAlign_Center)
 							.VAlign(VAlign_Center)
+							.Text(FText().FromString("X"))
+							.OnClicked(this, &SHeroWindowWidget::OnHideInventory)
 						]
 					]
 				]
@@ -108,5 +110,11 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 		]
 	];
 	
+}
+FReply SHeroWindowWidget::OnHideInventory()
+{
+	HUD->HideInventory();
+
+	return FReply::Handled();
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
