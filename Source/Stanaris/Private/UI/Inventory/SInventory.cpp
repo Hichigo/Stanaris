@@ -27,7 +27,7 @@ void SInventory::Construct(const FArguments& InArgs)
 		[
 			SNew(SBorder)
 			.BorderImage(&EmptySlotStyle->BackingBrush)
-			.BorderBackgroundColor(EmptySlotStyle->EquipBackgroundColor.GetSpecifiedColor())
+			.BorderBackgroundColor(EmptySlotStyle->InventoryBackgroundColor.GetSpecifiedColor())
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
 			.Padding(0)

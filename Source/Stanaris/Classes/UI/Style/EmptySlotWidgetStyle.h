@@ -37,9 +37,18 @@ struct STANARIS_API FEmptySlotStyle : public FSlateWidgetStyle
 	FEditableTextBoxStyle TextEntryStyle;
 	FEmptySlotStyle& SetTextEntryStyle(const FEditableTextBoxStyle& InTextEntryStyle) { TextEntryStyle = InTextEntryStyle; return *this; }
 
+
 	UPROPERTY(EditAnywhere, Category = Appearance)
 	FSlateColor EquipBackgroundColor;
 	FEmptySlotStyle& SetEquipBackgroundColor(const FSlateColor& InEquipBackgroundColor) { EquipBackgroundColor = InEquipBackgroundColor; return *this; }
+
+	UPROPERTY(EditAnywhere, Category = Appearance)
+	FSlateColor StatsBackgroundColor;
+	FEmptySlotStyle& SetStatsBackgroundColor(const FSlateColor& InStatsBackgroundColor) { StatsBackgroundColor = InStatsBackgroundColor; return *this; }
+
+	UPROPERTY(EditAnywhere, Category = Appearance)
+	FSlateColor InventoryBackgroundColor;
+	FEmptySlotStyle& SetInventoryBackgroundColor(const FSlateColor& InInventoryBackgroundColor) { InventoryBackgroundColor = InInventoryBackgroundColor; return *this; }
 
 	UPROPERTY(EditAnywhere, Category = Appearance)
 	FSlateBrush BackingBrush;
