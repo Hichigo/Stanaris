@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "UI/SMainLayout.h"
-#include "UI/Inventory/SInventory.h"
 #include "StanarisHUD.generated.h"
 
 /**

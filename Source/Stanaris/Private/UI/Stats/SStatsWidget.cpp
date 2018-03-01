@@ -123,6 +123,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.StatName(FText().FromString("Defense"))
 	];
 
+
 	ChildSlot
 	[
 		// Populate the widget
@@ -182,5 +183,6 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		]
 	];
 	
+
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
