@@ -18,8 +18,7 @@ BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SHeroWindowWidget::Construct(const FArguments& InArgs)
 {
 	HUD = InArgs._HUD;
-	OnClicked = InArgs._OnClicked;
-	//TSharedPtr<SInventory> Inventory = SNew(SInventory);
+	OnClicked = InArgs._OnClicked; // for work click
 	
 	ChildSlot
 	[

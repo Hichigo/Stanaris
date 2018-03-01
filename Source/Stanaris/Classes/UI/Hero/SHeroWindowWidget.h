@@ -19,7 +19,7 @@ public:
 
 	SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
 
-	SLATE_EVENT(FOnClicked, OnClicked)
+	SLATE_EVENT(FOnClicked, OnClicked) // for work click
 
 	SLATE_END_ARGS()
 
@@ -30,7 +30,7 @@ public:
 
 
 private:
-	FOnClicked OnClicked;
+	FOnClicked OnClicked; // for work click
 
 	FReply OnHideInventory();
 };
