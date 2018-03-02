@@ -11,17 +11,26 @@
 #include "SScrollBox.h"
 #include "UI/Stats/SStatsTextWidget.h"
 
+#include "Engine.h"
+
+#include "Hero/HeroPawn.h"
+
 #include "UI/Style/EmptySlotWidgetStyle.h"
 #include "UI/Style/InventoryStyle.h"
 
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
+	//Level = InArgs._Level;
+
+	
+
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	TSharedPtr<STitleBar> TitleText = SNew(STitleBar);
 
 	TSharedPtr<SStatsTextWidget> StatText = SNew(SStatsTextWidget);
+	
 
 	TSharedPtr<SVerticalBox> MainStats = SNew(SVerticalBox);
 	MainStats->AddSlot()
@@ -29,25 +38,33 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		SAssignNew(TitleText, STitleBar)
 		.TitleName(FText().FromString("Main"))
 	];
+	
+	//InArgs._OnUpdateLevel.BindRaw(this, &UStatsComp::OnUpdateLevel);
+	//Level.Bind(this, &UStatsComp::OnUpdateLevel);
+	Level.Bind(this, &SStatsWidget::OnUpdateLevel);
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Level"))
+		.StatValue(Level)		
 	];
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Experience"))
+		.StatValue(FText().FromString("909"))
 	];
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health"))
+		.StatValue(FText().FromString("909"))
 	];
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina"))
+		.StatValue(FText().FromString("909"))
 	];
 
 	TSharedPtr<SVerticalBox> Attributes = SNew(SVerticalBox);
@@ -60,26 +77,31 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Attribute points"))
+		.StatValue(FText().FromString("909"))
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health point"))
+		.StatValue(FText().FromString("909"))
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina point"))
+		.StatValue(FText().FromString("909"))
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Strength point"))
+		.StatValue(FText().FromString("909"))
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Agility point"))
+		.StatValue(FText().FromString("909"))
 	];
 
 	TSharedPtr<SVerticalBox> SecondStats = SNew(SVerticalBox);
@@ -92,11 +114,13 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health regeneration/sec"))
+		.StatValue(FText().FromString("909"))
 	];
 	SecondStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina regeneration %"))
+		.StatValue(FText().FromString("909"))
 	];
 
 	TSharedPtr<SVerticalBox> AttackStats = SNew(SVerticalBox);
@@ -109,6 +133,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Damage"))
+		.StatValue(FText().FromString("909"))
 	];
 
 	TSharedPtr<SVerticalBox> ArmorStats = SNew(SVerticalBox);
@@ -121,6 +146,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Defense"))
+		.StatValue(FText().FromString("909"))
 	];
 
 
@@ -185,4 +211,22 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	
 
 }
+
+FText SStatsWidget::OnUpdateLevel() const
+{
+	//GEngine->GetWorld()->GetPawnIterator()
+	//AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
+	//int32 Level = -100;
+	//if (Hero != nullptr)
+	//{
+//		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
+//		Level = Hero->FindComponentByClass<UStatsComp>()->GetLevel();
+	//}
+	
+	UE_LOG(LogTemp, Warning, TEXT("%d"), 55);
+	return FText().FromString("loh");//.AsNumber(Level);
+}
+
+
+
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION

@@ -16,7 +16,8 @@ void SStatsTextWidget::Construct(const FArguments& InArgs)
 {
 
 	StatName = InArgs._StatName;
-
+	StatValue = InArgs._StatValue;
+	
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
 	
@@ -43,7 +44,7 @@ void SStatsTextWidget::Construct(const FArguments& InArgs)
 			[
 				SNew(STextBlock)
 				.Font(FSlateFontInfo(EmptySlotStyle->TextEntryStyle.Font))
-				.Text(FText().FromString("999"))
+				.Text(StatValue)
 				.Justification(ETextJustify::Right)
 				.ColorAndOpacity(FLinearColor(0., 1., 0., 1.))
 			]

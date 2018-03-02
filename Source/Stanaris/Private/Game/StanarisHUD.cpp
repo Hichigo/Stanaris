@@ -38,6 +38,7 @@ void AStanarisHUD::BeginPlay()
 	{
 		InputComponent->BindAction("Inventory", IE_Pressed, this, &AStanarisHUD::ToggleInventory);
 	}
+
 }
 
 void AStanarisHUD::ToggleInventory()

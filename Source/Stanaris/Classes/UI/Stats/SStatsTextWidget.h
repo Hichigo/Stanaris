@@ -17,6 +17,7 @@ public:
 	{}
 
 	SLATE_ATTRIBUTE(FText, StatName)
+	SLATE_ATTRIBUTE(FText, StatValue)
 
 	SLATE_END_ARGS()
 
@@ -27,7 +28,8 @@ public:
 	
 
 	TAttribute<FText> StatName;
-
+	TAttribute<FText> StatValue;
+	
 private:
 	
 };

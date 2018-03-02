@@ -229,7 +229,7 @@ void UStatsComp::AddHealth(float Health)
 	{
 		SetFullHealth();
 	}
-
+	
 	OnUpdateHealth.Broadcast();
 }
 

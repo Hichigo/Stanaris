@@ -142,7 +142,7 @@ struct FHeroStats {
 
 	FHeroStats()
 	{
-		Level = 1;
+		Level = 11;
 		Health.Max = Secondary.HealthK * Attributes.HealthPoint;
 		Health.Current = Health.Max;
 		Stamina.Max = Secondary.StaminaK * Attributes.StaminaPoint;
