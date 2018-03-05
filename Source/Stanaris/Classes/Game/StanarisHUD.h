@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "UI/SMainLayout.h"
+#include "Hero/HeroPawn.h"
+
 #include "StanarisHUD.generated.h"
 
 /**
@@ -29,9 +31,14 @@ public:
 	void ShowInventory();
 	void HideInventory();
 
+	FORCEINLINE AHeroPawn* GetHeroPawn() const { return HeroRef; }
+
+
 protected:
 	UInputComponent* InputComponent = nullptr;
 
 	void ToggleInventory();
 	
+private:
+	AHeroPawn * HeroRef;
 };

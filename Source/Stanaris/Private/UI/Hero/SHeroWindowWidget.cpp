@@ -93,6 +93,7 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 						.AutoHeight()
 						[
 							SNew(SStatsWidget)
+							.HUD(HUD)
 						]
 						+ SVerticalBox::Slot()
 						.HAlign(HAlign_Fill)

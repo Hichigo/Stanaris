@@ -3,16 +3,20 @@
 #include "Game/StanarisHUD.h"
 #include "Engine.h"
 
+
 AStanarisHUD::AStanarisHUD(const FObjectInitializer & ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-
+	HeroRef = nullptr;
 }
 
 void AStanarisHUD::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 	
+
+	
+
 	if (GEngine && GEngine->GameViewport) // make sure our screen is ready for the widget
 	{
 		//GridInventoryWidget->SetTest(1);
@@ -37,6 +41,16 @@ void AStanarisHUD::BeginPlay()
 	if (InputComponent)
 	{
 		InputComponent->BindAction("Inventory", IE_Pressed, this, &AStanarisHUD::ToggleInventory);
+	}
+	
+	HeroRef = Cast<AHeroPawn>(GetOwningPawn());
+
+	if (HeroRef != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("Hero null"));
 	}
 
 }

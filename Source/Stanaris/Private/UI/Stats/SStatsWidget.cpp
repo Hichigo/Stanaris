@@ -21,9 +21,18 @@
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
+	HUD = InArgs._HUD;
 	//Level = InArgs._Level;
 
+	/*
+	AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
 	
+	if (Hero != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
+		//Hero->FindComponentByClass<UStatsComp>()->OnUpdateLevel.AddDynamic(this, &SStatsWidget::Lvl);
+	}
+	*/
 
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
@@ -39,9 +48,13 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.TitleName(FText().FromString("Main"))
 	];
 	
+
+	//HUD->GetHeroPawn()->FindComponentByClass<UStatsComp>()->OnUpdateLevel.AddDynamic(this, &SStatsWidget::Lvl);
+	
+	//OnUpdateLevel.BindRaw(this, &SStatsWidget::Lvl);
 	//InArgs._OnUpdateLevel.BindRaw(this, &UStatsComp::OnUpdateLevel);
 	//Level.Bind(this, &UStatsComp::OnUpdateLevel);
-	Level.Bind(this, &SStatsWidget::OnUpdateLevel);
+	//Level.Bind(this, &SStatsWidget::UpdateLevel); // this work for update every tick
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
@@ -212,16 +225,24 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 }
 
-FText SStatsWidget::OnUpdateLevel() const
+
+
+void SStatsWidget::Lvl()
+{
+	UE_LOG(LogTemp, Warning, TEXT("FUCK YEAH!!!"));
+	//Level.Set(24);
+}
+
+FText SStatsWidget::UpdateLevel() const
 {
 	//GEngine->GetWorld()->GetPawnIterator()
-	//AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
-	//int32 Level = -100;
-	//if (Hero != nullptr)
-	//{
-//		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
-//		Level = Hero->FindComponentByClass<UStatsComp>()->GetLevel();
-	//}
+	AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
+	int32 Level = -100;
+	if (Hero != nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
+		//Level = Hero->FindComponentByClass<UStatsComp>()->GetLevel();
+	}
 	
 	UE_LOG(LogTemp, Warning, TEXT("%d"), 55);
 	return FText().FromString("loh");//.AsNumber(Level);
