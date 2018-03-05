@@ -51,6 +51,10 @@ struct STANARIS_API FEmptySlotStyle : public FSlateWidgetStyle
 	FEmptySlotStyle& SetInventoryBackgroundColor(const FSlateColor& InInventoryBackgroundColor) { InventoryBackgroundColor = InInventoryBackgroundColor; return *this; }
 
 	UPROPERTY(EditAnywhere, Category = Appearance)
+	FSlateColor CommonTitleBarBackgroundColor;
+	FEmptySlotStyle& SetCommonTitleBarBackgroundColor(const FSlateColor& InCommonTitleBarBackgroundColor) { CommonTitleBarBackgroundColor = InCommonTitleBarBackgroundColor; return *this; }
+
+	UPROPERTY(EditAnywhere, Category = Appearance)
 	FSlateBrush BackingBrush;
 	FEmptySlotStyle& SetBackingBrush(const FSlateBrush& InBackingBrush) { BackingBrush = InBackingBrush; return *this; }
 

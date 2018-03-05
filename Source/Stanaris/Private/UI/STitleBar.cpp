@@ -21,8 +21,6 @@ void STitleBar::Construct(const FArguments& InArgs)
 	
 	EmptySlotStyle = &FInventoryStyle::Get().GetWidgetStyle<FEmptySlotStyle>("WS_EmptySlot"); // get asset from editor 
 
-	FSlateColorBrush BackgroundColor = FSlateColorBrush(FLinearColor::Green);
-
 	ChildSlot
 	[
 		// Populate the widget
@@ -34,7 +32,8 @@ void STitleBar::Construct(const FArguments& InArgs)
 			SNew(SBorder)
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Center)
-			.BorderImage(&BackgroundColor)
+			.BorderImage(&EmptySlotStyle->BackingBrush)
+			.BorderBackgroundColor(EmptySlotStyle->CommonTitleBarBackgroundColor)
 			.Padding(0)
 			[
 				SNew(STextBlock)
