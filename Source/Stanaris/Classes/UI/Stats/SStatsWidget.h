@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
-#include "Game/StanarisHUD.h"
+//#include "Game/StanarisHUD.h"
+//#include "Hero/HeroPawn.h"
 
 #include "SThrobber.h"
 
-#include "Hero/Components/StatsComp.h"
-
 #include "UI/STitleBar.h"
+
 
 /**
  * 
@@ -19,19 +19,17 @@
 
 class STANARIS_API SStatsWidget : public SCompoundWidget
 {
-	//DECLARE_DELEGATE(FStatsEvents);
-
 	SLATE_BEGIN_ARGS(SStatsWidget)
 	{}
 
-	SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
-	//SLATE_ATTRIBUTE(FText, Level)
+	//SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
+	SLATE_ATTRIBUTE(FText, Level)
 
 	//SLATE_EVENT(FStatsEvents, OnUpdateLevel) // for work click
 
 	SLATE_END_ARGS()
 
-	TWeakObjectPtr<class AStanarisHUD> HUD;
+	//TWeakObjectPtr<class AStanarisHUD> HUD;
 
 	TAttribute<FText> Level;
 
@@ -43,6 +41,13 @@ public:
 
 	const struct FEmptySlotStyle* EmptySlotStyle;
 
+	void UpdateLevel(int32 NewLvl);
+
+	//UStatsComp* StatsRef;
+
+
+	void Bind();
+
 private:
 	//FSlateColorBrush* BackgroundColor;
 
@@ -50,7 +55,7 @@ private:
 
 	//FStatsEvents OnUpdateLevel;
 
-	void Lvl();
-	
+	UFUNCTION()
 	FText UpdateLevel() const;
+	
 };

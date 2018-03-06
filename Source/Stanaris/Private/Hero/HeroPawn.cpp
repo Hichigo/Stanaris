@@ -91,7 +91,7 @@ void AHeroPawn::TraceAction()
 void AHeroPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void AHeroPawn::MoveForward(float Value)

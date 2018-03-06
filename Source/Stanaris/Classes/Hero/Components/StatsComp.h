@@ -7,6 +7,7 @@
 #include "Components/InputComponent.h"
 #include "Structures/Inventory/InventoryStructures.h"
 #include "Engine/DataTable.h"
+#include "UI/Stats/SStatsWidget.h"
 
 
 #include "StatsComp.generated.h"
@@ -142,7 +143,7 @@ struct FHeroStats {
 
 	FHeroStats()
 	{
-		Level = 11;
+		Level = 1;
 		Health.Max = Secondary.HealthK * Attributes.HealthPoint;
 		Health.Current = Health.Max;
 		Stamina.Max = Secondary.StaminaK * Attributes.StaminaPoint;
@@ -415,6 +416,8 @@ public:
 
 private:
 
+	TSharedPtr<class SStatsWidget> StatsWidgetRef;
+
 	UInputComponent* InputComponent;
 
 	void StartSprint();
@@ -425,4 +428,7 @@ private:
 	
 	/* PRIVATE Stamina functions */
 	void RecalculateStamina();
+
+	UFUNCTION()
+	void UpdateStatLevelWidget();
 };

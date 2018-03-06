@@ -25,14 +25,13 @@ public:
 
 	virtual void BeginPlay() override;
 
-	TSharedPtr<class SMainLayout> Layout; //main layout
+	
 
 
 	void ShowInventory();
 	void HideInventory();
 
-	FORCEINLINE AHeroPawn* GetHeroPawn() const { return HeroRef; }
-
+	FORCEINLINE TSharedPtr<class SMainLayout> GetLayoutWidget() const { return LayoutWidget; }
 
 protected:
 	UInputComponent* InputComponent = nullptr;
@@ -41,4 +40,6 @@ protected:
 	
 private:
 	AHeroPawn * HeroRef;
+
+	TSharedPtr<class SMainLayout> LayoutWidget; //main layout
 };

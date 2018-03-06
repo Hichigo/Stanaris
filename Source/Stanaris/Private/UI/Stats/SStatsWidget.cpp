@@ -13,16 +13,17 @@
 
 #include "Engine.h"
 
-#include "Hero/HeroPawn.h"
+
 
 #include "UI/Style/EmptySlotWidgetStyle.h"
 #include "UI/Style/InventoryStyle.h"
 
+
 BEGIN_SLATE_FUNCTION_BUILD_OPTIMIZATION
 void SStatsWidget::Construct(const FArguments& InArgs)
 {
-	HUD = InArgs._HUD;
-	//Level = InArgs._Level;
+	//HUD = InArgs._HUD;
+	Level = InArgs._Level;
 
 	/*
 	AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
@@ -30,7 +31,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	if (Hero != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
-		//Hero->FindComponentByClass<UStatsComp>()->OnUpdateLevel.AddDynamic(this, &SStatsWidget::Lvl);
+		//Hero->FindComponentByClass<UStatsComp>()->OnUpdateLevel.AddDynamic(this, &SStatsWidget::UpdateLevel);
 	}
 	*/
 
@@ -48,18 +49,13 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.TitleName(FText().FromString("Main"))
 	];
 	
+	Level.Bind(this, &SStatsWidget::UpdateLevel); // this work for update every tick
 
-	//HUD->GetHeroPawn()->FindComponentByClass<UStatsComp>()->OnUpdateLevel.AddDynamic(this, &SStatsWidget::Lvl);
-	
-	//OnUpdateLevel.BindRaw(this, &SStatsWidget::Lvl);
-	//InArgs._OnUpdateLevel.BindRaw(this, &UStatsComp::OnUpdateLevel);
-	//Level.Bind(this, &UStatsComp::OnUpdateLevel);
-	//Level.Bind(this, &SStatsWidget::UpdateLevel); // this work for update every tick
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Level"))
-		.StatValue(Level)		
+		.StatValue(Level)
 	];
 	MainStats->AddSlot()
 	[
@@ -225,28 +221,27 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 
 }
 
-
-
-void SStatsWidget::Lvl()
+void SStatsWidget::UpdateLevel(int32 NewLvl)
 {
-	UE_LOG(LogTemp, Warning, TEXT("FUCK YEAH!!!"));
-	//Level.Set(24);
+	Level.Set(FText::AsNumber(NewLvl));
+	UE_LOG(LogTemp, Warning, TEXT("Level %d"), NewLvl);
+}
+
+void SStatsWidget::Bind()
+{
+	//Level.Bind(StatsRef, &UStatsComp::GetStaminaText);
 }
 
 FText SStatsWidget::UpdateLevel() const
 {
-	//GEngine->GetWorld()->GetPawnIterator()
-	AHeroPawn* Hero = Cast<AHeroPawn>(UGameplayStatics::GetPlayerCharacter(GEngine->GetWorld(), 0));
-	int32 Level = -100;
-	if (Hero != nullptr)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Hero not null"));
-		//Level = Hero->FindComponentByClass<UStatsComp>()->GetLevel();
-	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Level"));
+	return FText::AsNumber(44);
 	
-	UE_LOG(LogTemp, Warning, TEXT("%d"), 55);
-	return FText().FromString("loh");//.AsNumber(Level);
+	//return FText::AsNumber(StatsRef->Stats.Level);
 }
+
+
 
 
 

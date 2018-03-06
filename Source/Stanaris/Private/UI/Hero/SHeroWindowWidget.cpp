@@ -20,6 +20,8 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 	HUD = InArgs._HUD;
 	OnClicked = InArgs._OnClicked; // for work click
 	
+	StatsWidget = SNew(SStatsWidget);
+
 	ChildSlot
 	[
 		// Populate the widget
@@ -92,8 +94,7 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 						.VAlign(VAlign_Top)
 						.AutoHeight()
 						[
-							SNew(SStatsWidget)
-							.HUD(HUD)
+							StatsWidget.ToSharedRef()
 						]
 						+ SVerticalBox::Slot()
 						.HAlign(HAlign_Fill)

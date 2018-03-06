@@ -28,9 +28,12 @@ public:
 
 	TWeakObjectPtr<class AStanarisHUD> HUD;
 
+	FORCEINLINE TSharedPtr<class SStatsWidget> GetStatsWidget() const { return StatsWidget; }
 
 private:
 	FOnClicked OnClicked; // for work click
 
 	FReply OnHideInventory();
+
+	TSharedPtr<class SStatsWidget> StatsWidget;
 };

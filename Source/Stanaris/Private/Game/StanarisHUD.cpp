@@ -20,13 +20,13 @@ void AStanarisHUD::PostInitializeComponents()
 	if (GEngine && GEngine->GameViewport) // make sure our screen is ready for the widget
 	{
 		//GridInventoryWidget->SetTest(1);
-		SAssignNew(Layout, SMainLayout).HUD(this); // (this set variable) add the widget and assign it to the var
+		SAssignNew(LayoutWidget, SMainLayout).HUD(this); // (this set variable) add the widget and assign it to the var
 		GEngine->
 			GameViewport->
 				AddViewportWidgetContent(SNew(SWeakWidget)
-					.PossiblyNullContent(Layout.ToSharedRef()));
+					.PossiblyNullContent(LayoutWidget.ToSharedRef()));
 
-		Layout.Get()->SetVisibility(EVisibility::Hidden);
+		LayoutWidget.Get()->SetVisibility(EVisibility::Hidden);
 	}
 	
 	
@@ -57,7 +57,7 @@ void AStanarisHUD::BeginPlay()
 
 void AStanarisHUD::ToggleInventory()
 {
-	if (Layout.Get()->GetVisibility() == EVisibility::Hidden)
+	if (LayoutWidget.Get()->GetVisibility() == EVisibility::Hidden)
 	{
 		ShowInventory();
 	}
@@ -68,7 +68,7 @@ void AStanarisHUD::ToggleInventory()
 
 void AStanarisHUD::ShowInventory()
 {
-	Layout.Get()->SetVisibility(EVisibility::Visible);
+	LayoutWidget.Get()->SetVisibility(EVisibility::Visible);
 
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = true;
 	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameAndUI());
@@ -76,7 +76,7 @@ void AStanarisHUD::ShowInventory()
 
 void AStanarisHUD::HideInventory()
 {
-	Layout.Get()->SetVisibility(EVisibility::Hidden);
+	LayoutWidget.Get()->SetVisibility(EVisibility::Hidden);
 
 	GetWorld()->GetFirstPlayerController()->bShowMouseCursor = false;
 	GetWorld()->GetFirstPlayerController()->SetInputMode(FInputModeGameOnly());

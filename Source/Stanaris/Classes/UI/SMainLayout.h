@@ -4,8 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
-#include "Game/StanarisHUD.h"
-
+#include "UI/Hero/SHeroWindowWidget.h"
 
 #include "SThrobber.h"
 /**
@@ -25,4 +24,9 @@ public:
 	void Construct(const FArguments& InArgs);
 
 	TWeakObjectPtr<class AStanarisHUD> HUD;
+
+	FORCEINLINE TSharedPtr<class SHeroWindowWidget> GetHeroWidget() const { return HeroWidget; }
+
+private:
+	TSharedPtr<class SHeroWindowWidget> HeroWidget;
 };

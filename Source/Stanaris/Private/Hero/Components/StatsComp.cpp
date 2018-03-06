@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Hero/Components/StatsComp.h"
+#include "Game/StanarisHUD.h"
 
 
 #define LOCTEXT_NAMESPACE "HUD" 
@@ -34,7 +35,17 @@ void UStatsComp::BeginPlay()
 		InputComponent->BindAction("Sprint", IE_Released, this, &UStatsComp::EndSprint);
 	}
 	// ...
+
+	StatsWidgetRef = Cast<AStanarisHUD>(GetWorld()->GetFirstPlayerController()->GetHUD())->
+		GetLayoutWidget()->
+		GetHeroWidget()->
+		GetStatsWidget();
+
 	
+	OnUpdateLevel.AddDynamic(this, &UStatsComp::UpdateStatLevelWidget);
+
+	//StatsWidgetRef->StatsRef = Cast<UStatsComp>(GetOwner()->FindComponentByClass<UStatsComp>());
+
 }
 
 
@@ -424,6 +435,12 @@ void UStatsComp::RecalculateStamina()
 {
 	Stats.Stamina.Max = Stats.Secondary.StaminaK * Stats.Attributes.StaminaPoint;
 	OnUpdateStamina.Broadcast();
+}
+
+void UStatsComp::UpdateStatLevelWidget()
+{
+	StatsWidgetRef.Get()->UpdateLevel(Stats.Level);
+	UE_LOG(LogTemp, Warning, TEXT("tekimuro"));
 }
 
 #undef LOCTEXT_NAMESPACE 
