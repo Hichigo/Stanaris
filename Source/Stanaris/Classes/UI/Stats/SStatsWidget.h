@@ -20,10 +20,34 @@
 class STANARIS_API SStatsWidget : public SCompoundWidget
 {
 	SLATE_BEGIN_ARGS(SStatsWidget)
+		: _Level(),
+		_Health(),
+		_Stamina(),
+		_AttributePoints(),
+		_HealthPoint(),
+		_StaminaPoint(),
+		_StrengthPoint(),
+		_AgilityPoint(),
+		_HealthRegen(),
+		_StaminaRegen(),
+		_Damage(),
+		_Defense()
 	{}
 
 	//SLATE_ARGUMENT(TWeakObjectPtr<class AStanarisHUD>, HUD)
 	SLATE_ATTRIBUTE(FText, Level)
+	SLATE_ATTRIBUTE(FText, Expirience)
+	SLATE_ATTRIBUTE(FText, Health)
+	SLATE_ATTRIBUTE(FText, Stamina)
+	SLATE_ATTRIBUTE(FText, AttributePoints)
+	SLATE_ATTRIBUTE(FText, HealthPoint)
+	SLATE_ATTRIBUTE(FText, StaminaPoint)
+	SLATE_ATTRIBUTE(FText, StrengthPoint)
+	SLATE_ATTRIBUTE(FText, AgilityPoint)
+	SLATE_ATTRIBUTE(FText, HealthRegen)
+	SLATE_ATTRIBUTE(FText, StaminaRegen)
+	SLATE_ATTRIBUTE(FText, Damage)
+	SLATE_ATTRIBUTE(FText, Defense)
 
 	//SLATE_EVENT(FStatsEvents, OnUpdateLevel) // for work click
 
@@ -32,6 +56,18 @@ class STANARIS_API SStatsWidget : public SCompoundWidget
 	//TWeakObjectPtr<class AStanarisHUD> HUD;
 
 	TAttribute<FText> Level;
+	TAttribute<FText> Expirience;
+	TAttribute<FText> Health;
+	TAttribute<FText> Stamina;
+	TAttribute<FText> AttributePoints;
+	TAttribute<FText> HealthPoint;
+	TAttribute<FText> StaminaPoint;
+	TAttribute<FText> StrengthPoint;
+	TAttribute<FText> AgilityPoint;
+	TAttribute<FText> HealthRegen;
+	TAttribute<FText> StaminaRegen;
+	TAttribute<FText> Damage;
+	TAttribute<FText> Defense;
 
 
 public:

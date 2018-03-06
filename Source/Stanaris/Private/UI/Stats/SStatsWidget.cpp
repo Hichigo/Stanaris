@@ -61,19 +61,19 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Experience"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(Expirience)
 	];
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(Health)
 	];
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(Stamina)
 	];
 
 	TSharedPtr<SVerticalBox> Attributes = SNew(SVerticalBox);
@@ -86,31 +86,31 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Attribute points"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(AttributePoints)
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health point"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(HealthPoint)
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina point"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(StaminaPoint)
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Strength point"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(StrengthPoint)
 	];
 	Attributes->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Agility point"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(AgilityPoint)
 	];
 
 	TSharedPtr<SVerticalBox> SecondStats = SNew(SVerticalBox);
@@ -123,13 +123,13 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Health regeneration/sec"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(HealthRegen)
 	];
 	SecondStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Stamina regeneration %"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(StaminaRegen)
 	];
 
 	TSharedPtr<SVerticalBox> AttackStats = SNew(SVerticalBox);
@@ -142,7 +142,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Damage"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(Damage)
 	];
 
 	TSharedPtr<SVerticalBox> ArmorStats = SNew(SVerticalBox);
@@ -155,7 +155,7 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 	[
 		SAssignNew(StatText, SStatsTextWidget)
 		.StatName(FText().FromString("Defense"))
-		.StatValue(FText().FromString("909"))
+		.StatValue(Defense)
 	];
 
 
