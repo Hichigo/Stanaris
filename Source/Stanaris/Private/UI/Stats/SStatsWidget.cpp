@@ -49,8 +49,8 @@ void SStatsWidget::Construct(const FArguments& InArgs)
 		.TitleName(FText().FromString("Main"))
 	];
 	
-	Level.Bind(this, &SStatsWidget::UpdateLevel); // this work for update every tick
-
+	//Level.Bind(this, &SStatsWidget::UpdateLevel); // this work for update every tick
+	UpdateLevel(23);
 	MainStats->AddSlot()
 	[
 		SAssignNew(StatText, SStatsTextWidget)
@@ -225,6 +225,7 @@ void SStatsWidget::UpdateLevel(int32 NewLvl)
 {
 	Level.Set(FText::AsNumber(NewLvl));
 	UE_LOG(LogTemp, Warning, TEXT("Level %d"), NewLvl);
+	Invalidate(EInvalidateWidget::Layout);
 }
 
 void SStatsWidget::Bind()

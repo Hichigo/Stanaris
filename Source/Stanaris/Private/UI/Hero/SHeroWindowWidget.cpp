@@ -8,6 +8,7 @@
 #include "SBorder.h"
 #include "SBoxPanel.h"
 #include "SButton.h"
+#include "SBackgroundBlur.h"
 
 #include "UI/STitleBar.h"
 #include "UI/Equip/SEquip.h"
@@ -29,9 +30,8 @@ void SHeroWindowWidget::Construct(const FArguments& InArgs)
 		//.HeightOverride(950) //950
 		//.WidthOverride(900)
 		[
-			SNew(SBorder)
-			.HAlign(HAlign_Fill)
-			.VAlign(VAlign_Fill)
+			SNew(SBackgroundBlur)
+			.BlurStrength(15.f)
 			.Padding(0)
 			[
 				SNew(SVerticalBox)
